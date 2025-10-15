@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 /**
  * Página: Contactos
@@ -45,7 +46,7 @@ export default function ContactosPage() {
               { label: "Inicio", href: "/" },
               { label: "Acerca de mí", href: "/about" },
               { label: "Proyectos", href: "/projects" },
-              { label: "Referencias", href: "/referencias" },
+              { label: "Referencias", href: "/references" },
             ].map((i) => (
               <a key={i.href} href={i.href} className="block px-3 py-2 rounded-xl hover:bg-white/10 text-sm">
                 {i.label}

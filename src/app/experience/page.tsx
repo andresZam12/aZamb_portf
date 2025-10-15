@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-
+import Link from "next/link";
 /**
  * Página: Experiencia
  * - Coherente con las demás pantallas.
@@ -50,8 +50,8 @@ export default function ExperienciaPage() {
               { label: "Inicio", href: "/" },
               { label: "Acerca de mí", href: "/about" },
               { label: "Proyectos", href: "/projects" },
-              { label: "Referencias", href: "/referencias" },
-              { label: "Contactos", href: "/contactos" },
+              { label: "Referencias", href: "/references" },
+              { label: "Contactos", href: "/contacts" },
             ].map((i) => (
               <a key={i.href} href={i.href} className="block px-3 py-2 rounded-xl hover:bg-white/10 text-sm">
                 {i.label}
@@ -155,7 +155,7 @@ export default function ExperienciaPage() {
             <path d="M10 17l5-5-5-5v10z" />
           </svg>
         </a>
-        <a href="/referencias" className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow">
+        <a href="/references" className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow">
           <span className="sr-only">Continuar</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M10 17l5-5-5-5v10z" />

@@ -156,7 +156,7 @@ export default function ProjectsPage() {
               <path d="M10 17l5-5-5-5v10z" />
             </svg>
           </a>
-          <a href="/contactos" className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow">
+          <a href="/experience" className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow">
             <span className="sr-only">Continuar</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M10 17l5-5-5-5v10z" />

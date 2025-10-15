@@ -1,6 +1,7 @@
 
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 
 
@@ -107,9 +108,9 @@ export default function PortfolioHero() {
               { label: "INICIO", href: "/" },
               { label: "ACERCA DE MI", href: "/about" },
               { label: "MIS PROYECTOS", href: "/projects" },
-              { label: "EXPERIENCIA", href: "/experiencia" },
-              { label: "REFERENCIAS", href: "/referencias" },
-              { label: "CONTACTOS", href: "/contactos" },
+              { label: "EXPERIENCIA", href: "/experience" },
+              { label: "REFERENCIAS", href: "/references" },
+              { label: "CONTACTOS", href: "/contacts" },
             ].map((b) => (
               <a
                 key={b.href}
