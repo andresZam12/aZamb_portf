@@ -72,13 +72,13 @@ export default function AboutPage() {
                     { label: "Proyectos", href: "/projects" },
                     { label: "Contacto", href: "/contacts" },
                   ].map((i) => (
-                    <a
+                    <Link
                       key={i.href}
                       href={i.href}
                       className="block px-3 py-2 rounded-xl hover:bg-white/10 text-sm"
                     >
                       {i.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -164,7 +164,7 @@ export default function AboutPage() {
                         Participación en proyectos de aprendizaje nacional con enfoque en
                         desarrollo de software.
                       </li>
-                      <li>Ganador de concurso "Ciencia e Investigación COMUNA-UCC 2024".</li>
+                      <li>Ganador de concurso &quot;Ciencia e Investigación COMUNA-UCC 2024&quot;.</li>
                       <li>Deportista reconocido de alto rendimiento en Nariño-Colombia.</li>
                       <li>
                         Galardonado académicamente por logros en matemáticas (IEM San Juan
@@ -181,7 +181,7 @@ export default function AboutPage() {
 
       {/* Controles fijos de navegación inferior derecha */}
       <nav className="fixed bottom-6 right-6 z-40 flex gap-2">
-        <a
+        <Link
           href="/"
           className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow"
         >
@@ -195,9 +195,9 @@ export default function AboutPage() {
           >
             <path d="M10 17l5-5-5-5v10z" />
           </svg>
-        </a>
+        </Link>
 
-        <a
+        <Link
           href="/projects"
           className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow"
         >
@@ -205,7 +205,7 @@ export default function AboutPage() {
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M10 17l5-5-5-5v10z" />
           </svg>
-        </a>
+        </Link>
       </nav>
     </div>
   );

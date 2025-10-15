@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 /**
  * Página: Referencias
@@ -33,7 +34,7 @@ export default function ReferencesPage() {
       name: "Mario Beltrán",
       gender: "m",
       text:
-        "Es una persona íntegra, proactiva y con gran capacidad de trabajo en equipo. Su actitud positiva e habilidades interpersonales generan un ambiente de confianza y colaboración.",
+        "Es una persona íntegra, proactiva y con gran capacidad de trabajo en equipo. Su actitud positiva y habilidades interpersonales generan un ambiente de confianza y colaboración.",
       email: "mario_b86@gmail.com",
       city: "Cali",
     },
@@ -68,11 +69,11 @@ export default function ReferencesPage() {
               { label: "Inicio", href: "/" },
               { label: "Acerca de mí", href: "/about" },
               { label: "Proyectos", href: "/projects" },
-              { label: "Contacto", href: "/contactos" },
+              { label: "Contactos", href: "/contacts" }, // ← en inglés para coincidir con /contacts
             ].map((i) => (
-              <a key={i.href} href={i.href} className="block px-3 py-2 rounded-xl hover:bg-white/10 text-sm">
+              <Link key={i.href} href={i.href} className="block px-3 py-2 rounded-xl hover:bg-white/10 text-sm">
                 {i.label}
-              </a>
+              </Link>
             ))}
           </div>
         )}
@@ -119,18 +120,24 @@ export default function ReferencesPage() {
 
       {/* Flechas fijas inferior derecha */}
       <nav className="fixed bottom-6 right-6 z-40 flex gap-2">
-        <a href="/projects" className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow">
+        <Link
+          href="/projects"
+          className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow"
+        >
           <span className="sr-only">Retroceder</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="rotate-180">
             <path d="M10 17l5-5-5-5v10z" />
           </svg>
-        </a>
-        <a href="/contacts" className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow">
+        </Link>
+        <Link
+          href="/contacts"
+          className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow"
+        >
           <span className="sr-only">Continuar</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M10 17l5-5-5-5v10z" />
           </svg>
-        </a>
+        </Link>
       </nav>
     </div>
   );
