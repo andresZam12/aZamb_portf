@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 /**
  * Página: Conóceme / About
@@ -69,7 +70,7 @@ export default function AboutPage() {
                   {[
                     { label: "Inicio", href: "/" },
                     { label: "Proyectos", href: "/projects" },
-                    { label: "Contacto", href: "/contactos" },
+                    { label: "Contacto", href: "/contacts" },
                   ].map((i) => (
                     <a
                       key={i.href}
