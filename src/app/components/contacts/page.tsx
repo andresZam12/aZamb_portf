@@ -2,6 +2,13 @@
 import { useState } from "react";
 import Link from "next/link";
 
+/**
+ * Página: Contactos
+ * - Paleta coherente (#3b2a23 base, #8b5e3c acentos, ámbar para detalles).
+ * - Lista de métodos de contacto con icono + enlace a la izquierda.
+ * - Tarjeta con imagen personal a la derecha.
+ * - Botón hamburger fijo arriba-derecha; flechas fijas abajo-derecha (volver / inicio).
+ */
 
 export default function ContactosPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,11 +23,8 @@ export default function ContactosPage() {
       {/* Barra vertical decorativa al centro */}
       <span
         aria-hidden
-        className="absolute inset-y-65 left-1/2 -translate-x-1/2 w-1 md:w-1.5 bg-black/25 rounded-full -z-0"
-        
-
+        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-1 md:w-1.5 bg-black/25 rounded-full -z-0"
       />
-
 
       {/* Etiqueta superior */}
       <header className="max-w-6xl mx-auto px-5 pt-6">
@@ -33,9 +37,9 @@ export default function ContactosPage() {
       <nav aria-label="menú" className="fixed top-4 right-5 z-40">
         <button
           onClick={() => setMenuOpen((v) => !v)}
-        
-          
-          className="grid place-items-center w-15 h-15 rounded-full bg-amber-950 text-white shadow-lg ring-1 ring-black  "
+          aria-expanded={menuOpen}
+          aria-label="Despliega el menú de opciones"
+          className="grid place-items-center w-10 h-10 rounded-full bg-[#8b5e3c] text-white shadow-lg ring-1 ring-black/20 hover:brightness-110 active:scale-95 transition"
         >
           <svg
             width="22"
@@ -56,10 +60,12 @@ export default function ContactosPage() {
         {menuOpen && (
           <div className="mt-2 w-56 rounded-2xl bg-[#3b2a23] p-2 shadow-2xl ring-1 ring-black/20">
             {[
-              { label: "Inicio", href: "/" },
-              { label: "Acerca de mí", href: "/about" },
-              { label: "Proyectos", href: "/projects" },
-              { label: "Referencias", href: "/references" },
+                    { label: "Inicio", href: "/" },
+                    { label: "Sobre mi", href: "/about" },
+                    { label: "Proyectos", href: "/projects" },
+                    { label: "Experiencia", href: "/experience" },
+                    { label: "Referencias", href: "/references" },
+                    { label: "Contacto", href: "/contacts" },
             ].map((i) => (
               <Link
                 key={i.href}
@@ -76,7 +82,7 @@ export default function ContactosPage() {
       <main className="max-w-6xl mx-auto px-5 pb-24">
         <section className="mt-6 grid grid-cols-12 gap-8 items-start">
           {/* COLUMNA IZQUIERDA: métodos de contacto */}
-          <aside className="col-span-12 md:col-span-6 pt-60 ">
+          <aside className="col-span-12 md:col-span-6">
             <ul className="space-y-6">
               {/* Gmail */}
               <li className="flex items-center gap-4">
@@ -170,13 +176,13 @@ export default function ContactosPage() {
             </ul>
 
             {/* Lema */}
-            <p className="mt-40 pr italic text-center text-2xl opacity-90">
+            <p className="mt-10 italic text-center text-sm opacity-90">
               “si lo puedes imaginar, lo podemos hacer”
             </p>
           </aside>
 
           {/* COLUMNA DERECHA: imagen personal en tarjeta */}
-          <section className=" col-span-12 md:col-span-6 pt-60 ">
+          <section className="col-span-12 md:col-span-6">
             <div className="mx-auto max-w-md p-5 rounded-[28px] bg-white/90 text-stone-900 shadow-[0_20px_50px_rgba(0,0,0,0.25)] ring-1 ring-black/10">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden ring-1 ring-black/10 bg-stone-200 grid place-items-center">
                 {/* Reemplazar por <Image/> real */}
@@ -190,8 +196,8 @@ export default function ContactosPage() {
       {/* Flechas fijas inferior derecha */}
       <nav className="fixed bottom-6 right-6 z-40 flex gap-2">
         <Link
-          href="/references" 
-          className="grid place-items-center w-10 h-10 rounded-full bg-amber-950 hover:bg-white/20 ring-1 ring-black shadow"
+          href="/references" // ← inglés para coincidir con /references
+          className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow"
         >
           <span className="sr-only">Retroceder</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="rotate-180">
@@ -200,7 +206,7 @@ export default function ContactosPage() {
         </Link>
         <Link
           href="/"
-          className="grid place-items-center w-10 h-10 rounded-full bg-amber-950 hover:bg-white/20 ring-1 ring-black shadow"
+          className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow"
         >
           <span className="sr-only">Volver al inicio</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
