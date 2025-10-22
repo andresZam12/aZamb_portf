@@ -73,7 +73,11 @@ export default function ProjectsPage() {
               {[
                 { label: "Inicio", href: "/" },
                 { label: "Acerca de mí", href: "/about" },
-                { label: "Contacto", href: "/contacts" }, // ← inglés para coincidir con /contacts
+                { label: "Proyectos", href: "/projects" },
+                { label: "Experiencia", href: "/experience" },
+                { label: "Referencias", href: "/references" },
+                { label: "Contactos", href: "/contacts" },
+
               ].map((i) => (
                 <Link key={i.href} href={i.href} className="block px-3 py-2 rounded-xl hover:bg-white/10 text-sm">
                   {i.label}

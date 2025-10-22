@@ -61,8 +61,11 @@ export default function AboutPage() {
                 <div className="mt-2 w-56 rounded-2xl bg-[#3b2a23] p-2 shadow-2xl ring-1 ring-black/20">
                   {[
                     { label: "Inicio", href: "/" },
+                    { label: "Acerca de mí", href: "/about" },
                     { label: "Proyectos", href: "/projects" },
-                    { label: "Contacto", href: "/contacts" },
+                    { label: "Experiencia", href: "/experience" },
+                    { label: "Referencias", href: "/references" },
+                    { label: "Contactos", href: "/contacts" },
                   ].map((i) => (
                     <Link
                       key={i.href}

@@ -59,7 +59,10 @@ export default function ContactosPage() {
               { label: "Inicio", href: "/" },
               { label: "Acerca de mí", href: "/about" },
               { label: "Proyectos", href: "/projects" },
+              { label: "Experiencia", href: "/experience" },
               { label: "Referencias", href: "/references" },
+              { label: "Contactos", href: "/contacts" },
+
             ].map((i) => (
               <Link
                 key={i.href}

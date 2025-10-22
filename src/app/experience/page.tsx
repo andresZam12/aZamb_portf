@@ -2,16 +2,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-/**
- * Página: Experiencia
- * - Coherente con las demás pantallas.
- * - Fondo en 3 franjas (cafés) como la principal.
- * - Columna izquierda: introducción + habilidades
- * - Centro: tarjeta "Académica"
- * - Derecha: tarjeta "Laboral y profesional"
- * - Botón para descargar CV (PDF)
- * - Hamburger fijo arriba-derecha y flechas fijas abajo-derecha.
- */
 
 export default function ExperienciaPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -52,8 +42,10 @@ export default function ExperienciaPage() {
               { label: "Inicio", href: "/" },
               { label: "Acerca de mí", href: "/about" },
               { label: "Proyectos", href: "/projects" },
+              { label: "Experiencia", href: "/experience" },
               { label: "Referencias", href: "/references" },
               { label: "Contactos", href: "/contacts" },
+
             ].map((i) => (
               <Link key={i.href} href={i.href} className="block px-3 py-2 rounded-xl hover:bg-white/10 text-sm">
                 {i.label}
