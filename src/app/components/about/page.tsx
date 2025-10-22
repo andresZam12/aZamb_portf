@@ -2,14 +2,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-/**
- * Página: Conóceme / About
- * - Fondo en un solo tono (#3b2a23), coherente con el resto del sitio.
- * - Imagen a la derecha, centrada; cuadro de información más ancho.
- * - Título principal color amarillo (amber-300).
- * - Botón de menú fijo arriba-derecha; flechas de navegación fijas abajo-derecha.
- * - Estructura semántica: header/main/section/aside/article/nav.
- */
 
 export default function AboutPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,10 +25,7 @@ export default function AboutPage() {
               {/* capa oscura para que el texto del centro resalte si se usa foto clara */}
               <div className="absolute inset-0 bg-gradient-to-tr from-black/50 via-black/20 to-transparent" />
 
-              {/* Placeholder de imagen; reemplazar por <Image/> o <img/> real */}
-              <div className="absolute inset-0 grid place-items-center bg-stone-900/30">
-                <span className="text-stone-200/70 text-sm">Coloca tu imagen aquí</span>
-              </div>
+          
             </figure>
 
             {/* Botón hamburger fijo */}
@@ -44,7 +33,7 @@ export default function AboutPage() {
               <button
                 onClick={() => setMenuOpen((v) => !v)}
                 aria-expanded={menuOpen}
-                aria-label="Despliega el menú de opciones del inicio"
+                
                 className="grid place-items-center w-10 h-10 rounded-full bg-[#8b5e3c] text-white shadow-lg ring-1 ring-black/20 hover:brightness-110 active:scale-95 transition"
               >
                 <span className="sr-only">Abrir menú</span>

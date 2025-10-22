@@ -180,7 +180,7 @@ export default function ContactosPage() {
             <div className="mx-auto max-w-md p-5 rounded-[28px] bg-white/90 text-stone-900 shadow-[0_20px_50px_rgba(0,0,0,0.25)] ring-1 ring-black/10">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden ring-1 ring-black/10 bg-stone-200 grid place-items-center">
                 {/* Reemplazar por <Image/> real */}
-                <span className="text-stone-600 text-sm">Imagen personal</span>
+                <span className="text-stone-600 text-sm">Imagen...</span>
               </div>
             </div>
           </section>

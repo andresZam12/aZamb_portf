@@ -2,15 +2,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-/**
- * Página: Mis Proyectos Más Relevantes
- * - Coherente con la paleta y estilo previo (#3b2a23 base, #8b5e3c acentos, #c48758 opcional).
- * - Grid de 4 tarjetas con imagen (placeholder), nombre y descripción.
- * - Icono de GitHub bajo cada tarjeta que enlaza al repo.
- * - Sidebar "Adicionales" con mini frames e icono de GitHub.
- * - Botón hamburger arriba a la derecha para menú rápido.
- * - Flechas de navegación (continuar / retroceder) al final a la derecha.
- */
 
 export default function ProjectsPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -67,7 +58,7 @@ export default function ProjectsPage() {
           <button
             onClick={() => setMenuOpen((v) => !v)}
             aria-expanded={menuOpen}
-            aria-label="Despliega el menú de opciones del inicio"
+            
             className="grid place-items-center w-10 h-10 rounded-full bg-[#8b5e3c] text-white shadow-lg ring-1 ring-black/20 hover:brightness-110 active:scale-95 transition"
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -105,8 +96,8 @@ export default function ProjectsPage() {
                   <article className="rounded-3xl bg-[#3b2a23]/80 ring-1 ring-black/20 shadow-xl p-4 h-full">
                     <figure className="h-28 rounded-xl bg-white/10 ring-1 ring-white/10 overflow-hidden grid place-items-center">
                       {/* Placeholder de imagen; si usas next/image, reemplaza este bloque */}
-                      <img src={p.image} alt="" className="hidden" />
-                      <span className="text-stone-300/80 text-xs">Imagen del proyecto</span>
+                      <img src={p.image} alt="" className="" />
+                      
                     </figure>
                     <h3 className="mt-3 font-semibold text-amber-300">Name: {p.name}</h3>
                     <p className="text-sm leading-relaxed mt-1">Description: {p.description}</p>

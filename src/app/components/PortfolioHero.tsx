@@ -89,24 +89,9 @@ export default function PortfolioHero() {
           {/* Tarjeta central (marco de imagen del mock) */}
           <figure className="ml-auto mt-10 w-full max-w-xl aspect-[4/3] rounded-2xl bg-gradient-to-br from-stone-50 to-stone-200 dark:from-neutral-900 dark:to-neutral-800 shadow-2xl ring-1 ring-black/10 dark:ring-white/5 grid place-items-center p-8 relative overflow-hidden">
             {/* líneas decorativas */}
-            <span className="pointer-events-none absolute inset-0 opacity-30 dark:opacity-10">
-              <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
-                <path d="M0 0 L50 40 L100 0" fill="none" stroke="currentColor" strokeWidth="0.6" />
-                <path d="M0 100 L50 60 L100 100" fill="none" stroke="currentColor" strokeWidth="0.6" />
-              </svg>
-            </span>
 
-            {/* Avatar ilustrado SVG */}
-            <svg role="img" aria-label="Avatar de Andrés" className="w-52 h-52 drop-shadow-md" viewBox="0 0 128 128">
-              <circle cx="64" cy="64" r="62" className="fill-amber-300/20 dark:fill-stone-700/40" />
-              <circle cx="64" cy="52" r="24" className="fill-stone-200 dark:fill-stone-400" />
-              <rect x="38" y="74" width="52" height="38" rx="8" className="fill-amber-600 dark:fill-stone-600" />
-              <path d="M40 56 a24 24 0 0 1 48 0 v4 a24 24 0 0 1 -48 0z" className="fill-stone-300 dark:fill-stone-500" />
-              <path d="M48 44 q16 -16 32 0 q-2 -18 -16 -18 q-14 0 -16 18z" className="fill-stone-700 dark:fill-stone-800" />
-              <circle cx="54" cy="58" r="2" className="fill-stone-800" />
-              <circle cx="74" cy="58" r="2" className="fill-stone-800" />
-              <path d="M52 66 q12 10 24 0" className="fill-none stroke-stone-800" strokeWidth="2" strokeLinecap="round" />
-            </svg>
+
+
 
             <figcaption className="absolute top-3 left-4 text-xs text-stone-500 dark:hidden">
               imagen de perfil en escala de grises – portafolio Andrés
