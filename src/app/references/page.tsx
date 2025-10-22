@@ -2,13 +2,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-/**
- * Página: Referencias
- * - Paleta coherente (#3b2a23 base, #8b5e3c acentos, amber para detalles).
- * - Imagen visual grande a la izquierda (ellipse/circle). Placeholder reemplazable por <Image/>.
- * - Panel de testimonios a la derecha con avatares por sexo.
- * - Botón hamburger fijo arriba-derecha (no se superpone al layout) y flechas fijas abajo-derecha.
- */
 
 export default function ReferencesPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,11 +12,11 @@ export default function ReferencesPage() {
       gender: "f",
       text:
         "Andrés se ha destacado como un estudiante comprometido, con gran capacidad analítica y disposición para el aprendizaje continuo. Su interés por el desarrollo de software y la ciberseguridad lo proyecta como un futuro profesional integral.",
-      email: "paolaburgosuioz@gmail.com",
+      email: "paolaburgoquiroz@gmail.com",
       city: "Pasto",
     },
     {
-      name: "Pablo Castañeda",
+      name: "Paola Bárcenas",
       gender: "m",
       text:
         "Demuestra responsabilidad, ética laboral y un alto nivel de compromiso en cada tarea. Su capacidad para trabajar bajo presión y mantener la calidad lo convierte en un colaborador confiable.",
@@ -31,7 +24,7 @@ export default function ReferencesPage() {
       city: "Pasto",
     },
     {
-      name: "Mario Beltrán",
+      name: "Mario Botina",
       gender: "m",
       text:
         "Es una persona íntegra, proactiva y con gran capacidad de trabajo en equipo. Su actitud positiva y habilidades interpersonales generan un ambiente de confianza y colaboración.",
@@ -85,7 +78,7 @@ export default function ReferencesPage() {
           <aside className="col-span-12 md:col-span-5">
             <figure className="relative mx-auto w-full max-w-xl aspect-square overflow-hidden rounded-[48%] ring-2 ring-black/20 shadow-2xl bg-white/10 grid place-items-center">
               {/* Reemplaza esto por <Image/> con tu foto o ilustración */}
-              <span className="text-stone-200/80 text-sm">Imagen visual del proyecto / referencia</span>
+              <span className="text-stone-200/80 text-sm">Imagen...</span>
             </figure>
           </aside>
 

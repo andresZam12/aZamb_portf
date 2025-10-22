@@ -2,15 +2,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-/**
- * Página: Mis Proyectos Más Relevantes
- * - Coherente con la paleta y estilo previo (#3b2a23 base, #8b5e3c acentos, #c48758 opcional).
- * - Grid de 4 tarjetas con imagen (placeholder), nombre y descripción.
- * - Icono de GitHub bajo cada tarjeta que enlaza al repo.
- * - Sidebar "Adicionales" con mini frames e icono de GitHub.
- * - Botón hamburger arriba a la derecha para menú rápido.
- * - Flechas de navegación (continuar / retroceder) al final a la derecha.
- */
 
 export default function ProjectsPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -103,7 +94,7 @@ export default function ProjectsPage() {
                     <figure className="h-28 rounded-xl bg-white/10 ring-1 ring-white/10 overflow-hidden grid place-items-center">
                       {/* Placeholder de imagen; si usas next/image, reemplaza este bloque */}
                       <img src={p.image} alt="" className="hidden" />
-                      <span className="text-stone-300/80 text-xs">Imagen del proyecto</span>
+                      <span className="text-stone-300/80 text-xs">Imagenes...</span>
                     </figure>
                     <h3 className="mt-3 font-semibold text-amber-300">Name: {p.name}</h3>
                     <p className="text-sm leading-relaxed mt-1">Description: {p.description}</p>

@@ -2,14 +2,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-/**
- * Página: Conóceme / About
- * - Fondo en un solo tono (#3b2a23), coherente con el resto del sitio.
- * - Imagen a la derecha, centrada; cuadro de información más ancho.
- * - Título principal color amarillo (amber-300).
- * - Botón de menú fijo arriba-derecha; flechas de navegación fijas abajo-derecha.
- * - Estructura semántica: header/main/section/aside/article/nav.
- */
 
 export default function AboutPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,7 +27,7 @@ export default function AboutPage() {
 
               {/* Placeholder de imagen; reemplazar por <Image/> o <img/> real */}
               <div className="absolute inset-0 grid place-items-center bg-stone-900/30">
-                <span className="text-stone-200/70 text-sm">Coloca tu imagen aquí</span>
+                <span className="text-stone-200/70 text-sm">imagen...</span>
               </div>
             </figure>
 
