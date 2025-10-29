@@ -27,7 +27,7 @@ export default function ExperienciaPage() {
           onClick={() => setMenuOpen((v) => !v)}
           aria-expanded={menuOpen}
           aria-label="Despliega el menú de opciones"
-          className="grid place-items-center w-10 h-10 rounded-full bg-[#80491f] text-white shadow-lg ring-1 ring-black hover:brightness-110 active:scale-95 transition"
+          className="grid place-items-center w-10 h-10 rounded-full bg-amber-950 text-white shadow-lg ring-1 ring-black hover:brightness-110 active:scale-95 transition"
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="3" y1="6" x2="21" y2="6" />
@@ -37,7 +37,7 @@ export default function ExperienciaPage() {
         </button>
 
         {menuOpen && (
-          <div className="mt-2 w-56 rounded-2xl bg-[#3b2a23] p-2 shadow-2xl ring-1 ring-black/20">
+          <div className="mt-2 w-56 rounded-2xl bg-[#3b2a23] p-2 shadow-2xl ring-1 ring-black">
             {[
               { label: "Inicio", href: "/" },
               { label: "Acerca de mí", href: "/about" },
