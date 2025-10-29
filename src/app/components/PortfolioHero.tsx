@@ -52,7 +52,7 @@ const t = {
       contacts: "CONTACTS",
     },
     motto: "“if you can imagine it, we can build it”",
-    cv: "↓ Resume",
+    cv: "↓ CV",
     themeLabel: (dark: boolean) => (dark ? "Dark" : "Light"),
     langBtn: "Language",
     langs: { es: "Spanish", en: "English" },
@@ -184,12 +184,9 @@ export default function PortfolioHero() {
         <aside className="lg:col-span-7 px-6 sm:px-10 py-10 lg:py-16 relative">
           <figure className="ml-auto mt-10 w-full max-w-xl aspect-[4/3] rounded-2xl bg-gradient-to-br from-stone-50 to-stone-200 dark:from-neutral-900 dark:to-neutral-800 shadow-2xl ring-1 ring-black/10 dark:ring-white/5 grid place-items-center p-8 relative overflow-hidden">
             <span className="pointer-events-none absolute inset-0 opacity-30 dark:opacity-10">
-              <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
-                <path d="M0 0 L50 40 L100 0" fill="none" stroke="currentColor" strokeWidth="0.6" />
-                <path d="M0 100 L50 60 L100 100" fill="none" stroke="currentColor" strokeWidth="0.6" />
-              </svg>
+ 
             </span>
-            <span className="text-stone-400 text-sm">[ Tu imagen aquí ]</span>
+
           </figure>
         </aside>
 

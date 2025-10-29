@@ -27,7 +27,7 @@ export default function ExperienciaPage() {
           onClick={() => setMenuOpen((v) => !v)}
           aria-expanded={menuOpen}
           aria-label="Despliega el menú de opciones"
-          className="grid place-items-center w-10 h-10 rounded-full bg-[#8b5e3c] text-white shadow-lg ring-1 ring-black/20 hover:brightness-110 active:scale-95 transition"
+          className="grid place-items-center w-10 h-10 rounded-full bg-[#80491f] text-white shadow-lg ring-1 ring-black hover:brightness-110 active:scale-95 transition"
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="3" y1="6" x2="21" y2="6" />
@@ -59,7 +59,7 @@ export default function ExperienciaPage() {
         <section className="mt-6 grid grid-cols-12 gap-6 items-start">
           {/* IZQUIERDA: Introducción + habilidades + CV */}
           <aside className="col-span-12 md:col-span-4">
-            <div className="rounded-3xl bg-[#3b2a23]/85 ring-1 ring-black/20 shadow-xl p-5 md:p-6">
+            <div className="rounded-3xl bg-[#3b2a23]/85 ring-1 ring-black shadow-xl p-5 md:p-6">
               <p className="leading-relaxed">
                 Mi recorrido académico y profesional me ha permitido fortalecer competencias en desarrollo de software,
                 liderazgo y gestión de procesos, integrando habilidades técnicas con experiencia en trabajo en equipo y orientación al cliente.
@@ -135,7 +135,7 @@ export default function ExperienciaPage() {
       <nav className="fixed bottom-6 right-6 z-40 flex gap-2">
         <Link
           href="/projects"
-          className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow"
+          className="grid place-items-center w-10 h-10 rounded-full bg-amber-950 hover:bg-amber-900 ring-1 ring-black shadow"
         >
           <span className="sr-only">Retroceder</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="rotate-180">
@@ -144,7 +144,7 @@ export default function ExperienciaPage() {
         </Link>
         <Link
           href="/references"
-          className="grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/15 shadow"
+          className="grid place-items-center w-10 h-10 rounded-full bg-amber-950 hover:bg-amber-900 ring-1 ring-black shadow"
         >
           <span className="sr-only">Continuar</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

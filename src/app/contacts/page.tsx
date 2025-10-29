@@ -35,7 +35,7 @@ export default function ContactosPage() {
           onClick={() => setMenuOpen((v) => !v)}
         
           
-          className="grid place-items-center w-15 h-15 rounded-full bg-amber-950 text-white shadow-lg ring-1 ring-black  "
+          className="grid place-items-center w-10 h-10 rounded-full bg-amber-950 text-white shadow-lg ring-1 ring-black  "
         >
           <svg
             width="22"
@@ -194,7 +194,7 @@ export default function ContactosPage() {
       <nav className="fixed bottom-6 right-6 z-40 flex gap-2">
         <Link
           href="/references" 
-          className="grid place-items-center w-10 h-10 rounded-full bg-amber-950 hover:bg-white/20 ring-1 ring-black shadow"
+          className="grid place-items-center w-10 h-10 rounded-full bg-amber-950 hover:bg-amber-800 ring-1 ring-black shadow"
         >
           <span className="sr-only">Retroceder</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="rotate-180">
@@ -203,7 +203,7 @@ export default function ContactosPage() {
         </Link>
         <Link
           href="/"
-          className="grid place-items-center w-10 h-10 rounded-full bg-amber-950 hover:bg-white/20 ring-1 ring-black shadow"
+          className="grid place-items-center w-10 h-10 rounded-full bg-amber-950 hover:bg-amber-800 ring-1 ring-black shadow"
         >
           <span className="sr-only">Volver al inicio</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
