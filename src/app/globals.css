@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 /* Tokens base (modo claro por defecto) */
 :root {
   --background: #ffffff;

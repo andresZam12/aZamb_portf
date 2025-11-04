@@ -8,7 +8,7 @@ const t = {
   es: {
     hello: "¡Hola!",
     iAm: "soy",
-    name: "Andrés Zambrano",
+    name: "Josepth Grijalba",
     studentIn: "Estudiante en",
     degree: "INGENIERÍA DE SOFTWARE",
     aspire: "aspirante a",
