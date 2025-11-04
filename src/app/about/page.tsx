@@ -20,7 +20,7 @@ export default function AboutPage() {
         {/* GRID PRINCIPAL */}
         <section className="mt-4 grid grid-cols-12 gap-6 items-start">
           {/* COLUMNA DERECHA: Imagen */}
-          <aside className="order-last md:order-last col-span-12 md:col-span-4 relative">
+          <aside className="order-last md:order-last col-span-12 md:col-span-4 ">
             <figure className="relative mx-auto w-full h-[460px] md:h-[520px] overflow-hidden rounded-3xl ring-1 ring-black/20 shadow-2xl">
               {/* capa oscura para que el texto del centro resalte si se usa foto clara */}
               <div className="absolute inset-0 bg-gradient-to-tr from-black/50 via-black/20 to-transparent" />
@@ -112,14 +112,24 @@ export default function AboutPage() {
                     <h2 className="text-lg font-semibold text-amber-300">Tecnologías</h2>
                     <ul className="mt-3 flex flex-wrap gap-3">
                       {[
-                        "MySQL",
-                        "Python",
+                        "MySQL",    
+                        "MongoDB",
+                        "SQLite",
+                        "SQL Server",
+                        "PostgreSQL",
                         "Java",
-                        "JS",
-                        "TS",
+                        "Python",
+                        "Djago",
+                        "JavaScript",
+                        "Node.js",
                         "React",
-                        "Node",
-                        "Tailwind",
+                        "Next.js",
+                        "Tailwind CSS",
+                        "Docker",
+                        "GitHub",
+
+
+
                       ].map((t) => (
                         <li
                           key={t}

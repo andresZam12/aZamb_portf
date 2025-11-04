@@ -1,35 +1,34 @@
 @import "tailwindcss";
 
-
 /* Tokens base (modo claro por defecto) */
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root{
+  --background:#ffffff;
+  --foreground:#171717;
 }
 
-/* Hacemos el tema MANUAL con la clase .dark en <html> */
-html { color-scheme: light; }
-html.dark { color-scheme: dark; }
-html.dark :root {
-  --background: #0b0b0b; /* fondo en dark */
-  --foreground: #ededed; /* texto en dark */
+/* Tema MANUAL con clase .dark en <html> */
+html{ color-scheme: light; }
+html.dark{ color-scheme: dark; }
+html.dark :root{
+  --background:#0b0b0b;
+  --foreground:#ededed;
 }
 
-/* (Opcional) Puente a variables de Tailwind v4 */
-@theme {
+/* Puente opcional a tokens tailwind v4 */
+@theme{
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-/* Base global */
-html, body { height: 100%; }
-body {
+/* Base */
+html,body{ height:100%; }
+body{
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
 }
 
-/* Transición suave de colores */
-* { transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease; }
+/* Transiciones suaves */
+*{ transition: background-color .15s ease, color .15s ease, border-color .15s ease; }

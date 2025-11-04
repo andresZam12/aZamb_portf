@@ -1,4 +1,3 @@
-// tailwind.config.ts
 import type { Config } from "tailwindcss";
 
 export default {
@@ -6,7 +5,7 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class",           // <— IMPORTANTE
+  darkMode: "class",            // <= IMPRESCINDIBLE
   theme: { extend: {} },
   plugins: [],
 } satisfies Config;

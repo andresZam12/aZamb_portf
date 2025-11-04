@@ -8,7 +8,7 @@ const t = {
   es: {
     hello: "¡Hola!",
     iAm: "soy",
-    name: "Josepth Grijalba",
+    name: "Andrés Zambrano",
     studentIn: "Estudiante en",
     degree: "INGENIERÍA DE SOFTWARE",
     aspire: "aspirante a",
@@ -133,7 +133,7 @@ export default function PortfolioHero() {
       </div>
 
       {/* GRID PRINCIPAL */}
-      <main className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 min-h-screen relative">
+      <main className="mx-auto max-w-screen grid grid-cols-1 lg:grid-cols-12 min-h-screen relative">
         {/* Columna izquierda */}
         <section className="lg:col-span-5 px-6 sm:px-10 py-10 lg:py-16">
           <header className="space-y-5">
@@ -147,10 +147,10 @@ export default function PortfolioHero() {
 
             <div className="space-y-3">
               <p className="text-base md:text-lg uppercase tracking-widest text-amber-200/90">{i.studentIn}</p>
-              <h2 className="text-2xl md:text-3xl font-semibold -mt-1">{i.degree}</h2>
+              <h2 className="text-3xl md:text-3xl font-semibold -mt-1">{i.degree}</h2>
 
               <p className="mt-4 text-base md:text-lg uppercase tracking-widest text-amber-200/90">{i.aspire}</p>
-              <h3 className="text-2xl md:text-3xl font-semibold -mt-1">{i.role}</h3>
+              <h3 className="text-3xl md:text-3xl font-semibold -mt-1">{i.role}</h3>
             </div>
           </header>
 

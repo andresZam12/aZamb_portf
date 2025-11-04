@@ -1,0 +1,48 @@
+import type { Lang } from "@/app/Lang/LanguageProvider";
+
+export const dict = {
+  es: {
+    hello: "¡Hola!",
+    iAm: "soy",
+    name: "Andrés Zambrano",
+    studentIn: "ESTUDIANTE EN",
+    degree: "INGENIERÍA DE SOFTWARE",
+    aspire: "aspirante a",
+    role: "desarrollador FULLSTACK",
+    motto: "“si lo puedes imaginar, lo podemos hacer”",
+    nav: {
+      home: "INICIO",
+      about: "ACERCA DE MI",
+      projects: "MIS PROYECTOS",
+      exp: "EXPERIENCIA",
+      refs: "REFERENCIAS",
+      contacts: "CONTACTOS",
+    },
+    cv: "↓ CV",
+    language: "Idioma",
+    es: "Español",
+    en: "Inglés",
+  },
+  en: {
+    hello: "Hello!",
+    iAm: "I'm",
+    name: "Andrés Zambrano",
+    studentIn: "STUDENT IN",
+    degree: "SOFTWARE ENGINEERING",
+    aspire: "aspiring",
+    role: "FULLSTACK developer",
+    motto: "“if you can imagine it, we can build it”",
+    nav: {
+      home: "HOME",
+      about: "ABOUT",
+      projects: "PROJECTS",
+      exp: "EXPERIENCE",
+      refs: "REFERENCES",
+      contacts: "CONTACTS",
+    },
+    cv: "↓ CV",
+    language: "Language",
+    es: "Spanish",
+    en: "English",
+  },
+} as const satisfies Record<Lang, any>;

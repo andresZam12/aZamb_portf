@@ -1,8 +1,9 @@
-// src/app/layout.tsx
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeClient from "./ThemeClient";
+import { LanguageProvider } from "./Lang/LanguageProvider";
+import HeaderControls from "./HeaderControls";
+import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
