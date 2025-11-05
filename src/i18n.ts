@@ -1,14 +1,7 @@
-// src/i18n.ts
 
-/** Idiomas soportados */
 export type Lang = "es" | "en";
 
-/**
- * Diccionario de mensajes.
- * - Tipado sin `any`
- * - `as const` para preservar los literales
- * - `satisfies` para garantizar la forma del objeto
- */
+
 export const messages = {
   es: {
     hello: "Hola",

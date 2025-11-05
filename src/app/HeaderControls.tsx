@@ -1,11 +1,11 @@
 "use client";
 import { useLang } from "./Lang/LanguageProvider";
-import { dict } from "@/i18n";
+//import { dict } from "@/i18n";
 import { useEffect, useState } from "react";
 
 export default function HeaderControls() {
   const { lang, setLang } = useLang();
-  const t = dict[lang];
+  //const t = dict[lang];
 
   const [isDark, setIsDark] = useState(false);
 
