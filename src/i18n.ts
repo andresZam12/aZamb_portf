@@ -1,48 +1,40 @@
-import type { Lang } from "@/app/Lang/LanguageProvider";
+// src/i18n.ts
 
-export const dict = {
+/** Idiomas soportados */
+export type Lang = "es" | "en";
+
+/**
+ * Diccionario de mensajes.
+ * - Tipado sin `any`
+ * - `as const` para preservar los literales
+ * - `satisfies` para garantizar la forma del objeto
+ */
+export const messages = {
   es: {
-    hello: "¡Hola!",
-    iAm: "soy",
-    name: "Andrés Zambrano",
-    studentIn: "ESTUDIANTE EN",
-    degree: "INGENIERÍA DE SOFTWARE",
-    aspire: "aspirante a",
-    role: "desarrollador FULLSTACK",
-    motto: "“si lo puedes imaginar, lo podemos hacer”",
-    nav: {
-      home: "INICIO",
-      about: "ACERCA DE MI",
-      projects: "MIS PROYECTOS",
-      exp: "EXPERIENCIA",
-      refs: "REFERENCIAS",
-      contacts: "CONTACTOS",
-    },
-    cv: "↓ CV",
-    language: "Idioma",
-    es: "Español",
-    en: "Inglés",
+    hello: "Hola",
+    // añade aquí más claves si las necesitas:
+    // iAm: "soy",
+    // degree: "INGENIERÍA DE SOFTWARE",
   },
   en: {
-    hello: "Hello!",
-    iAm: "I'm",
-    name: "Andrés Zambrano",
-    studentIn: "STUDENT IN",
-    degree: "SOFTWARE ENGINEERING",
-    aspire: "aspiring",
-    role: "FULLSTACK developer",
-    motto: "“if you can imagine it, we can build it”",
-    nav: {
-      home: "HOME",
-      about: "ABOUT",
-      projects: "PROJECTS",
-      exp: "EXPERIENCE",
-      refs: "REFERENCES",
-      contacts: "CONTACTS",
-    },
-    cv: "↓ CV",
-    language: "Language",
-    es: "Spanish",
-    en: "English",
+    hello: "Hello",
+    // iAm: "I'm",
+    // degree: "SOFTWARE ENGINEERING",
   },
-} as const satisfies Record<Lang, any>;
+} as const satisfies Record<Lang, Record<string, string>>;
+
+/** Union de claves válidas a partir del diccionario */
+export type MessageKey =
+  | keyof (typeof messages)["es"]
+  | keyof (typeof messages)["en"];
+
+/**
+ * Traductor simple.
+ * - No usa `any`
+ * - Devuelve la clave si no existe traducción
+ */
+export function t(lang: Lang, key: MessageKey): string {
+  const dict = messages[lang];
+  // El cast mantiene el tipado estricto sin recurrir a `any`
+  return (dict as Record<string, string>)[key] ?? key;
+}

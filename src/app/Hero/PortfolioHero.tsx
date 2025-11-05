@@ -17,12 +17,12 @@ const t = {
     p2: "Me motiva aprender continuamente, enfrentar retos y aportar valor en cada proyecto, con la visión de crecer como profesional integral en el mundo del software y la ciberseguridad.",
     p3: "Te doy paso a explorar mi proceso de aprendizaje, conocerme e interactuar en mi portafolio.",
     p4: "¡Saludos!",
-    nav: { home:"INICIO", about:"ACERCA DE MI", projects:"MIS PROYECTOS", exp:"EXPERIENCIA", refs:"REFERENCIAS", contacts:"CONTACTOS" },
+    nav: { home: "INICIO", about: "ACERCA DE MI", projects: "MIS PROYECTOS", exp: "EXPERIENCIA", refs: "REFERENCIAS", contacts: "CONTACTOS" },
     motto: "“si lo puedes imaginar, lo podemos hacer”",
     cv: "↓ CV",
-    themeLabel: (dark:boolean)=> dark?"Dark":"Light",
+    themeLabel: (dark: boolean) => (dark ? "Dark" : "Light"),
     langBtn: "Idioma",
-    langs: { es: "Español", en: "Inglés" }
+    langs: { es: "Español", en: "Inglés" },
   },
   en: {
     hello: "Hello!",
@@ -36,13 +36,13 @@ const t = {
     p2: "I'm motivated by continuous learning, facing challenges, and adding value in every project, aiming to grow as a software and cybersecurity professional.",
     p3: "Feel free to explore my learning journey and interact with my portfolio.",
     p4: "Cheers!",
-    nav: { home:"HOME", about:"ABOUT", projects:"PROJECTS", exp:"EXPERIENCE", refs:"REFERENCES", contacts:"CONTACTS" },
+    nav: { home: "HOME", about: "ABOUT", projects: "PROJECTS", exp: "EXPERIENCE", refs: "REFERENCES", contacts: "CONTACTS" },
     motto: "“if you can imagine it, we can build it”",
     cv: "↓ Resume",
-    themeLabel: (dark:boolean)=> dark?"Dark":"Light",
+    themeLabel: (dark: boolean) => (dark ? "Dark" : "Light"),
     langBtn: "Language",
-    langs: { es: "Spanish", en: "English" }
-  }
+    langs: { es: "Spanish", en: "English" },
+  },
 } as const;
 
 export default function PortfolioHero() {
@@ -50,6 +50,7 @@ export default function PortfolioHero() {
   const [lang, setLang] = useState<Lang>("es");
   const [openLang, setOpenLang] = useState(false);
 
+  // Cargar preferencias guardadas (tema e idioma)
   useEffect(() => {
     const persistedTheme = localStorage.getItem("theme") === "dark";
     setIsDark(persistedTheme);
@@ -77,15 +78,13 @@ export default function PortfolioHero() {
   const i = t[lang];
 
   return (
-    <div className="min-h-screen w-full text-stone-100 relative overflow-hidden">
+    <div className="relative overflow-hidden text-stone-100 min-h-dvh w-full">
       {/* FONDO: 3 franjas café (light) / 3 franjas gris/negro (dark) */}
       <span
         aria-hidden
-        className="
-          absolute inset-0 -z-10
-          bg-[linear-gradient(to_right,#3b2a23_0%,#3b2a23_33.34%,#8b5e3c_33.34%,#8b5e3c_66.67%,#c48758_66.67%,#c48758_100%)]
-          dark:bg-[linear-gradient(to_right,#0b0b0b_0%,#0b0b0b_33.34%,#232323_33.34%,#232323_66.67%,#3a3a3a_66.67%,#3a3a3a_100%)]
-        "
+        className="absolute inset-0 -z-10
+                   bg-[linear-gradient(to_right,#3b2a23_0%,#3b2a23_33.34%,#8b5e3c_33.34%,#8b5e3c_66.67%,#c48758_66.67%,#c48758_100%)]
+                   dark:bg-[linear-gradient(to_right,#0b0b0b_0%,#0b0b0b_33.34%,#232323_33.34%,#232323_66.67%,#3a3a3a_66.67%,#3a3a3a_100%)]"
       />
 
       {/* BOTONES FIJOS (arriba-derecha) */}
@@ -93,7 +92,8 @@ export default function PortfolioHero() {
         <button
           onClick={toggleTheme}
           aria-label={`Cambiar a modo ${i.themeLabel(!isDark)}`}
-          className="inline-flex items-center gap-2 rounded-full border border-black/20 dark:border-white/10 px-4 py-2 text-sm md:text-base font-semibold bg-white/10 hover:bg-white/20 dark:bg-black/30 backdrop-blur transition"
+          className="inline-flex items-center gap-2 rounded-full border border-black/20 dark:border-white/10 px-4 py-2
+                     text-sm md:text-base font-semibold bg-white/10 hover:bg-white/20 dark:bg-black/30 backdrop-blur transition"
         >
           <span className="inline-block size-2 rounded-full bg-amber-400" />
           {i.themeLabel(isDark)}
@@ -101,7 +101,8 @@ export default function PortfolioHero() {
 
         <a
           href="/cv-andres-zambrano.pdf"
-          className="inline-flex items-center gap-2 rounded-full border border-black/20 dark:border-white/10 px-4 py-2 text-sm md:text-base font-semibold bg-white/10 hover:bg-white/20 dark:bg-black/30 backdrop-blur transition"
+          className="inline-flex items-center gap-2 rounded-full border border-black/20 dark:border-white/10 px-4 py-2
+                     text-sm md:text-base font-semibold bg-white/10 hover:bg-white/20 dark:bg-black/30 backdrop-blur transition"
         >
           {i.cv}
         </a>
@@ -111,19 +112,31 @@ export default function PortfolioHero() {
             onClick={() => setOpenLang((v) => !v)}
             aria-expanded={openLang}
             aria-haspopup="menu"
-            className="inline-flex items-center gap-2 rounded-full border border-black/20 dark:border-white/10 px-4 py-2 text-sm md:text-base font-semibold bg-white/10 hover:bg-white/20 dark:bg-black/30 backdrop-blur transition"
+            className="inline-flex items-center gap-2 rounded-full border border-black/20 dark:border-white/10 px-4 py-2
+                       text-sm md:text-base font-semibold bg-white/10 hover:bg-white/20 dark:bg-black/30 backdrop-blur transition"
           >
             🌐 {i.langBtn}
           </button>
           {openLang && (
-            <ul role="menu" className="absolute right-0 mt-2 w-44 rounded-2xl bg-[#3b2a23] text-stone-100 ring-1 ring-black/20 shadow-2xl overflow-hidden">
+            <ul
+              role="menu"
+              className="absolute right-0 mt-2 w-44 rounded-2xl bg-[#3b2a23] text-stone-100 ring-1 ring-black/20 shadow-2xl overflow-hidden"
+            >
               <li>
-                <button onClick={() => changeLang("es")} role="menuitem" className="w-full text-left px-3 py-2 hover:bg-white/10 text-sm">
+                <button
+                  onClick={() => changeLang("es")}
+                  role="menuitem"
+                  className="w-full text-left px-3 py-2 hover:bg-white/10 text-sm"
+                >
                   {i.langs.es}
                 </button>
               </li>
               <li>
-                <button onClick={() => changeLang("en")} role="menuitem" className="w-full text-left px-3 py-2 hover:bg-white/10 text-sm">
+                <button
+                  onClick={() => changeLang("en")}
+                  role="menuitem"
+                  className="w-full text-left px-3 py-2 hover:bg-white/10 text-sm"
+                >
                   {i.langs.en}
                 </button>
               </li>
@@ -132,8 +145,8 @@ export default function PortfolioHero() {
         </div>
       </div>
 
-      {/* GRID PRINCIPAL */}
-      <main className="mx-auto max-w-screen grid grid-cols-1 lg:grid-cols-12 min-h-screen relative">
+      {/* GRID PRINCIPAL (sin max-w, ocupa todo el ancho) */}
+      <main className="grid grid-cols-1 lg:grid-cols-12 min-h-dvh">
         {/* Columna izquierda */}
         <section className="lg:col-span-5 px-6 sm:px-10 py-10 lg:py-16">
           <header className="space-y-5">
@@ -147,10 +160,10 @@ export default function PortfolioHero() {
 
             <div className="space-y-3">
               <p className="text-base md:text-lg uppercase tracking-widest text-amber-200/90">{i.studentIn}</p>
-              <h2 className="text-3xl md:text-3xl font-semibold -mt-1">{i.degree}</h2>
+              <h2 className="text-3xl font-semibold -mt-1">{i.degree}</h2>
 
               <p className="mt-4 text-base md:text-lg uppercase tracking-widest text-amber-200/90">{i.aspire}</p>
-              <h3 className="text-3xl md:text-3xl font-semibold -mt-1">{i.role}</h3>
+              <h3 className="text-3xl font-semibold -mt-1">{i.role}</h3>
             </div>
           </header>
 
@@ -175,7 +188,7 @@ export default function PortfolioHero() {
           </figure>
         </aside>
 
-        {/* Cinta de botones inferiores */}
+        {/* Cinta de botones inferiores (rutas internas con Link) */}
         <footer className="lg:col-span-12 px-6 sm:px-10 py-8">
           <nav className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             {[
@@ -189,7 +202,10 @@ export default function PortfolioHero() {
               <Link
                 key={b.href}
                 href={b.href}
-                className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm md:text-base font-semibold bg-stone-100 text-stone-900 hover:bg-white shadow-[0_6px_0_rgba(0,0,0,0.25)] active:translate-y-0.5 active:shadow-[0_4px_0_rgba(0,0,0,0.35)] ring-1 ring-black/10 dark:bg-neutral-900 dark:text-stone-100 dark:ring-white/10 dark:hover:bg-black/80"
+                className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm md:text-base font-semibold
+                           bg-stone-100 text-stone-900 hover:bg-white shadow-[0_6px_0_rgba(0,0,0,0.25)]
+                           active:translate-y-0.5 active:shadow-[0_4px_0_rgba(0,0,0,0.35)]
+                           ring-1 ring-black/10 dark:bg-neutral-900 dark:text-stone-100 dark:ring-white/10 dark:hover:bg-black/80"
               >
                 {b.label}
               </Link>

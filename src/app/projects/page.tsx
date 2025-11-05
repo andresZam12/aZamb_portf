@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 
 export default function ProjectsPage() {
@@ -97,7 +98,8 @@ export default function ProjectsPage() {
                   <article className="rounded-3xl bg-[#3b2a23]/80 ring-1 ring-black/20 shadow-xl p-4 h-full">
                     <figure className="h-28 rounded-xl bg-white/10 ring-1 ring-white/10 overflow-hidden grid place-items-center">
                       {/* Placeholder de imagen; si usas next/image, reemplaza este bloque */}
-                      <img src={p.image} alt="" className="hidden" />
+
+                      <Image src={p.image} alt={p.name} width={320} height={180} className="rounded-md object-cover" />
                       <span className="text-stone-300/80 text-xs">Imagenes...</span>
                     </figure>
                     <h3 className="mt-3 font-semibold text-amber-300">Name: {p.name}</h3>
