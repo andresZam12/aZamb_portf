@@ -83,7 +83,7 @@ export default function AboutPage() {
           {/* COLUMNA IZQUIERDA: contenido */}
           <article className="order-first md:order-first col-span-12 md:col-span-8">
             <h1 className="text-5xl md:text-6xl font-extrabold text-amber-300 drop-shadow-[0_2px_0_rgba(0,0,0,0.15)]">
-              Conócemeeeeeee
+              Conócemeeeeeee perro deivid
             </h1>
 
             {/* Bloque central con texto sobre un panel */}
