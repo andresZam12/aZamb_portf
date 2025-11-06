@@ -8,7 +8,7 @@ const t = {
   es: {
     hello: "¡Hola!",
     iAm: "soy",
-    name: "Andrés Zambrano",
+    name: "Andrés Zambrannnnnno",
     studentIn: "Estudiante en",
     degree: "INGENIERÍA DE SOFTWARE",
     aspire: "aspirante a",
@@ -27,7 +27,7 @@ const t = {
   en: {
     hello: "Hello!",
     iAm: "I'm",
-    name: "Andrés Zambrano",
+    name: "Andrés Zambrannnno",
     studentIn: "Student in",
     degree: "SOFTWARE ENGINEERING",
     aspire: "aspiring",
