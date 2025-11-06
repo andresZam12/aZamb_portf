@@ -1,7 +1,22 @@
 "use client";
 import { useLang } from "./Lang/LanguageProvider";
-import { dict } from "@/i18n";
+
 import { useEffect, useState } from "react";
+
+const dict = {
+  en: {
+    cv: "Resume",
+    language: "Language",
+    es: "Spanish",
+    en: "English"
+  },
+  es: {
+    cv: "Currículum",
+    language: "Idioma",
+    es: "Español",
+    en: "Inglés"
+  }
+};
 
 export default function HeaderControls() {
   const { lang, setLang } = useLang();
