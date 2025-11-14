@@ -167,7 +167,7 @@ export default function PortfolioHero() {
       {/* Frase motivacional - No fija en móvil */}
       <footer className="text-center py-8 md:fixed md:bottom-8 md:left-0 md:right-0">
         <p className="text-xl md:text-2xl italic font-medium text-white/90">
-          "{t.motto}"
+          {t.motto}
         </p>
       </footer>
     </div>
