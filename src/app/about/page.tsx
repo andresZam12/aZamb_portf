@@ -225,7 +225,7 @@ export default function AboutPage() {
                     • Participación en proyectos de aprendizaje nacional con
                     enfoque en desarrollo de software.
                   </li>
-                  <li>• Ganador de concurso "Ciencia e Investigación COMUNA-UCC 2024".</li>
+                  <li>• Ganador de concurso Ciencia e Investigación COMUNA-UCC 2024.</li>
                   <li>• Deportista reconocido de alto rendimiento en Nariño-Colombia.</li>
                   <li>• Galardonado académicamente en matemáticas (IEM San Juan Bosco 2018–2019).</li>
                 </ul>
