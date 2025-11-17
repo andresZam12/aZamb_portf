@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useLang } from "../Lang/LanguageProvider";
 
 // Actualizar el tipo Language y translations
 type Language = 'es' | 'en';
@@ -162,13 +163,31 @@ const extraKeys = ['academic', 'events', 'discord'] as const;
 
 export default function ProjectsPage() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
-  const [lang, setLang] = useState<Language>("es");
+  const { lang } = useLang();
   const t = translations[lang];
 
+  const [isDark, setIsDark] = useState(false);
+  useEffect(() => {
+    const update = () => setIsDark(document.documentElement.classList.contains("dark"));
+    update();
+    const onThemeChange = () => update();
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === "theme") update();
+    };
+    window.addEventListener("theme-change", onThemeChange as EventListener);
+    window.addEventListener("storage", onStorage as EventListener);
+    return () => {
+      window.removeEventListener("theme-change", onThemeChange as EventListener);
+      window.removeEventListener("storage", onStorage as EventListener);
+    };
+  }, []);
+
   // Actualizar las clases comunes para mejor responsive
-  const buttonClass = "px-4 py-2 md:px-6 md:py-3 bg-amber-950/90 hover:bg-amber-900 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg";
+  const buttonClass = "px-4 py-2 md:px-6 md:py-3 bg-amber-950/90 hover:bg-amber-900 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg dark:bg-black dark:text-white dark:hover:bg-gray-800";
   const glassClass = "bg-black/20 backdrop-blur-md";
+  const navClass = isDark
+    ? "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-black hover:bg-gray-800"
+    : "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-amber-950/90 hover:bg-amber-900";
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -182,49 +201,7 @@ export default function ProjectsPage() {
         }`}
       />
 
-      {/* Botones superiores - Mejorados para móvil */}
-      <div className="fixed top-0 right-0 z-50 p-3 md:p-6 flex gap-2 md:gap-4">
-        <button onClick={() => setIsDark(!isDark)} className={buttonClass}>
-          {isDark ? "🌙" : "☀"}
-        </button>
-
-        <button onClick={() => setLang(lang === "es" ? "en" : "es")} className={buttonClass}>
-          {lang.toUpperCase()}
-        </button>
-
-        <button
-          onClick={() => setMenuOpen((v) => !v)}
-          className={`${buttonClass} md:hidden`}
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className="md:w-6 md:h-6"
-          >
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <line x1="3" y1="18" x2="21" y2="18" />
-          </svg>
-        </button>
-
-        {menuOpen && (
-          <div className="absolute top-16 right-3 w-48 md:w-64 rounded-2xl bg-black/30 backdrop-blur-md p-2 shadow-2xl ring-1 ring-white/20">
-            {Object.entries(t.menu).map(([key, value]) => (
-              <Link
-                key={key}
-                href={`/${key === "home" ? "" : key}`}
-                className="block px-4 py-3 rounded-xl hover:bg-white/10 text-white text-lg font-medium transition-all"
-              >
-                {value}
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
+      {/* HeaderControls (tema/idioma/menu) se muestran globalmente desde el layout */}
 
       <main className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-24">
         {/* Título - Ajustado para móvil */}
@@ -301,12 +278,11 @@ export default function ProjectsPage() {
 
       {/* Navegación - Mejorada para móvil */}
       <nav className="fixed bottom-4 md:bottom-8 right-4 md:right-8 z-40 flex gap-2 md:gap-4">
-        <Link href="/about" className={buttonClass}>
-          {/* Versión corta para móvil */}
+        <Link href="/about" className={navClass}>
           <span className="md:hidden">←</span>
           <span className="hidden md:inline">{t.prev}</span>
         </Link>
-        <Link href="/experience" className={buttonClass}>
+        <Link href="/experience" className={navClass}>
           <span className="md:hidden">→</span>
           <span className="hidden md:inline">{t.next}</span>
         </Link>

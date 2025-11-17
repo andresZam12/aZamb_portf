@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLang } from "../Lang/LanguageProvider";
 import Link from "next/link";
 
 
@@ -41,15 +42,32 @@ const translations = {
 
 export default function AboutPage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { lang } = useLang();
+  const t = translations[lang as keyof typeof translations];
+
   const [isDark, setIsDark] = useState(false);
-  type Language = keyof typeof translations;
-  const [lang, setLang] = useState<Language>("es");
-  const t = translations[lang];
+  useEffect(() => {
+    const update = () => setIsDark(document.documentElement.classList.contains("dark"));
+    update();
+    const onThemeChange = () => update();
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === "theme") update();
+    };
+    window.addEventListener("theme-change", onThemeChange as EventListener);
+    window.addEventListener("storage", onStorage as EventListener);
+    return () => {
+      window.removeEventListener("theme-change", onThemeChange as EventListener);
+      window.removeEventListener("storage", onStorage as EventListener);
+    };
+  }, []);
 
   // Actualizar las clases de los elementos semitransparentes
   const glassClass = "bg-white/15 hover:bg-white/20 backdrop-blur-md";
   const buttonClass = `px-6 py-3 ${glassClass} rounded-full text-white font-medium text-lg transition-all`;
   const navigationButtonClass = `px-6 py-3 bg-amber-950/90 hover:bg-amber-900 rounded-full text-white font-medium text-lg transition-all shadow-lg`;
+  const navClass = isDark
+    ? `px-6 py-3 rounded-full text-white font-medium text-lg transition-all shadow-lg bg-black hover:bg-gray-800`
+    : navigationButtonClass;
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -63,62 +81,7 @@ export default function AboutPage() {
         }`}
       />
 
-      {/* Botones superiores */}
-      <div className="fixed top-0 right-0 z-50 p-6 flex gap-4">
-        <button onClick={() => setIsDark(!isDark)} className={buttonClass}>
-          {isDark ? t.lightMode : t.darkMode}
-        </button>
-
-        <button
-          onClick={() => setLang(lang === "es" ? "en" : "es")}
-          className={buttonClass}
-        >
-          {t.language}
-        </button>
-
-        <button
-          onClick={() => setMenuOpen((v) => !v)}
-          className={buttonClass}
-        >
-          <span className="sr-only">Menú</span>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <line x1="3" y1="18" x2="21" y2="18" />
-          </svg>
-        </button>
-
-        {/* Menú desplegable con fondo más oscuro */}
-        {menuOpen && (
-          <div className="absolute top-20 right-6 w-64 rounded-2xl bg-black/30 backdrop-blur-md p-3 shadow-2xl ring-1 ring-white/20">
-            {[
-              { label: "INICIO", href: "/" },
-              { label: "SOBRE MÍ", href: "/about" },
-              { label: "PROYECTOS", href: "/projects" },
-              { label: "EXPERIENCIA", href: "/experience" },
-              { label: "REFERENCIAS", href: "/references" },
-              { label: "CONTACTOS", href: "/contacts" },
-            ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block px-4 py-3 rounded-xl hover:bg-white/10 text-white text-lg font-medium transition-all"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
+      {/* HeaderControls (tema/idioma/menu) se muestran globalmente desde el layout */}
 
       {/* Contenido principal con fondo más oscuro */}
       <main className="container mx-auto px-6 pt-24 pb-20">
@@ -248,10 +211,10 @@ export default function AboutPage() {
 
       {/* Navegación fija con botones más visibles */}
       <nav className="fixed bottom-8 right-8 z-40 flex gap-4">
-        <Link href="/" className={navigationButtonClass}>
+        <Link href="/" className={navClass}>
           {t.prev}
         </Link>
-        <Link href="/projects" className={navigationButtonClass}>
+        <Link href="/projects" className={navClass}>
           {t.next}
         </Link>
       </nav>

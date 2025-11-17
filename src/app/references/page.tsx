@@ -1,259 +1,171 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useLang } from "../Lang/LanguageProvider";
 import Link from "next/link";
 
 type Lang = "es" | "en";
 
-type MenuItem = {
-  label: string;
-  href: string;
-};
-
-type Translations = {
+const translations: Record<Lang, {
   title: string;
   prevLabel: string;
   nextLabel: string;
-  menu: MenuItem[];
   emailLabel: string;
   cityLabel: string;
-  dark: string;
-  light: string;
-  langBtn: string;
-};
-
-const tDict: Record<Lang, Translations> = {
+}> = {
   es: {
-    title: "Referencias",
+    title: "REFERENCIAS",
     prevLabel: "← Proyectos",
     nextLabel: "Contactos →",
-    menu: [
-      { label: "Inicio", href: "/" },
-      { label: "Acerca de mí", href: "/about" },
-      { label: "Proyectos", href: "/projects" },
-      { label: "Experiencia", href: "/experience" },
-      { label: "Referencias", href: "/references" },
-      { label: "Contactos", href: "/contacts" },
-    ],
     emailLabel: "CORREO",
     cityLabel: "CIUDAD",
-    dark: "🌙",
-    light: "☀️",
-    langBtn: "ES/EN",
   },
   en: {
-    title: "References",
+    title: "REFERENCES",
     prevLabel: "← Projects",
     nextLabel: "Contacts →",
-    menu: [
-      { label: "Home", href: "/" },
-      { label: "About", href: "/about" },
-      { label: "Projects", href: "/projects" },
-      { label: "Experience", href: "/experience" },
-      { label: "References", href: "/references" },
-      { label: "Contacts", href: "/contacts" },
-    ],
     emailLabel: "EMAIL",
     cityLabel: "CITY",
-    dark: "🌙",
-    light: "☀️",
-    langBtn: "EN/ES",
   },
 };
 
+const references = [
+  {
+    name: "Paola Burgos",
+    gender: "f" as const,
+    text: {
+      es: "Andrés se ha destacado como un estudiante comprometido, con gran capacidad analítica y disposición para el aprendizaje continuo. Su interés por el desarrollo de software y la ciberseguridad lo proyecta como un futuro profesional integral.",
+      en: "Andrés has stood out as a committed student, with great analytical skills and willingness for continuous learning. His interest in software development and cybersecurity projects him as a comprehensive future professional.",
+    },
+    email: "paolaburgoquiroz@gmail.com",
+    city: "Pasto",
+  },
+  {
+    name: "Paola Bárcenas",
+    gender: "m" as const,
+    text: {
+      es: "Demuestra responsabilidad, ética laboral y un alto nivel de compromiso en cada tarea. Su capacidad para trabajar bajo presión y mantener la calidad lo convierte en un colaborador confiable.",
+      en: "Demonstrates responsibility, work ethics and a high level of commitment in every task. His ability to work under pressure and maintain quality makes him a reliable collaborator.",
+    },
+    email: "pabocaneras12@gmail.com",
+    city: "Pasto",
+  },
+  {
+    name: "Mario Botina",
+    gender: "m" as const,
+    text: {
+      es: "Es una persona íntegra, proactiva y con gran capacidad de trabajo en equipo. Su actitud positiva y habilidades interpersonales generan un ambiente de confianza y colaboración.",
+      en: "He is an integral, proactive person with great teamwork skills. His positive attitude and interpersonal skills generate an environment of trust and collaboration.",
+    },
+    email: "mario_b86@gmail.com",
+    city: "Cali",
+  },
+];
+
 export default function ReferencesPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { lang } = useLang();
+  const t = translations[lang];
+
   const [isDark, setIsDark] = useState(false);
-  const [lang, setLang] = useState<Lang>("es");
-  const t = tDict[lang];
 
   useEffect(() => {
-    if (isDark) document.documentElement.classList.add("dark");
-    else document.documentElement.classList.remove("dark");
-  }, [isDark]);
+    const update = () =>
+      setIsDark(document.documentElement.classList.contains("dark"));
+    update();
 
-  const refs = [
-    {
-      name: "Paola Burgos",
-      gender: "f",
-      text:
-        "Andrés se ha destacado como un estudiante comprometido, con gran capacidad analítica y disposición para el aprendizaje continuo. Su interés por el desarrollo de software y la ciberseguridad lo proyecta como un futuro profesional integral.",
-      email: "paolaburgoquiroz@gmail.com",
-      city: "Pasto",
-    },
-    {
-      name: "Paola Bárcenas",
-      gender: "m",
-      text:
-        "Demuestra responsabilidad, ética laboral y un alto nivel de compromiso en cada tarea. Su capacidad para trabajar bajo presión y mantener la calidad lo convierte en un colaborador confiable.",
-      email: "pabocaneras12@gmail.com",
-      city: "Pasto",
-    },
-    {
-      name: "Mario Botina",
-      gender: "m",
-      text:
-        "Es una persona íntegra, proactiva y con gran capacidad de trabajo en equipo. Su actitud positiva y habilidades interpersonales generan un ambiente de confianza y colaboración.",
-      email: "mario_b86@gmail.com",
-      city: "Cali",
-    },
-  ];
+    const onThemeChange = () => update();
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === "theme") update();
+    };
+
+    window.addEventListener("theme-change", onThemeChange as EventListener);
+    window.addEventListener("storage", onStorage as EventListener);
+
+    return () => {
+      window.removeEventListener("theme-change", onThemeChange as EventListener);
+      window.removeEventListener("storage", onStorage as EventListener);
+    };
+  }, []);
+
+  const glassClass = "bg-black/20 backdrop-blur-md";
+  const buttonClass =
+    "px-4 py-2 md:px-6 md:py-3 bg-amber-950/90 hover:bg-amber-900 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg dark:bg-black dark:text-white dark:hover:bg-gray-800";
+  const navClass = isDark
+    ? "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-black hover:bg-gray-800"
+    : "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-amber-950/90 hover:bg-amber-900";
 
   return (
-    <div className="min-h-screen text-stone-100 relative overflow-hidden bg-3franjas-light">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Fondo de 3 franjas */}
       <span
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#3b2a23_0%,#3b2a23_33.34%,#8b5e3c_33.34%,#8b5e3c_66.67%,#c48758_66.67%,#c48758_100%)]"
+        className={`absolute inset-0 -z-10 ${
+          isDark
+            ? "bg-[linear-gradient(to_right,#1a1a1a_0%,#1a1a1a_33.34%,#2d2d2d_33.34%,#2d2d2d_66.67%,#404040_66.67%,#404040_100%)]"
+            : "bg-[linear-gradient(to_right,#3b2a23_0%,#3b2a23_33.34%,#8b5e3c_33.34%,#8b5e3c_66.67%,#c48758_66.67%,#c48758_100%)]"
+        }`}
       />
 
-      {/* Etiqueta superior */}
-      <header className="max-w-6xl mx-auto px-5 pt-6">
-        <span className="inline-block rounded-full bg-[#8b5e3c]/90 px-4 py-1 text-xs font-semibold ring-1 ring-black/20">
+      <main className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-24">
+        {/* Título */}
+        <h1 className="text-3xl md:text-5xl font-bold text-white mb-8 md:mb-12">
           {t.title}
-        </span>
-      </header>
+        </h1>
 
-      {/* Controles fijos (tema, idioma, menú) */}
-      <nav
-        aria-label="controles"
-        className="fixed top-4 right-5 z-50 flex items-center gap-3"
-      >
-        <button
-          onClick={() => setIsDark((v) => !v)}
-          aria-label="Alternar tema"
-          className="grid place-items-center w-10 h-10 rounded-full bg-amber-950 text-white shadow-lg ring-1 ring-black hover:brightness-110 active:scale-95 transition"
-        >
-          {isDark ? t.light : t.dark}
-        </button>
-
-        <button
-          onClick={() => setLang((l) => (l === "es" ? "en" : "es"))}
-          aria-label="Cambiar idioma"
-          className="grid place-items-center w-10 h-10 rounded-full bg-stone-100 text-stone-900 shadow ring-1 ring-black/10 hover:brightness-105 active:scale-95 transition"
-        >
-          {t.langBtn}
-        </button>
-
-        <div className="relative">
-          <button
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-expanded={menuOpen}
-            aria-label="Despliega el menú de opciones"
-            className="grid place-items-center w-10 h-10 rounded-full bg-amber-950 text-white shadow-lg ring-1 ring-black hover:brightness-110 active:scale-95 transition"
-          >
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+        {/* Grid de referencias */}
+        <div className="grid grid-cols-1 gap-6 md:gap-8">
+          {references.map((ref) => (
+            <article
+              key={ref.name}
+              className={`${glassClass} rounded-2xl md:rounded-3xl p-6 md:p-8 text-white shadow-xl ring-1 ring-white/20 hover:ring-yellow-400/50 transition-all`}
             >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </button>
+              <div className="flex items-start gap-4 md:gap-6">
+                {/* Icono de género */}
+                <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 ring-1 ring-white/20 flex items-center justify-center text-2xl md:text-3xl">
+                  {ref.gender === "f" ? "👩" : "👨"}
+                </div>
 
-          {menuOpen && (
-            <div className="mt-2 w-56 rounded-2xl bg-[#3b2a23] p-2 shadow-2xl ring-1 ring-black">
-              {t.menu.map((i) => (
-                <Link
-                  key={i.href}
-                  href={i.href}
-                  className="block px-3 py-2 rounded-xl hover:bg-white/10 text-sm"
-                >
-                  {i.label}
-                </Link>
-              ))}
-            </div>
-          )}
+                {/* Contenido */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-xl md:text-2xl font-bold text-yellow-400 mb-2 md:mb-3">
+                    {ref.name}
+                  </h3>
+
+                  <p className="text-base md:text-lg leading-relaxed mb-4 md:mb-6 text-white/90">
+                    {ref.text[lang]}
+                  </p>
+
+                  {/* Datos de contacto */}
+                  <div className="flex flex-col gap-2 md:gap-3 text-sm md:text-base text-white/80">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-semibold">{t.emailLabel}:</span>
+                      <a
+                        href={`mailto:${ref.email}`}
+                        className="text-yellow-400 hover:text-yellow-300 transition-colors underline break-all"
+                      >
+                        {ref.email}
+                      </a>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold">{t.cityLabel}:</span>
+                      <span>{ref.city}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
-      </nav>
-
-      <main className="max-w-6xl mx-auto px-5 pb-24">
-        <section className="mt-4 grid grid-cols-12 gap-6 items-start">
-          {/* IMAGEN IZQUIERDA */}
-          <aside className="col-span-12 md:col-span-5">
-            <figure className="relative mx-auto w-full max-w-xl aspect-square overflow-hidden rounded-[48%] ring-2 ring-black/20 shadow-2xl bg-white/10 grid place-items-center">
-              <span className="text-stone-200/80 text-sm">Imagen...</span>
-            </figure>
-          </aside>
-
-          {/* PANEL DE REFERENCIAS */}
-          <section className="col-span-12 md:col-span-7">
-            <div className="rounded-3xl bg-[#3b2a23]/85 ring-1 ring-black/20 shadow-xl p-5 md:p-7">
-              <ul className="space-y-5">
-                {refs.map((r) => (
-                  <li key={r.name} className="grid grid-cols-[auto,1fr] gap-3">
-                    <span className="mt-1 inline-grid w-8 h-8 place-items-center rounded-full bg-white/10 ring-1 ring-white/10">
-                      {r.gender === "f" ? (
-                        <span
-                          role="img"
-                          aria-label="mujer"
-                          className="text-xl"
-                        >
-                          👩
-                        </span>
-                      ) : (
-                        <span
-                          role="img"
-                          aria-label="hombre"
-                          className="text-xl"
-                        >
-                          👨
-                        </span>
-                      )}
-                    </span>
-                    <p className="text-sm leading-relaxed">
-                      {r.text}
-                      <br />
-                      <span className="block text-xs mt-1 opacity-90">
-                        {t.emailLabel}:{" "}
-                        <a className="underline" href={`mailto:${r.email}`}>
-                          {r.email}
-                        </a>{" "}
-                        | {t.cityLabel}: {r.city}
-                      </span>
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-        </section>
       </main>
 
-      {/* Flechas fijas inferior derecha con etiquetas */}
-      <nav className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
-        <Link
-          href="/projects"
-          className="group relative flex items-center gap-3 rounded-full bg-amber-950 hover:bg-amber-900 px-3 py-2 text-white shadow"
-        >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="rotate-180"
-          >
-            <path d="M10 17l5-5-5-5v10z" />
-          </svg>
-          <span className="hidden sm:inline text-sm font-medium">
-            {t.prevLabel}
-          </span>
+      {/* Navegación fija - Mejorada para móvil */}
+      <nav className="fixed bottom-4 md:bottom-8 right-4 md:right-8 z-40 flex gap-2 md:gap-4">
+        <Link href="/projects" className={navClass}>
+          <span className="md:hidden">←</span>
+          <span className="hidden md:inline">{t.prevLabel}</span>
         </Link>
-        <Link
-          href="/contacts"
-          className="group relative flex items-center gap-3 rounded-full bg-amber-950 hover:bg-amber-900 px-3 py-2 text-white shadow"
-        >
-          <span className="hidden sm:inline text-sm font-medium">
-            {t.nextLabel}
-          </span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M10 17l5-5-5-5v10z" />
-          </svg>
+        <Link href="/contacts" className={navClass}>
+          <span className="md:hidden">→</span>
+          <span className="hidden md:inline">{t.nextLabel}</span>
         </Link>
       </nav>
     </div>

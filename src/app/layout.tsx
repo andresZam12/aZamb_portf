@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ThemeClient from "./ThemeClient";
-//import { LanguageProvider } from "./Lang/LanguageProvider";
-//import HeaderControls from "./HeaderControls";
+import { LanguageProvider } from "./Lang/LanguageProvider";
+import HeaderControls from "./HeaderControls";
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
@@ -30,7 +30,11 @@ export default function RootLayout({
       <body>
         {/* Aplica el tema global dark/light desde localStorage en TODAS las páginas */}
         <ThemeClient />
-        {children}
+        {/* Proveedor global de idioma + controles en cabecera (tema/idioma/cv) */}
+        <LanguageProvider>
+          <HeaderControls />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

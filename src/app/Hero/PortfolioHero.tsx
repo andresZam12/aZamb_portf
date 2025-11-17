@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useLang } from "../Lang/LanguageProvider";
 import Link from "next/link";
 
 // Diccionario de traducciones
@@ -67,12 +68,22 @@ const translations = {
 
 export default function PortfolioHero() {
   const [isDark, setIsDark] = useState(false);
-  const [lang, setLang] = useState<'es' | 'en'>('es');
+  const { lang } = useLang();
   const t = translations[lang];
 
-  // Fijar el modo claro por defecto
   useEffect(() => {
-    document.documentElement.classList.remove("dark");
+    const update = () => setIsDark(document.documentElement.classList.contains("dark"));
+    update();
+    const onThemeChange = () => update();
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === "theme") update();
+    };
+    window.addEventListener("theme-change", onThemeChange as EventListener);
+    window.addEventListener("storage", onStorage as EventListener);
+    return () => {
+      window.removeEventListener("theme-change", onThemeChange as EventListener);
+      window.removeEventListener("storage", onStorage as EventListener);
+    };
   }, []);
 
   return (
@@ -87,30 +98,7 @@ export default function PortfolioHero() {
         }`}
       />
 
-      {/* Botones fijos superiores */}
-      <div className="fixed top-0 right-0 z-50 p-4 flex gap-2 md:p-6 md:gap-4">
-        <button
-          onClick={() => setIsDark(!isDark)}
-          className="px-3 py-2 md:px-6 md:py-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-sm text-white font-medium text-sm md:text-lg transition-all"
-        >
-          {isDark ? t.lightMode : t.darkMode}
-        </button>
-        <a
-          href="/cv.pdf"
-          className="px-3 py-2 md:px-6 md:py-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-sm text-white font-medium text-sm md:text-lg transition-all"
-          download
-        >
-          {t.resume}
-        </a>
-        <div className="relative">
-          <button
-            onClick={() => setLang(lang === "es" ? "en" : "es")}
-            className="px-3 py-2 md:px-6 md:py-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-sm text-white font-medium text-sm md:text-lg transition-all"
-          >
-            🌐 {lang.toUpperCase()}
-          </button>
-        </div>
-      </div>
+      {/* HeaderControls (tema/idioma/menu) se muestran globalmente desde el layout */}
 
       {/* Navegación principal - Responsive */}
       <nav className="fixed top-20 left-0 right-0 z-40 overflow-x-auto">

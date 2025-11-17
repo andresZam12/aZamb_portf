@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useLang } from "../Lang/LanguageProvider";
 import Link from "next/link";
 
 type Language = "es" | "en";
@@ -17,6 +18,9 @@ interface Translations {
   darkMode: string;
   lightMode: string;
   languageBtn: string;
+  skills: string[];
+  academic: string[];
+  laboral: string[];
 }
 
 const translations: Record<Language, Translations> = {
@@ -40,6 +44,26 @@ const translations: Record<Language, Translations> = {
     darkMode: "🌙",
     lightMode: "☀️",
     languageBtn: "ES/EN",
+    skills: [
+      "Competencia en desarrollo de software",
+      "Liderazgo y trabajo en equipo",
+      "Comunicación efectiva y orientación al cliente",
+      "Análisis operativo y optimización de procesos",
+      "Integración de tecnología en entornos laborales",
+      "Diseño y desarrollo de software",
+    ],
+    academic: [
+      "Bachiller Académico – Institución Educativa San Juan Bosco (Pasto, Nariño)",
+      "Curso en Contabilidad Básica, Estándares Internacionales – Universidad Mariana",
+      "Curso Técnico en Contaduría Pública – Comfamiliar de Nariño",
+      "Programa Software Talento Tech – MinTIC (nivel intermedio en programación y desarrollo de software)",
+      "Ingeniería de Software – Universidad Cooperativa de Colombia (60% en curso)",
+    ],
+    laboral: [
+      "Responsable de Atención al Cliente – Chicken Lico (2024): Gestión de clientes, resolución de reclamos, manejo de inventarios y facturación.",
+      "Vendedor y Cajero Administrador – Mundial de Mangueras (2020–2023): Administración de ventas, coordinación de personal y cumplimiento de metas comerciales.",
+      "Supervisor de Ventas – Mario Fernando Bolaños (2019–2020): Liderazgo de equipo y control de indicadores de desempeño.",
+    ],
   },
   en: {
     title: "Experience",
@@ -61,22 +85,57 @@ const translations: Record<Language, Translations> = {
     darkMode: "🌙",
     lightMode: "☀️",
     languageBtn: "EN/ES",
+    skills: [
+      "Software development skills",
+      "Leadership and teamwork",
+      "Effective communication and customer orientation",
+      "Operational analysis and process optimization",
+      "Integration of technology in work environments",
+      "Software design and development",
+    ],
+    academic: [
+      "High School Diploma – Institución Educativa San Juan Bosco (Pasto, Nariño)",
+      "Basic Accounting Course, International Standards – Universidad Mariana",
+      "Technical Course in Public Accounting – Comfamiliar de Nariño",
+      "Software Talent Tech Program – MinTIC (intermediate level in programming and software development)",
+      "Software Engineering – Universidad Cooperativa de Colombia (60% in progress)",
+    ],
+    laboral: [
+      "Customer Service Responsible – Chicken Lico (2024): Customer management, claims resolution, inventory and billing handling.",
+      "Salesperson and Cashier Administrator – Mundial de Mangueras (2020–2023): Sales administration, staff coordination and meeting commercial goals.",
+      "Sales Supervisor – Mario Fernando Bolaños (2019–2020): Team leadership and performance indicators control.",
+    ],
   },
 };
 
 export default function ExperienciaPage() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
-  const [lang, setLang] = useState<Language>("es");
+  const { lang } = useLang();
   const t = translations[lang];
 
+  const [isDark, setIsDark] = useState(false);
   useEffect(() => {
-    if (isDark) document.documentElement.classList.add("dark");
-    else document.documentElement.classList.remove("dark");
-  }, [isDark]);
+    const update = () => setIsDark(document.documentElement.classList.contains("dark"));
+    update();
 
-  const buttonClass = "px-3 py-2 md:px-5 md:py-3 bg-amber-950/95 hover:bg-amber-900 rounded-full text-white font-medium text-sm md:text-base transition-all shadow-lg";
+    const onThemeChange = () => update();
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === "theme") update();
+    };
+
+    window.addEventListener("theme-change", onThemeChange as EventListener);
+    window.addEventListener("storage", onStorage as EventListener);
+    return () => {
+      window.removeEventListener("theme-change", onThemeChange as EventListener);
+      window.removeEventListener("storage", onStorage as EventListener);
+    };
+  }, []);
+
+  const buttonClass = "px-3 py-2 md:px-5 md:py-3 bg-amber-950/95 hover:bg-amber-900 rounded-full text-white font-medium text-sm md:text-base transition-all shadow-lg dark:bg-black dark:text-white dark:hover:bg-gray-800";
   const glassClass = "bg-black/25 backdrop-blur-md";
+  const navClass = isDark
+    ? "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-black hover:bg-gray-800"
+    : "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-amber-950/90 hover:bg-amber-900";
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -90,45 +149,7 @@ export default function ExperienciaPage() {
         }`}
       />
 
-      {/* Botones superiores (tema / idioma / menú) */}
-      <div className="fixed top-3 right-3 z-50 p-2 md:p-4 flex items-center gap-2 md:gap-3">
-        <button onClick={() => setIsDark(!isDark)} className={buttonClass} aria-label="Alternar tema">
-          {isDark ? t.lightMode : t.darkMode}
-        </button>
-
-        <button onClick={() => setLang(lang === "es" ? "en" : "es")} className={buttonClass} aria-label="Cambiar idioma">
-          {lang.toUpperCase()}
-        </button>
-
-        <div className="relative">
-          <button
-            onClick={() => setMenuOpen((v) => !v)}
-            className={`${buttonClass} md:hidden`}
-            aria-expanded={menuOpen}
-            aria-label="Abrir menú"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </button>
-
-          {menuOpen && (
-            <div className="absolute right-0 mt-12 w-48 md:w-64 rounded-2xl bg-black/30 backdrop-blur-md p-2 shadow-2xl ring-1 ring-white/10">
-              {Object.entries(t.menu).map(([key, label]) => (
-                <Link
-                  key={key}
-                  href={`/${key === "home" ? "" : key}`}
-                  className="block px-4 py-3 rounded-xl hover:bg-white/10 text-white text-sm font-medium"
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
+      {/* HeaderControls (tema/idioma/menu) se muestran globalmente desde el layout */}
 
       <main className="max-w-7xl mx-auto px-5 pt-20 md:pt-24 pb-24">
         <header className="mb-6 md:mb-10">
@@ -147,12 +168,9 @@ export default function ExperienciaPage() {
 
               <h2 className="mt-6 text-xl md:text-2xl font-bold text-amber-300">{t.skillsTitle}</h2>
               <ul className="mt-3 space-y-2 list-disc list-inside text-sm md:text-base text-white/90">
-                <li>Competencia en desarrollo de software</li>
-                <li>Liderazgo y trabajo en equipo</li>
-                <li>Comunicación efectiva y orientación al cliente</li>
-                <li>Análisis operativo y optimización de procesos</li>
-                <li>Integración de tecnología en entornos laborales</li>
-                <li>Diseño y desarrollo de software</li>
+                {t.skills.map((s, i) => (
+                  <li key={i}>{s}</li>
+                ))}
               </ul>
 
               {/* Botón descargar CV */}
@@ -180,11 +198,9 @@ export default function ExperienciaPage() {
             >
               <h3 className="text-2xl md:text-3xl font-extrabold text-white">{t.academicTitle}</h3>
               <ul className="mt-4 list-disc list-inside space-y-2 text-sm md:text-base text-white/90">
-                <li>Bachiller Académico – Institución Educativa San Juan Bosco (Pasto, Nariño)</li>
-                <li>Curso en Contabilidad Básica, Estándares Internacionales – Universidad Mariana</li>
-                <li>Curso Técnico en Contaduría Pública – Comfamiliar de Nariño</li>
-                <li>Programa Software Talento Tech – MinTIC (nivel intermedio en programación y desarrollo de software)</li>
-                <li>Ingeniería de Software – Universidad Cooperativa de Colombia (60% en curso)</li>
+                {t.academic.map((a, i) => (
+                  <li key={i}>{a}</li>
+                ))}
               </ul>
             </div>
           </section>
@@ -195,18 +211,9 @@ export default function ExperienciaPage() {
             >
               <h3 className="text-2xl md:text-3xl font-extrabold text-white">{t.laboralTitle}</h3>
               <ul className="mt-4 list-disc list-inside space-y-2 text-sm md:text-base text-white/90">
-                <li>
-                  Responsable de Atención al Cliente – Chicken Lico (2024): Gestión de clientes, resolución de reclamos,
-                  manejo de inventarios y facturación, logrando mantener altos niveles de satisfacción y fidelización.
-                </li>
-                <li>
-                  Vendedor y Cajero Administrador – Mundial de Mangueras (2020–2023): Administración de ventas, coordinación de
-                  personal y cumplimiento de metas comerciales. Implementación de procesos que optimizaron la eficiencia del equipo.
-                </li>
-                <li>
-                  Supervisor de Ventas – Mario Fernando Bolaños (2019–2020): Liderazgo de equipo, control de indicadores de desempeño
-                  y desarrollo de estrategias comerciales orientadas al cumplimiento de objetivos de productividad.
-                </li>
+                {t.laboral.map((l, i) => (
+                  <li key={i}>{l}</li>
+                ))}
               </ul>
             </div>
           </section>
@@ -215,11 +222,11 @@ export default function ExperienciaPage() {
 
       {/* Navegación inferior - responsive y con etiquetas */}
       <nav className="fixed bottom-4 md:bottom-8 right-4 md:right-8 z-40 flex gap-2 md:gap-4">
-        <Link href="/projects" className={buttonClass}>
+        <Link href="/projects" className={navClass}>
           <span className="md:hidden">←</span>
           <span className="hidden md:inline">{t.prev}</span>
         </Link>
-        <Link href="/references" className={buttonClass}>
+        <Link href="/references" className={navClass}>
           <span className="md:hidden">→</span>
           <span className="hidden md:inline">{t.next}</span>
         </Link>
