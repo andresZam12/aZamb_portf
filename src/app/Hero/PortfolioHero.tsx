@@ -7,9 +7,6 @@ import Link from "next/link";
 // Diccionario de traducciones
 const translations = {
   es: {
-    darkMode: "🌙 Modo Oscuro",
-    lightMode: "☀ Modo Claro",
-    resume: "📄 Currículum",
     navigation: {
       home: "INICIO",
       about: "SOBRE MÍ",
@@ -36,9 +33,6 @@ const translations = {
     motto: "Si lo puedes imaginar, lo podemos hacer",
   },
   en: {
-    darkMode: "🌙 Dark Mode",
-    lightMode: "☀ Light Mode",
-    resume: "📄 Resume",
     navigation: {
       home: "HOME",
       about: "ABOUT",
@@ -98,8 +92,6 @@ export default function PortfolioHero() {
         }`}
       />
 
-      {/* HeaderControls (tema/idioma/menu) se muestran globalmente desde el layout */}
-
       {/* Navegación principal - Responsive */}
       <nav className="fixed top-20 left-0 right-0 z-40 overflow-x-auto">
         <div className="flex justify-start md:justify-center gap-2 px-4 min-w-max mx-auto">
@@ -119,8 +111,8 @@ export default function PortfolioHero() {
       <main className="container mx-auto px-4 md:px-6 pt-40 md:pt-48 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Columna de texto */}
-          <div className="text-white space-y-8">
-            <h1 className="text-7xl font-bold leading-tight">
+          <div className="text-white space-y-8 animate-fade-in opacity-0 [animation-delay:200ms]">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
               {t.hero.greeting}
               <br />
               {t.hero.im}{" "}
@@ -128,13 +120,13 @@ export default function PortfolioHero() {
             </h1>
 
             <div className="space-y-4">
-              <p className="text-3xl text-yellow-400">{t.hero.studentIn}</p>
-              <p className="text-4xl font-bold">{t.hero.degree}</p>
-              <p className="text-3xl text-yellow-400">{t.hero.aspiring}</p>
-              <p className="text-4xl font-bold">{t.hero.role}</p>
+              <p className="text-2xl md:text-3xl text-yellow-400">{t.hero.studentIn}</p>
+              <p className="text-3xl md:text-4xl font-bold">{t.hero.degree}</p>
+              <p className="text-2xl md:text-3xl text-yellow-400">{t.hero.aspiring}</p>
+              <p className="text-3xl md:text-4xl font-bold">{t.hero.role}</p>
             </div>
 
-            <div className="space-y-6 text-xl leading-relaxed">
+            <div className="space-y-6 text-lg md:text-xl leading-relaxed">
               <p className="text-justify">{t.hero.description1}</p>
               <p className="text-justify">{t.hero.description2}</p>
               <p className="text-justify">{t.hero.description3}</p>
@@ -142,9 +134,9 @@ export default function PortfolioHero() {
           </div>
 
           {/* Columna de imagen */}
-          <div className="relative aspect-square w-full max-w-3xl mx-auto">
+          <div className="relative aspect-square w-full max-w-3xl mx-auto animate-fade-in opacity-0 [animation-delay:400ms]">
             <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-3xl">
-              <div className="w-full h-full rounded-3xl border-2 border-yellow-400/20 flex items-center justify-center text-2xl text-yellow-400/50">
+              <div className="size-full rounded-3xl border-2 border-yellow-400/20 flex items-center justify-center text-xl md:text-2xl text-yellow-400/50">
                 [Tu imagen aquí]
               </div>
             </div>
@@ -152,9 +144,9 @@ export default function PortfolioHero() {
         </div>
       </main>
 
-      {/* Frase motivacional - No fija en móvil */}
-      <footer className="text-center py-8 md:fixed md:bottom-8 md:left-0 md:right-0">
-        <p className="text-xl md:text-2xl italic font-medium text-white/90">
+      {/* Frase motivacional */}
+      <footer className="text-center py-8">
+        <p className="text-lg md:text-xl lg:text-2xl italic font-medium text-white/90">
           {t.motto}
         </p>
       </footer>

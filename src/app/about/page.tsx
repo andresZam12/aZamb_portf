@@ -60,11 +60,10 @@ export default function AboutPage() {
     };
   }, []);
 
-  // Actualizar las clases de los elementos semitransparentes
-  const navigationButtonClass = `px-6 py-3 bg-amber-950/90 hover:bg-amber-900 rounded-full text-white font-medium text-lg transition-all shadow-lg`;
+  // Actualizar las clases de los elementos semitransparentes (responsive como en otras páginas)
   const navClass = isDark
-    ? `px-6 py-3 rounded-full text-white font-medium text-lg transition-all shadow-lg bg-black hover:bg-gray-800`
-    : navigationButtonClass;
+    ? "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-black hover:bg-gray-800"
+    : "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-amber-950/90 hover:bg-amber-900";
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -206,13 +205,15 @@ export default function AboutPage() {
         </div>
       </main>
 
-      {/* Navegación fija con botones más visibles */}
-      <nav className="fixed bottom-8 right-8 z-40 flex gap-4">
+      {/* Navegación fija - Mejorada para móvil */}
+      <nav className="fixed bottom-4 md:bottom-8 right-4 md:right-8 z-40 flex gap-2 md:gap-4">
         <Link href="/" className={navClass}>
-          {t.prev}
+          <span className="md:hidden">←</span>
+          <span className="hidden md:inline">{t.prev}</span>
         </Link>
         <Link href="/projects" className={navClass}>
-          {t.next}
+          <span className="md:hidden">→</span>
+          <span className="hidden md:inline">{t.next}</span>
         </Link>
       </nav>
     </div>

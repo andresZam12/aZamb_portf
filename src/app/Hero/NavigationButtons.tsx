@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react"; // Iconos simples y elegantes
+import { ArrowLeft, ArrowRight } from "lucide-react"; 
 
 interface Props {
   prev?: string;
