@@ -231,7 +231,7 @@ export default function ContactosPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">{t.sendEmailTitle}</h2>
             <form
               onSubmit={handleEmailSubmit}
-              className={`${glassClass} rounded-3xl ring-1 ring-white/10 shadow-xl p-5 md:p-6 space-y-4`}
+              className={`${glassClass} rounded-3xl ring-1 ring-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-2 border-black p-5 md:p-6 space-y-4`}
             >
               <div>
                 <input
@@ -267,7 +267,7 @@ export default function ContactosPage() {
           <img 
             src="/anto.jpg"
             alt="Andrés Zambo"
-            className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-3xl shadow-2xl ring-2 ring-white/20"
+            className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-2 ring-white/20 border-2 border-black"
           />
         </section>
 

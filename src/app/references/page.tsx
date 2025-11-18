@@ -33,28 +33,29 @@ const references = [
     name: "Paola Burgos",
     gender: "f" as const,
     text: {
-      es: "Andrés se ha destacado como un estudiante comprometido, con gran capacidad analítica y disposición para el aprendizaje continuo. Su interés por el desarrollo de software y la ciberseguridad lo proyecta como un futuro profesional integral.",
-      en: "Andrés has stood out as a committed student, with great analytical skills and willingness for continuous learning. His interest in software development and cybersecurity projects him as a comprehensive future professional.",
+      es: "Andrés ha demostrado ser un estudiante altamente comprometido, con sólidas capacidades analíticas y una marcada disposición para el aprendizaje continuo. Su habilidad para adquirir nuevos conocimientos de manera ágil y aplicarlos eficazmente en contextos reales lo proyecta como un profesional integral con un futuro prometedor.",
+      en: "Andrés has proven to be a highly committed student with strong analytical skills and a clear willingness for continuous learning. His ability to quickly acquire new knowledge and apply it effectively in real-world scenarios positions him as a well-rounded professional with a promising future.",
     },
-    email: "paolaburgoquiroz@gmail.com",
+    email: "paolaburgosquiroz@gmail.com",
     city: "Pasto",
   },
   {
     name: "Paola Bárcenas",
-    gender: "m" as const,
+    gender: "f" as const,
     text: {
-      es: "Demuestra responsabilidad, ética laboral y un alto nivel de compromiso en cada tarea. Su capacidad para trabajar bajo presión y mantener la calidad lo convierte en un colaborador confiable.",
-      en: "Demonstrates responsibility, work ethics and a high level of commitment in every task. His ability to work under pressure and maintain quality makes him a reliable collaborator.",
+      es: "Demuestra responsabilidad, ética laboral y un elevado nivel de compromiso en cada actividad que realiza. Su capacidad para trabajar bajo presión, mantener estándares de calidad y adaptarse a nuevos retos la convierten en una colaboradora confiable y orientada a resultados.",
+      en: "He consistently demonstrates responsibility, strong work ethics, and a high level of commitment in every task he undertakes. His ability to work under pressure, maintain quality standards, and adapt to new challenges makes him a reliable, results-oriented team member.",
+
     },
-    email: "pabocaneras12@gmail.com",
+    email: "paobarcenas12@gmail.com",
     city: "Pasto",
   },
   {
     name: "Mario Botina",
     gender: "m" as const,
     text: {
-      es: "Es una persona íntegra, proactiva y con gran capacidad de trabajo en equipo. Su actitud positiva y habilidades interpersonales generan un ambiente de confianza y colaboración.",
-      en: "He is an integral, proactive person with great teamwork skills. His positive attitude and interpersonal skills generate an environment of trust and collaboration.",
+      es: "Es una persona íntegra, proactiva y con una destacada capacidad para el trabajo en equipo. Su actitud positiva, liderazgo natural y habilidades interpersonales fortalecen los entornos colaborativos y aportan significativamente al logro de objetivos comunes.",
+      en: "He is an integral, proactive person with a remarkable ability to work in a team. His positive attitude, natural leadership, and interpersonal skills strengthen collaborative environments and significantly contribute to achieving common goals.",
     },
     email: "mario_b86@gmail.com",
     city: "Cali",
@@ -105,31 +106,28 @@ export default function ReferencesPage() {
       />
 
       <main className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-24">
-        {/* Título */}
-        <h1 className="text-3xl md:text-5xl font-bold text-white mb-8 md:mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-yellow-400 mb-8 md:mb-12">
           {t.title}
         </h1>
 
-        {/* Grid de referencias */}
         <div className="grid grid-cols-1 gap-6 md:gap-8">
-          {references.map((ref) => (
+          {references.map((ref, index) => (
             <article
               key={ref.name}
-              className={`${glassClass} rounded-2xl md:rounded-3xl p-6 md:p-8 text-white shadow-xl ring-1 ring-white/20 hover:ring-yellow-400/50 transition-all`}
+              className={`${glassClass} rounded-2xl md:rounded-3xl p-5 md:p-6 lg:p-8 text-white shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/20 border-2 border-black hover:ring-yellow-400/50 transition-all animate-fade-in`}
+              style={{ animationDelay: `${index * 200}ms` }}
             >
               <div className="flex items-start gap-4 md:gap-6">
-                {/* Icono de género */}
-                <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 ring-1 ring-white/20 flex items-center justify-center text-2xl md:text-3xl">
+                <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 ring-1 ring-white/20 flex items-center justify-center text-2xl md:text-3xl">
                   {ref.gender === "f" ? "👩" : "👨"}
                 </div>
 
-                {/* Contenido */}
                 <div className="flex-1 min-w-0">
                   <h3 className="text-xl md:text-2xl font-bold text-yellow-400 mb-2 md:mb-3">
                     {ref.name}
                   </h3>
 
-                  <p className="text-base md:text-lg leading-relaxed mb-4 md:mb-6 text-white/90">
+                  <p className="text-sm md:text-base lg:text-lg leading-relaxed md:leading-loose mb-4 md:mb-6 text-white/90 text-justify">
                     {ref.text[lang]}
                   </p>
 

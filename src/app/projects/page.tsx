@@ -144,7 +144,7 @@ export default function ProjectsPage() {
             {projects.map((p, index) => (
               <article
                 key={p.key}
-                className="bg-black/20 backdrop-blur-md rounded-2xl md:rounded-3xl p-4 md:p-8 text-white shadow-xl ring-1 ring-white/20 hover:ring-yellow-400/50 transition-all group animate-fade-in opacity-0"
+                className="bg-black/20 backdrop-blur-md rounded-2xl md:rounded-3xl p-4 md:p-8 text-white shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/20 border-2 border-black hover:ring-yellow-400/50 transition-all group animate-fade-in opacity-0"
                 style={{ animationDelay: `${index * 200}ms` }}
               >
                 <div className="aspect-video relative rounded-xl md:rounded-2xl overflow-hidden mb-4 md:mb-6 group-hover:shadow-xl transition-all">
@@ -180,7 +180,7 @@ export default function ProjectsPage() {
             <h2 className="text-xl md:text-2xl font-bold text-yellow-400 mb-4 md:mb-8">
               {t.additionals}
             </h2>
-            <div className="bg-black/20 backdrop-blur-md rounded-xl md:rounded-2xl p-4 md:p-6 space-y-4 md:space-y-6">
+            <div className="bg-black/20 backdrop-blur-md rounded-xl md:rounded-2xl p-4 md:p-6 space-y-4 md:space-y-6 shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/20 border-2 border-black">
               {extraKeys.map((key) => (
                 <div
                   key={key}
