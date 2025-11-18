@@ -31,7 +31,7 @@ export default function HeaderControls() {
   }, []);
 
   useEffect(() => {
-    const onThemeEvent = (e: any) => {
+    const onThemeEvent = (e: CustomEvent) => {
       const detail = e?.detail;
       if (typeof detail === "string") {
         setIsDark(detail === "dark");

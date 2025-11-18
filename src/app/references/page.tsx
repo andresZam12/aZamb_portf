@@ -87,8 +87,7 @@ export default function ReferencesPage() {
   }, []);
 
   const glassClass = "bg-black/20 backdrop-blur-md";
-  const buttonClass =
-    "px-4 py-2 md:px-6 md:py-3 bg-amber-950/90 hover:bg-amber-900 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg dark:bg-black dark:text-white dark:hover:bg-gray-800";
+  // ...
   const navClass = isDark
     ? "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-black hover:bg-gray-800"
     : "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-amber-950/90 hover:bg-amber-900";

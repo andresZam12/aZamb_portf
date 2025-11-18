@@ -72,7 +72,7 @@ const translations: Record<Language, Translations> = {
 };
 
 export default function ContactosPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  // ...
   const { lang } = useLang();
   const t = translations[lang];
 
@@ -263,7 +263,8 @@ export default function ContactosPage() {
 
         {/* IMAGEN CENTRADA */}
         <section className="col-span-12 mt-12 md:mt-16 flex justify-center">
-          <img
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img 
             src="/anto.jpg"
             alt="Andrés Zambo"
             className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-3xl shadow-2xl ring-2 ring-white/20"

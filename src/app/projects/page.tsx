@@ -199,8 +199,6 @@ export default function ProjectsPage() {
             ? "bg-[linear-gradient(to_right,#1a1a1a_0%,#1a1a1a_33.34%,#2d2d2d_33.34%,#2d2d2d_66.67%,#404040_66.67%,#404040_100%)]"
             : "bg-[linear-gradient(to_right,#3b2a23_0%,#3b2a23_33.34%,#8b5e3c_33.34%,#8b5e3c_66.67%,#c48758_66.67%,#c48758_100%)]"
         }`}
-      />
-
       {/* HeaderControls (tema/idioma/menu) se muestran globalmente desde el layout */}
 
       <main className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-24">
