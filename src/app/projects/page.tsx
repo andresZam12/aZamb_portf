@@ -58,8 +58,8 @@ const translations: Record<Language, {
     darkMode: "🌙 Modo Oscuro",
     lightMode: "☀ Modo Claro",
     language: "🌐 EN",
-    title: "MIS PROYECTOS MÁS RELEVANTES",
-    additionals: "Adicionales",
+    title: "MIS PROYECTOS ",
+    additionals: "Más proyectos...",
     additionalProject: "Proyecto adicional",
     viewCode: "Ver código",
     menu: {
@@ -75,29 +75,29 @@ const translations: Record<Language, {
     projects: {
       elliotIA: {
         name: "Elliot IA",
-        description: "Asesor de ventas de productos electrodomésticos con inteligencia artificial para automatización y una buena estadística para ser vendido.",
+        description: "Asesor de ventas de productos con inteligencia artificial para automatización similar a un agente artificial con manejo de nodos y proximas simulacióndes de avatars interactivos en proceso... desarrollado en node.js, Python, react.",
       },
       int3d: {
-        name: "INT3D-circular",
-        description: "Juego en Unity3D, enfocado en el ciclo del agua, nace en colaboración con docentes especialistas de áreas afines, para el aprendizaje de las matemáticas a través de los juegos.",
+        name: "INT3D-Realidad",
+        description: "Juego de niveles en esquema de puntuación acumulado con énfasis en la creación de componentes enemigos desarrollados con inteligencia artificial cuyas capacidades convergen en la interacción y entretenimiendo del usuarios, este se desarrolló en Unity3D, C# y C++.",
       },
       portfolio: {
         name: "Portafolio profesional",
-        description: "Elaboración de portafolio enfocado en mi proceso de trabajo con enfoque responsive para una mejor contratación de mis servicios y presentación personal.",
+        description: "Elaboración de portafolio enfocado en mi proceso de trabajo con enfoque responsive para una mejor contratación de mis servicios y presentación personal. Proyecto Frontend personal desarrollado en Next.js, Tailwind CSS y TypeScript .",
       }
     },
     extras: {
       academic: {
-        name: "Sistema de Gestión Académica",
-        description: "Desarrollo de backend para gestión escolar"
+        name: "Tarjetas de presentación Frontend",
+        description: "Desarrollo de tarjetas de presentación con APIS de maps para ubicación y sistemade presentación elaborado con tecnologías Frontend, next.js, Tailwind CSS y TypeScript."
       },
       events: {
         name: "App Móvil de Eventos",
-        description: "Aplicación para organización de eventos locales"
+        description: "Aplicación para organización de eventos locales relizado con Flutter, Dart y Firebase en proceso de desarrollo..."
       },
       discord: {
         name: "Bot de Discord",
-        description: "Bot para gestión de comunidades gaming"
+        description: "Bot para gestión de comunidades gaming en desarrollo."
       }
     }
   },
@@ -105,8 +105,8 @@ const translations: Record<Language, {
     darkMode: "🌙 Dark Mode",
     lightMode: "☀ Light Mode",
     language: "🌐 ES",
-    title: "MY MOST RELEVANT PROJECTS",
-    additionals: "Additional",
+    title: "MY PROJECTS",
+    additionals: "More projects...",
     additionalProject: "Additional project",
     viewCode: "View code",
     menu: {
@@ -122,43 +122,55 @@ const translations: Record<Language, {
     projects: {
       elliotIA: {
         name: "Elliot AI",
-        description: "AI-powered sales advisor for home appliances with automation and excellent sales statistics.",
+        description: "Sales advisor for products with artificial intelligence for automation similar to an artificial agent with node management and upcoming interactive avatar simulations in progress... developed in node.js, Python, react",
       },
       int3d: {
-        name: "INT3D-circular",
-        description: "Unity3D game focused on the water cycle, created in collaboration with subject matter experts, for learning mathematics through games.",
+        name: "INT3D-Reality",
+        description: "A level-based game with a cumulative scoring system, emphasizing the creation of AI-powered enemy components whose capabilities converge on user interaction and entertainment. It was developed in Unity3D, C#, and C++.",
       },
       portfolio: {
         name: "Professional Portfolio",
-        description: "Development of a responsive portfolio focused on my work process for better service contracting and personal presentation.",
+        description: "Portfolio development focused on my work process with a responsive design for improved service contracts and personal presentation. Personal Frontend project developed in Next.js, Tailwind CSS, and TypeScript.",
       }
     },
     extras: {
       academic: {
-        name: "Academic Management System",
-        description: "Backend development for school management"
+        name: "Frontend Business Cards",
+        description: "Development of business cards with Maps APIs for location and presentation system developed with Frontend technologies, next.js, Tailwind CSS and TypeScript."
       },
       events: {
         name: "Events Mobile App",
-        description: "Application for local events organization"
+        description: "Application for organizing local events, built with Flutter, Dart, and Firebase, currently under development..."
       },
       discord: {
         name: "Discord Bot",
-        description: "Bot for gaming community management"
+        description: "Bot for gaming community management in development."
       }
     }
   }
 };
 
-// Actualizar el array de proyectos para usar las traducciones
-const projectKeys = ['elliotIA', 'int3d', 'portfolio'] as const;
-const projects: { key: typeof projectKeys[number]; image: string; repo: string }[] = projectKeys.map(key => ({
-  key,
-  image: `/${key}.jpg`,
-  repo: `https://github.com/yourusername/${key}`
-}));
 
-// Actualizar el array de extras para usar las traducciones
+// Array de proyectos con sus respectivas imágenes y repositorios
+const projects = [
+  {
+    key: 'elliotIA' as const,
+    image: '/eliot2.png',
+    repo: 'https://github.com/andresZam12/elliot-ia'
+  },
+  {
+    key: 'int3d' as const,
+    image: '/Zom.jpeg',
+    repo: 'https://github.com/andresZam12/Juego_py_final.git'
+  },
+  {
+    key: 'portfolio' as const,
+    image: '/portfolio.jpg',
+    repo: 'https://github.com/andresZam12/aZamb_portf'
+  }
+];
+
+
 const extraKeys = ['academic', 'events', 'discord'] as const;
 
 export default function ProjectsPage() {
@@ -200,38 +212,39 @@ export default function ProjectsPage() {
       />
 
       <main className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-24">
-        {/* Título - Ajustado para móvil */}
-        <h1 className="text-3xl md:text-5xl font-bold text-white mb-8 md:mb-12">
+        {/* Título */}
+        <h1 className="text-5xl md:text-7xl font-bold text-yellow-400 mb-8 md:mb-12">
           {t.title}
         </h1>
 
         {/* Grid de proyectos - Mejorado para móvil */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
           <section className="lg:col-span-9 space-y-6 md:space-y-0 md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-6">
-            {projects.map((p) => (
+            {projects.map((p, index) => (
               <article
                 key={p.key}
-                className={`${glassClass} rounded-2xl md:rounded-3xl p-4 md:p-8 text-white shadow-xl ring-1 ring-white/20 hover:ring-yellow-400/50 transition-all group`}
+                className={`${glassClass} rounded-2xl md:rounded-3xl p-4 md:p-8 text-white shadow-xl ring-1 ring-white/20 hover:ring-yellow-400/50 transition-all group animate-fade-in opacity-0`}
+                style={{ animationDelay: `${index * 200}ms` }}
               >
                 <div className="aspect-video relative rounded-xl md:rounded-2xl overflow-hidden mb-4 md:mb-6 group-hover:shadow-xl transition-all">
                   <Image
                     src={p.image}
                     alt={t.projects[p.key].name}
                     fill
-                    className="object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    className="object-contain transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-yellow-400 mb-2 md:mb-4">
+                <h3 className="text-xl md:text-2xl font-bold text-yellow-400 mb-2 md:mb-4">
                   {t.projects[p.key].name}
                 </h3>
-                <p className="text-base md:text-lg leading-relaxed mb-4 md:mb-6 text-white/90">
+                <p className="text-lg md:text-xl leading-relaxed mb-4 md:mb-6 text-white/90 text-justify">
                   {t.projects[p.key].description}
                 </p>
                 <a
                   href={p.repo}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 md:gap-3 text-white/80 hover:text-yellow-400 transition-colors text-sm md:text-lg font-medium"
+                  className="inline-flex items-center gap-2 md:gap-3 text-white/80 hover:text-yellow-400 transition-colors text-base md:text-lg font-medium"
                 >
                   <svg
                     width="20"
@@ -248,9 +261,9 @@ export default function ProjectsPage() {
             ))}
           </section>
 
-          {/* Sidebar - Mejorado para móvil */}
-          <aside className="lg:col-span-3 mt-8 lg:mt-0">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-8">
+          {/* Sidebar */}
+          <aside className="lg:col-span-3 mt-8 lg:mt-0 animate-fade-in opacity-0" style={{ animationDelay: '600ms' }}>
+            <h2 className="text-xl md:text-2xl font-bold text-yellow-400 mb-4 md:mb-8">
               {t.additionals}
             </h2>
             <div className={`${glassClass} rounded-xl md:rounded-2xl p-4 md:p-6 space-y-4 md:space-y-6`}>
@@ -259,10 +272,10 @@ export default function ProjectsPage() {
                   key={key}
                   className="p-4 md:p-6 bg-white/5 hover:bg-white/10 rounded-lg md:rounded-xl transition-all group cursor-pointer"
                 >
-                  <h3 className="text-lg md:text-xl font-bold text-yellow-400 mb-1 md:mb-2">
+                  <h3 className="text-base md:text-lg font-bold text-yellow-400 mb-1 md:mb-2">
                     {t.extras[key].name}
                   </h3>
-                  <p className="text-sm md:text-base text-white/80 group-hover:text-white transition-colors">
+                  <p className="text-base md:text-lg text-white/80 group-hover:text-white transition-colors text-justify">
                     {t.extras[key].description}
                   </p>
                 </div>
