@@ -41,7 +41,6 @@ const translations = {
 };
 
 export default function AboutPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const { lang } = useLang();
   const t = translations[lang as keyof typeof translations];
 
@@ -62,7 +61,6 @@ export default function AboutPage() {
   }, []);
 
   // Actualizar las clases de los elementos semitransparentes
-  const glassClass = "bg-white/15 hover:bg-white/20 backdrop-blur-md";
   const navigationButtonClass = `px-6 py-3 bg-amber-950/90 hover:bg-amber-900 rounded-full text-white font-medium text-lg transition-all shadow-lg`;
   const navClass = isDark
     ? `px-6 py-3 rounded-full text-white font-medium text-lg transition-all shadow-lg bg-black hover:bg-gray-800`

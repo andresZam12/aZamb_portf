@@ -162,7 +162,6 @@ const projects: { key: typeof projectKeys[number]; image: string; repo: string }
 const extraKeys = ['academic', 'events', 'discord'] as const;
 
 export default function ProjectsPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const { lang } = useLang();
   const t = translations[lang];
 
@@ -183,7 +182,6 @@ export default function ProjectsPage() {
   }, []);
 
   // Actualizar las clases comunes para mejor responsive
-  const buttonClass = "px-4 py-2 md:px-6 md:py-3 bg-amber-950/90 hover:bg-amber-900 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg dark:bg-black dark:text-white dark:hover:bg-gray-800";
   const glassClass = "bg-black/20 backdrop-blur-md";
   const navClass = isDark
     ? "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-black hover:bg-gray-800"
@@ -199,7 +197,7 @@ export default function ProjectsPage() {
             ? "bg-[linear-gradient(to_right,#1a1a1a_0%,#1a1a1a_33.34%,#2d2d2d_33.34%,#2d2d2d_66.67%,#404040_66.67%,#404040_100%)]"
             : "bg-[linear-gradient(to_right,#3b2a23_0%,#3b2a23_33.34%,#8b5e3c_33.34%,#8b5e3c_66.67%,#c48758_66.67%,#c48758_100%)]"
         }`}
-      {/* HeaderControls (tema/idioma/menu) se muestran globalmente desde el layout */}
+      />
 
       <main className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-24">
         {/* Título - Ajustado para móvil */}

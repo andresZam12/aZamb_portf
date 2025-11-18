@@ -65,7 +65,7 @@ export default function HeaderControls() {
     // Notificar a otras partes de la app en la misma pestaña
     try {
       window.dispatchEvent(new CustomEvent("theme-change", { detail: next ? "dark" : "light" }));
-    } catch (e) {
+    } catch {
       /* noop */
     }
   };
