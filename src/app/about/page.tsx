@@ -7,9 +7,6 @@ import Link from "next/link";
 // Diccionario de traducciones
 const translations = {
   es: {
-    darkMode: "🌙 Modo Oscuro",
-    lightMode: "☀ Modo Claro",
-    language: "🌐 EN",
     title: "Conóceme",
     description1:
       "Soy un estudiante de Ingeniería de Software apasionado por el desarrollo FullStack y con gran interés en la ciberseguridad y el pentesting. Mi motivación principal es crear soluciones digitales que no solo funcionen, sino que también sean seguras, escalables y útiles para las personas.",
@@ -21,11 +18,23 @@ const translations = {
     achievements: "Reconocimientos",
     prev: "← Inicio",
     next: "Proyectos →",
+    skills: {
+      communication: "Comunicación clara y asertiva",
+      problemSolving: "Resolución de problemas",
+      teamwork: "Trabajo en equipo y liderazgo",
+    },
+    langs: {
+      spanish: "Español (nativo)",
+      english: "Inglés (intermedio)",
+    },
+    achievementsList: {
+      projects: "Participación en proyectos de aprendizaje nacional con enfoque en desarrollo de software.",
+      science: "Ganador de concurso Ciencia e Investigación COMUNA-UCC 2024.",
+      sports: "Deportista reconocido de alto rendimiento en Nariño-Colombia.",
+      academic: "Galardonado académicamente en matemáticas (IEM San Juan Bosco 2018–2019).",
+    },
   },
   en: {
-    darkMode: "🌙 Dark Mode",
-    lightMode: "☀ Light Mode",
-    language: "🌐 ES",
     title: "About Me",
     description1:
       "I am a Software Engineering student passionate about FullStack development with great interest in cybersecurity and pentesting. My main motivation is to create digital solutions that not only work but are also secure, scalable, and useful for people.",
@@ -37,6 +46,21 @@ const translations = {
     achievements: "Achievements",
     prev: "← Home",
     next: "Projects →",
+    skills: {
+      communication: "Clear and assertive communication",
+      problemSolving: "Problem solving",
+      teamwork: "Teamwork and leadership",
+    },
+    langs: {
+      spanish: "Spanish (native)",
+      english: "English (intermediate)",
+    },
+    achievementsList: {
+      projects: "Participation in national learning projects focused on software development.",
+      science: "Winner of the COMUNA-UCC 2024 Science and Research competition.",
+      sports: "Recognized high-performance athlete in Nariño-Colombia.",
+      academic: "Academically awarded in mathematics (IEM San Juan Bosco 2018–2019).",
+    },
   },
 };
 
@@ -81,68 +105,48 @@ export default function AboutPage() {
 
       {/* Contenido principal con fondo más oscuro */}
       <main className="container mx-auto px-6 pt-24 pb-20">
-        <h1 className="text-6xl md:text-7xl font-bold text-white mb-12">
+        <h1 className="text-5xl md:text-7xl font-bold text-yellow-400 mb-12">
           {t.title}
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Panel de contenido con fondo más oscuro */}
-          <div className="lg:col-span-8 space-y-8">
+          <div className="lg:col-span-8 space-y-8 animate-fade-in opacity-0 [animation-delay:200ms]">
             <div className="bg-black/20 backdrop-blur-md rounded-3xl p-8 text-white shadow-xl">
-              <p className="text-xl leading-relaxed mb-6">
+              <p className="text-lg md:text-xl leading-relaxed mb-6">
                 {t.description1}
               </p>
 
-              <p className="text-xl leading-relaxed">
+              <p className="text-lg md:text-xl leading-relaxed">
                 {t.description2}
               </p>
 
               {/* Tecnologías */}
               <div className="mt-8">
-                <h2 className="text-2xl font-bold text-yellow-400 mb-4">
+                <h2 className="text-xl md:text-2xl font-bold text-yellow-400 mb-4">
                   {t.technologies}
                 </h2>
                 <div className="flex flex-wrap gap-3">
-                  {(
-                    isDark
-                      ? [
-                          "MySQL",
-                          "MongoDB",
-                          "SQLite",
-                          "SQL Server",
-                          "PostgreSQL",
-                          "Java",
-                          "Python",
-                          "Django",
-                          "JavaScript",
-                          "Node.js",
-                          "React",
-                          "Next.js",
-                          "Tailwind CSS",
-                          "Docker",
-                          "GitHub",
-                        ]
-                      : [
-                          "MySQL",
-                          "MongoDB",
-                          "SQLite",
-                          "SQL Server",
-                          "PostgreSQL",
-                          "Java",
-                          "Python",
-                          "Django",
-                          "JavaScript",
-                          "Node.js",
-                          "React",
-                          "Next.js",
-                          "Tailwind CSS",
-                          "Docker",
-                          "GitHub",
-                        ]
-                  ).map((tech) => (
+                  {[
+                    "MySQL",
+                    "MongoDB",
+                    "SQLite",
+                    "SQL Server",
+                    "PostgreSQL",
+                    "Java",
+                    "Python",
+                    "Django",
+                    "JavaScript",
+                    "Node.js",
+                    "React",
+                    "Next.js",
+                    "Tailwind CSS",
+                    "Docker",
+                    "GitHub",
+                  ].map((tech) => (
                     <span
                       key={tech}
-                      className="px-4 py-2 bg-white/10 rounded-full text-lg"
+                      className="px-3 py-1.5 md:px-4 md:py-2 bg-white/10 rounded-full text-sm md:text-lg"
                     >
                       {tech}
                     </span>
@@ -153,47 +157,44 @@ export default function AboutPage() {
               {/* Habilidades e Idiomas */}
               <div className="mt-8 grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-yellow-400 mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-yellow-400 mb-4">
                     {t.personalSkills}
                   </h3>
-                  <ul className="space-y-2 text-lg">
-                    <li>• Comunicación clara y asertiva</li>
-                    <li>• Resolución de problemas</li>
-                    <li>• Trabajo en equipo y liderazgo</li>
+                  <ul className="space-y-2 text-base md:text-lg">
+                    <li>• {t.skills.communication}</li>
+                    <li>• {t.skills.problemSolving}</li>
+                    <li>• {t.skills.teamwork}</li>
                   </ul>
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold text-yellow-400 mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-yellow-400 mb-4">
                     {t.languages}
                   </h3>
-                  <ul className="space-y-2 text-lg">
-                    <li>• Español (nativo)</li>
-                    <li>• Inglés (intermedio)</li>
+                  <ul className="space-y-2 text-base md:text-lg">
+                    <li>• {t.langs.spanish}</li>
+                    <li>• {t.langs.english}</li>
                   </ul>
                 </div>
               </div>
 
               {/* Reconocimientos */}
               <div className="mt-8">
-                <h3 className="text-2xl font-bold text-yellow-400 mb-4">
+                <h3 className="text-xl md:text-2xl font-bold text-yellow-400 mb-4">
                   {t.achievements}
                 </h3>
-                <ul className="space-y-3 text-lg">
-                  <li>
-                    • Participación en proyectos de aprendizaje nacional con
-                    enfoque en desarrollo de software.
-                  </li>
-                  <li>• Ganador de concurso Ciencia e Investigación COMUNA-UCC 2024.</li>
-                  <li>• Deportista reconocido de alto rendimiento en Nariño-Colombia.</li>
-                  <li>• Galardonado académicamente en matemáticas (IEM San Juan Bosco 2018–2019).</li>
+                <ul className="space-y-3 text-base md:text-lg">
+                  <li>• {t.achievementsList.projects}</li>
+                  <li>• {t.achievementsList.science}</li>
+                  <li>• {t.achievementsList.sports}</li>
+                  <li>• {t.achievementsList.academic}</li>
                 </ul>
               </div>
             </div>
           </div>
 
           {/* Imagen con fondo más oscuro */}
-          <aside className="lg:col-span-4">
+          <aside className="lg:col-span-4 animate-fade-in opacity-0 [animation-delay:400ms]">
             <div className="sticky top-24">
               <div className="aspect-[3/4] rounded-3xl overflow-hidden bg-black/20 backdrop-blur-md ring-1 ring-white/20 shadow-xl">
                 <div className="w-full h-full flex items-center justify-center text-white/50 text-xl">
