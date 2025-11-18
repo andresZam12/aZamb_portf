@@ -24,7 +24,7 @@ const TECHNOLOGIES = [
 // Diccionario de traducciones
 const translations = {
   es: {
-    title: "Conóceme",
+    title: "CONÓCEME",
     description1:
       "Soy un estudiante de Ingeniería de Software apasionado por el desarrollo FullStack y con gran interés en la ciberseguridad y el pentesting. Mi motivación principal es crear soluciones digitales que no solo funcionen, sino que también sean seguras, escalables y útiles para las personas.",
     description2:
@@ -52,7 +52,7 @@ const translations = {
     },
   },
   en: {
-    title: "About Me",
+    title: "ABOUT ME",
     description1:
       "I am a Software Engineering student passionate about FullStack development with great interest in cybersecurity and pentesting. My main motivation is to create digital solutions that not only work but are also secure, scalable, and useful for people.",
     description2:
@@ -119,7 +119,7 @@ export default function AboutPage() {
 
       {/* Contenido principal */}
       <main className="container mx-auto px-6 pt-24 pb-20">
-        <h1 className="text-5xl md:text-7xl font-bold text-yellow-400 mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-yellow-400 mb-12">
           {t.title}
         </h1>
 

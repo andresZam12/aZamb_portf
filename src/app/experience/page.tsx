@@ -25,7 +25,7 @@ interface Translations {
 
 const translations: Record<Language, Translations> = {
   es: {
-    title: "Experiencia",
+    title: "EXPERIENCIA",
     skillsTitle: "Habilidades laborales",
     academicTitle: "Académica",
     laboralTitle: "Laboral y profesional",
@@ -60,13 +60,13 @@ const translations: Record<Language, Translations> = {
       "Ingeniería de Software – Universidad Cooperativa de Colombia (60% en curso)",
     ],
     laboral: [
-      "Responsable de Atención al Cliente – Chicken Lico (2024): Gestión de clientes, resolución de reclamos, manejo de inventarios y facturación.",
+      "Responsable de Atención al Cliente – Chicken Lilo (2024): Gestión de clientes, resolución de reclamos, manejo de inventarios y facturación.",
       "Vendedor y Cajero Administrador – Mundial de Mangueras (2020–2023): Administración de ventas, coordinación de personal y cumplimiento de metas comerciales.",
-      "Supervisor de Ventas – Mario Fernando Bolaños (2019–2020): Liderazgo de equipo y control de indicadores de desempeño.",
+      "Supervisor de Ventas – Surimportaciones SAS (2019–2020): Liderazgo de equipo y control de indicadores de desempeño.",
     ],
   },
   en: {
-    title: "Experience",
+    title: "EXPERIENCE",
     skillsTitle: "Work Skills",
     academicTitle: "Academic",
     laboralTitle: "Work and Professional",
@@ -101,9 +101,9 @@ const translations: Record<Language, Translations> = {
       "Software Engineering – Universidad Cooperativa de Colombia (60% in progress)",
     ],
     laboral: [
-      "Customer Service Responsible – Chicken Lico (2024): Customer management, claims resolution, inventory and billing handling.",
+      "Customer Service Responsible – Chicken Lilo (2024): Customer management, claims resolution, inventory and billing handling.",
       "Salesperson and Cashier Administrator – Mundial de Mangueras (2020–2023): Sales administration, staff coordination and meeting commercial goals.",
-      "Sales Supervisor – Mario Fernando Bolaños (2019–2020): Team leadership and performance indicators control.",
+      "Sales Supervisor – Surimportaciones SAS (2019–2020): Team leadership and performance indicators control.",
     ],
   },
 };
@@ -153,30 +153,32 @@ export default function ExperienciaPage() {
 
       <main className="max-w-7xl mx-auto px-5 pt-20 md:pt-24 pb-24">
         <header className="mb-6 md:mb-10">
-          <h1 className="text-3xl md:text-5xl font-extrabold text-white">{t.title}</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-400">{t.title}</h1>
         </header>
 
-        <section className="grid grid-cols-12 gap-6 items-start">
+        <section className="grid grid-cols-12 gap-6 md:gap-8 items-stretch">
           {/* IZQUIERDA: Introducción + habilidades + CV */}
-          <aside className="col-span-12 md:col-span-4">
-            <div className={`${glassClass} rounded-3xl ring-1 ring-white/10 shadow-xl p-5 md:p-6`}
+          <aside className="col-span-12 md:col-span-4 animate-fade-in" style={{ animationDelay: "0ms" }}>
+            <div className={`${glassClass} rounded-3xl ring-1 ring-white/10 border-2 border-black shadow-xl p-6 md:p-8 lg:p-10 h-full flex flex-col`}
             >
-              <p className="text-sm md:text-base leading-relaxed text-white/90">
+              <p className="text-sm md:text-base lg:text-lg leading-relaxed md:leading-loose text-white/90 text-justify">
                 Mi recorrido académico y profesional me ha permitido fortalecer competencias en desarrollo de software,
                 liderazgo y gestión de procesos, integrando habilidades técnicas con experiencia en trabajo en equipo y orientación al cliente.
               </p>
 
-              <h2 className="mt-6 text-xl md:text-2xl font-bold text-amber-300">{t.skillsTitle}</h2>
-              <ul className="mt-3 space-y-2 list-disc list-inside text-sm md:text-base text-white/90">
+              <h2 className="mt-6 md:mt-8 text-2xl md:text-3xl font-bold text-yellow-400">{t.skillsTitle}</h2>
+              <ul className="mt-3 md:mt-4 space-y-2 md:space-y-3 list-disc list-inside text-sm md:text-base lg:text-lg text-white/90">
                 {t.skills.map((s, i) => (
                   <li key={i}>{s}</li>
                 ))}
               </ul>
 
               {/* Botón descargar CV */}
-              <div className="mt-6 flex items-center gap-3">
+              <div className="mt-auto pt-6 md:pt-8 flex items-center gap-3">
                 <a
-                  href="/cv-andres-zambrano.pdf"
+                  href="/CVAnd.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm md:text-base font-semibold bg-stone-100 text-stone-900 ring-1 ring-black/10 shadow hover:bg-white"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="opacity-80">
@@ -189,15 +191,15 @@ export default function ExperienciaPage() {
               </div>
             </div>
 
-            <p className="mt-4 text-center text-xs text-white/70">{t.caption}</p>
+            <p className="mt-4 text-center text-sm md:text-base text-white/80">{t.caption}</p>
           </aside>
 
           {/* CENTRO: Académica */}
-          <section className="col-span-12 md:col-span-4">
-            <div className={`${glassClass} rounded-3xl ring-1 ring-white/10 shadow-xl p-5`}
+          <section className="col-span-12 md:col-span-4 animate-fade-in" style={{ animationDelay: "200ms" }}>
+            <div className={`${glassClass} rounded-3xl ring-1 ring-white/10 border-2 border-black shadow-xl p-6 md:p-8 lg:p-10 h-full`}
             >
-              <h3 className="text-2xl md:text-3xl font-extrabold text-white">{t.academicTitle}</h3>
-              <ul className="mt-4 list-disc list-inside space-y-2 text-sm md:text-base text-white/90">
+              <h3 className="text-2xl md:text-3xl font-extrabold text-yellow-400">{t.academicTitle}</h3>
+              <ul className="mt-4 md:mt-6 list-disc list-inside space-y-2 md:space-y-3 text-sm md:text-base lg:text-lg text-white/90 leading-relaxed md:leading-loose">
                 {t.academic.map((a, i) => (
                   <li key={i}>{a}</li>
                 ))}
@@ -206,11 +208,11 @@ export default function ExperienciaPage() {
           </section>
 
           {/* DERECHA: Laboral y profesional */}
-          <section className="col-span-12 md:col-span-4">
-            <div className={`${glassClass} rounded-3xl ring-1 ring-white/10 shadow-xl p-5`}
+          <section className="col-span-12 md:col-span-4 animate-fade-in" style={{ animationDelay: "400ms" }}>
+            <div className={`${glassClass} rounded-3xl ring-1 ring-white/10 border-2 border-black shadow-xl p-6 md:p-8 lg:p-10 h-full`}
             >
-              <h3 className="text-2xl md:text-3xl font-extrabold text-white">{t.laboralTitle}</h3>
-              <ul className="mt-4 list-disc list-inside space-y-2 text-sm md:text-base text-white/90">
+              <h3 className="text-2xl md:text-3xl font-extrabold text-yellow-400">{t.laboralTitle}</h3>
+              <ul className="mt-4 md:mt-6 list-disc list-inside space-y-2 md:space-y-3 text-sm md:text-base lg:text-lg text-white/90 leading-relaxed md:leading-loose">
                 {t.laboral.map((l, i) => (
                   <li key={i}>{l}</li>
                 ))}
