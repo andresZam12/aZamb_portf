@@ -108,14 +108,14 @@ export default function HeaderControls() {
   };
 
   return (
-    <div className="fixed top-4 right-5 z-50 flex items-center gap-3">
+    <div className="fixed top-2 right-2 md:top-4 md:right-5 z-50 flex items-center gap-1.5 md:gap-3">
       {/* Tema */}
       <button
         onClick={toggleTheme}
-        className="inline-flex items-center gap-2 rounded-full border border-black/20 dark:border-white/10 px-5 py-3 text-base md:text-lg font-semibold bg-white/10 hover:bg-white/20 dark:bg-black/30 backdrop-blur transition"
+        className="inline-flex items-center gap-1 md:gap-2 rounded-full border-2 border-black px-2 py-1.5 md:px-5 md:py-3 text-xs md:text-base font-semibold text-white bg-white/10 hover:bg-white/20 dark:bg-black/30 backdrop-blur transition"
       >
-        <span className="inline-block size-2 rounded-full bg-amber-700" />
-        {isDark ? "Dark" : "Light"}
+        <span className="inline-block size-1.5 md:size-2 rounded-full bg-amber-700" />
+        <span className="hidden sm:inline">{isDark ? "Dark" : "Light"}</span>
       </button>
 
       {/* CV */}
@@ -123,10 +123,10 @@ export default function HeaderControls() {
         href="/CVAnd.pdf"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 rounded-full border border-black/20 dark:border-white/10 px-5 py-3 text-base md:text-lg font-semibold bg-white/10 hover:bg-white/20 dark:bg-black/30 backdrop-blur transition"
+        className="inline-flex items-center gap-1 md:gap-2 rounded-full border-2 border-black px-2 py-1.5 md:px-5 md:py-3 text-xs md:text-base font-semibold text-white bg-white/10 hover:bg-white/20 dark:bg-black/30 backdrop-blur transition"
       >
         {t.cv}
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="12" height="12" className="md:w-4 md:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
           <polyline points="7 10 12 15 17 10" />
           <line x1="12" y1="15" x2="12" y2="3" />
@@ -137,16 +137,17 @@ export default function HeaderControls() {
       <div className="relative">
         <button
           onClick={() => setLangMenuOpen(!langMenuOpen)}
-          className="lang-menu-button list-none cursor-pointer inline-flex items-center gap-2 rounded-full border border-black/20 dark:border-white/10 px-5 py-3 text-base md:text-lg font-semibold bg-white/10 hover:bg-white/20 dark:bg-black/30 backdrop-blur transition"
+          className="lang-menu-button list-none cursor-pointer inline-flex items-center gap-1 md:gap-2 rounded-full border-2 border-black px-2 py-1.5 md:px-5 md:py-3 text-xs md:text-base font-semibold text-white bg-white/10 hover:bg-white/20 dark:bg-black/30 backdrop-blur transition"
         >
-          🌎 {t.language}
+          <span className="text-sm md:text-base">🌎</span>
+          <span className="hidden sm:inline">{t.language}</span>
         </button>
         {langMenuOpen && (
-          <div className={`lang-menu-dropdown ${isDark ? 'absolute right-0 mt-2 w-44 md:w-52 rounded-2xl bg-black text-white ring-1 ring-black/20 shadow-2xl overflow-hidden' : 'absolute right-0 mt-2 w-44 md:w-52 rounded-2xl bg-[#3b2a23] text-stone-100 ring-1 ring-black/20 shadow-2xl overflow-hidden'}`}>
-            <button onClick={() => { setLang("es"); setLangMenuOpen(false); }} className={`w-full text-left px-4 py-3 ${isDark ? 'hover:bg-gray-800 text-white' : 'hover:bg-white/10'} text-sm`}>
+          <div className={`lang-menu-dropdown ${isDark ? 'absolute right-0 mt-2 w-36 md:w-52 rounded-2xl bg-black text-white ring-1 ring-white/20 shadow-2xl overflow-hidden' : 'absolute right-0 mt-2 w-36 md:w-52 rounded-2xl bg-[#3b2a23] text-white ring-1 ring-white/20 shadow-2xl overflow-hidden'}`}>
+            <button onClick={() => { setLang("es"); setLangMenuOpen(false); }} className={`w-full text-left px-3 md:px-4 py-2 md:py-3 ${isDark ? 'hover:bg-gray-800' : 'hover:bg-white/10'} text-xs md:text-sm text-white`}>
               {t.es}
             </button>
-            <button onClick={() => { setLang("en"); setLangMenuOpen(false); }} className={`w-full text-left px-4 py-3 ${isDark ? 'hover:bg-gray-800 text-white' : 'hover:bg-white/10'} text-sm`}>
+            <button onClick={() => { setLang("en"); setLangMenuOpen(false); }} className={`w-full text-left px-3 md:px-4 py-2 md:py-3 ${isDark ? 'hover:bg-gray-800' : 'hover:bg-white/10'} text-xs md:text-sm text-white`}>
               {t.en}
             </button>
           </div>
@@ -157,11 +158,11 @@ export default function HeaderControls() {
       <div className="relative">
         <button
           onClick={() => setMenuOpen((v) => !v)}
-          className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-black/20 dark:border-white/10 bg-white/10 dark:bg-black/30 text-base md:text-lg font-semibold hover:bg-white/20 transition"
+          className="inline-flex items-center justify-center w-8 h-8 md:w-12 md:h-12 rounded-full border-2 border-black bg-white/10 dark:bg-black/30 text-xs md:text-base font-semibold text-white hover:bg-white/20 transition"
           aria-expanded={menuOpen}
           aria-label="Abrir menú principal"
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg width="16" height="16" className="md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="3" y1="6" x2="21" y2="6" />
             <line x1="3" y1="12" x2="21" y2="12" />
             <line x1="3" y1="18" x2="21" y2="18" />
@@ -169,13 +170,13 @@ export default function HeaderControls() {
         </button>
 
         {menuOpen && (
-          <div className={`menu-dropdown ${isDark ? 'absolute right-0 mt-12 w-48 md:w-64 rounded-2xl bg-black text-white ring-1 ring-black/20 shadow-2xl overflow-hidden' : 'absolute right-0 mt-12 w-48 md:w-64 rounded-2xl bg-[#3b2a23] text-stone-100 ring-1 ring-black/20 shadow-2xl overflow-hidden'}`}>
-              <Link href="/" className={`block px-4 py-3 ${isDark ? 'hover:bg-gray-800 text-white' : 'hover:bg-white/10'}`}>{lang === 'es' ? 'Inicio' : 'Home'}</Link>
-            <Link href="/about" className={`block px-4 py-3 ${isDark ? 'hover:bg-gray-800 text-white' : 'hover:bg-white/10'}`}>{lang === 'es' ? 'Acerca de mí' : 'About me'}</Link>
-            <Link href="/projects" className={`block px-4 py-3 ${isDark ? 'hover:bg-gray-800 text-white' : 'hover:bg-white/10'}`}>{lang === 'es' ? 'Proyectos' : 'Projects'}</Link>
-            <Link href="/experience" className={`block px-4 py-3 ${isDark ? 'hover:bg-gray-800 text-white' : 'hover:bg-white/10'}`}>{lang === 'es' ? 'Experiencia' : 'Experience'}</Link>
-            <Link href="/references" className={`block px-4 py-3 ${isDark ? 'hover:bg-gray-800 text-white' : 'hover:bg-white/10'}`}>{lang === 'es' ? 'Referencias' : 'References'}</Link>
-            <Link href="/contacts" className={`block px-4 py-3 ${isDark ? 'hover:bg-gray-800 text-white' : 'hover:bg-white/10'}`}>{lang === 'es' ? 'Contactos' : 'Contacts'}</Link>
+          <div className={`menu-dropdown ${isDark ? 'absolute right-0 mt-2 w-40 md:w-64 rounded-2xl bg-black text-white ring-1 ring-white/20 shadow-2xl overflow-hidden' : 'absolute right-0 mt-2 w-40 md:w-64 rounded-2xl bg-[#3b2a23] text-white ring-1 ring-white/20 shadow-2xl overflow-hidden'}`}>
+            <Link href="/" className={`block px-3 md:px-4 py-2 md:py-3 text-xs md:text-base ${isDark ? 'hover:bg-gray-800' : 'hover:bg-white/10'} text-white`}>{lang === 'es' ? 'Inicio' : 'Home'}</Link>
+            <Link href="/about" className={`block px-3 md:px-4 py-2 md:py-3 text-xs md:text-base ${isDark ? 'hover:bg-gray-800' : 'hover:bg-white/10'} text-white`}>{lang === 'es' ? 'Acerca de mí' : 'About me'}</Link>
+            <Link href="/projects" className={`block px-3 md:px-4 py-2 md:py-3 text-xs md:text-base ${isDark ? 'hover:bg-gray-800' : 'hover:bg-white/10'} text-white`}>{lang === 'es' ? 'Proyectos' : 'Projects'}</Link>
+            <Link href="/experience" className={`block px-3 md:px-4 py-2 md:py-3 text-xs md:text-base ${isDark ? 'hover:bg-gray-800' : 'hover:bg-white/10'} text-white`}>{lang === 'es' ? 'Experiencia' : 'Experience'}</Link>
+            <Link href="/references" className={`block px-3 md:px-4 py-2 md:py-3 text-xs md:text-base ${isDark ? 'hover:bg-gray-800' : 'hover:bg-white/10'} text-white`}>{lang === 'es' ? 'Referencias' : 'References'}</Link>
+            <Link href="/contacts" className={`block px-3 md:px-4 py-2 md:py-3 text-xs md:text-base ${isDark ? 'hover:bg-gray-800' : 'hover:bg-white/10'} text-white`}>{lang === 'es' ? 'Contactos' : 'Contacts'}</Link>
           </div>
         )}
       </div>

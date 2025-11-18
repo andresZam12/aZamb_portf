@@ -94,12 +94,12 @@ export default function PortfolioHero() {
 
       {/* Navegación principal - Responsive */}
       <nav className="fixed top-20 left-0 right-0 z-40 overflow-x-auto">
-        <div className="flex justify-start md:justify-center gap-2 px-4 min-w-max mx-auto">
+        <div className="flex justify-start md:justify-center gap-2 px-4 min-w-max mx-auto  ">
           {Object.entries(t.navigation).map(([key, value]) => (
             <Link
               key={key}
               href={`/${key === "home" ? "" : key}`}
-              className="px-3 py-2 md:px-6 md:py-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-sm text-white font-semibold text-sm md:text-lg tracking-wide transition-all whitespace-nowrap"
+              className="px-3 py-2 md:px-6 md:py-3 bg-white/10 hover:bg-white/20 rounded-full border-2 border-black backdrop-blur-sm text-white font-semibold text-sm md:text-lg tracking-wide transition-all whitespace-nowrap"
             >
               {value}
             </Link>

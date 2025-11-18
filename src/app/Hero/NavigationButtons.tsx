@@ -12,9 +12,9 @@ export default function NavigationButtons({ prev, next }: Props) {
       {prev ? (
         <Link
           href={prev}
-          className="flex items-center text-gray-300 hover:text-blue-400 transition"
+          className="flex items-center px-4 py-2 md:px-6 md:py-3 rounded-full border-2 border-black text-white hover:bg-white/10 transition"
         >
-          <ArrowLeft className="mr-2" /> Anterior
+          <ArrowLeft className="mr-2" /> <span className="hidden md:inline">Anterior</span>
         </Link>
       ) : (
         <span />
@@ -23,9 +23,9 @@ export default function NavigationButtons({ prev, next }: Props) {
       {next ? (
         <Link
           href={next}
-          className="flex items-center text-gray-300 hover:text-blue-400 transition"
+          className="flex items-center px-4 py-2 md:px-6 md:py-3 rounded-full border-2 border-black text-white hover:bg-white/10 transition"
         >
-          Siguiente <ArrowRight className="ml-2" />
+          <span className="hidden md:inline">Siguiente</span> <ArrowRight className="ml-2" />
         </Link>
       ) : (
         <span />
