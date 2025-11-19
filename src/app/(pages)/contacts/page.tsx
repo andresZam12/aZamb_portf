@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useLang } from "../../providers/LanguageProvider";
 import Link from "next/link";
 import AnimatedBackground from "../../components/AnimatedBackground";
+import emailjs from "@emailjs/browser";
 
 type Language = "es" | "en";
 
@@ -16,11 +17,15 @@ interface Translations {
   next: string;
   motto: string;
   formLabel: string;
+  placeholderName: string;
   placeholderEmail: string;
+  placeholderMessage: string;
   submitBtn: string;
   contactMethodsTitle: string;
   sendEmailTitle: string;
   thankYou: string;
+  sending: string;
+  errorMessage: string;
 }
 
 const translations: Record<Language, Translations> = {
@@ -41,11 +46,15 @@ const translations: Record<Language, Translations> = {
     next: "Inicio →",
     motto: "si lo puedes imaginar, lo podemos hacer",
     formLabel: "Déjame tu contacto y me comunicaré contigo",
+    placeholderName: "Tu nombre",
     placeholderEmail: "Tu correo electrónico",
+    placeholderMessage: "Tu mensaje (opcional)",
     submitBtn: "Enviar",
     contactMethodsTitle: "Métodos de Contacto",
     sendEmailTitle: "Envía tu correo",
     thankYou: "¡Gracias! Me comunicaré pronto.",
+    sending: "Enviando...",
+    errorMessage: "Error al enviar. Intenta de nuevo.",
   },
   en: {
     title: "Contacts",
@@ -64,11 +73,15 @@ const translations: Record<Language, Translations> = {
     next: "Home →",
     motto: "If you can imagine it, we can do it",
     formLabel: "Leave me your contact and I will get back to you",
+    placeholderName: "Your name",
     placeholderEmail: "Your email address",
+    placeholderMessage: "Your message (optional)",
     submitBtn: "Submit",
     contactMethodsTitle: "Contact Methods",
     sendEmailTitle: "Send your email",
     thankYou: "Thank you! I'll be in touch.",
+    sending: "Sending...",
+    errorMessage: "Error sending. Try again.",
   },
 };
 
@@ -78,8 +91,12 @@ export default function ContactosPage() {
   const t = translations[lang];
 
   const [isDark, setIsDark] = useState(false);
+  const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
+  const [mensaje, setMensaje] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
   useEffect(() => {
     const update = () => setIsDark(document.documentElement.classList.contains("dark"));
     update();
@@ -101,12 +118,43 @@ export default function ContactosPage() {
     ? "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-black hover:bg-gray-800"
     : "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-amber-950/90 hover:bg-amber-900";
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
+  const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
+    if (!nombre.trim() || !email.trim()) return;
+
+    setSending(true);
+    setError(false);
+
+    const now = new Date();
+    const tiempo = now.toLocaleString('es-ES', { 
+      dateStyle: 'medium', 
+      timeStyle: 'short' 
+    });
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          nombre: nombre,
+          email: email,
+          mensaje: mensaje || "Sin mensaje",
+          tiempo: tiempo,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+      
       setSubmitted(true);
+      setNombre("");
       setEmail("");
-      setTimeout(() => setSubmitted(false), 3000);
+      setMensaje("");
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch (err) {
+      console.error("Error al enviar correo:", err);
+      setError(true);
+      setTimeout(() => setError(false), 4000);
+    } finally {
+      setSending(false);
     }
   };
 
@@ -195,6 +243,16 @@ export default function ContactosPage() {
               >
                 <div>
                   <input
+                    type="text"
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                    placeholder={t.placeholderName}
+                    required
+                    className="w-full px-4 py-3 md:py-4 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-amber-400 focus:outline-none transition"
+                  />
+                </div>
+                <div>
+                  <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -203,15 +261,30 @@ export default function ContactosPage() {
                     className="w-full px-4 py-3 md:py-4 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-amber-400 focus:outline-none transition"
                   />
                 </div>
+                <div>
+                  <textarea
+                    value={mensaje}
+                    onChange={(e) => setMensaje(e.target.value)}
+                    placeholder={t.placeholderMessage}
+                    rows={4}
+                    className="w-full px-4 py-3 md:py-4 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-amber-400 focus:outline-none transition resize-none"
+                  />
+                </div>
                 <button
                   type="submit"
-                  className={`w-full ${buttonClass}`}
+                  disabled={sending}
+                  className={`w-full ${buttonClass} ${sending ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
-                  {t.submitBtn}
+                  {sending ? t.sending : t.submitBtn}
                 </button>
                 {submitted && (
-                  <p className="text-green-400 text-sm text-center">
+                  <p className="text-green-400 text-sm text-center font-semibold">
                     {t.thankYou}
+                  </p>
+                )}
+                {error && (
+                  <p className="text-red-400 text-sm text-center font-semibold">
+                    {t.errorMessage}
                   </p>
                 )}
               </form>
