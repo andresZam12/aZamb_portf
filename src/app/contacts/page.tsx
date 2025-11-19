@@ -123,102 +123,69 @@ export default function ContactosPage() {
 
       {/* HeaderControls (tema/idioma/menu) se muestran globalmente desde el layout */}
 
-      {/* Etiqueta superior */}
-      <header className="max-w-6xl mx-auto px-5 pt-20 md:pt-24">
-        <span className="inline-block rounded-full bg-[#8b5e3c]/90 px-4 py-1 text-xs font-semibold ring-1 ring-black/20 text-white">
-          {t.title.toUpperCase()}
-        </span>
-      </header>
-
       <main className="max-w-6xl mx-auto px-5 py-8 md:py-12 pb-40">
+        <h1 className="text-4xl md:text-5xl font-bold text-yellow-400 mb-12">
+          {t.title.toUpperCase()}
+        </h1>
         <section className="grid grid-cols-12 gap-6 md:gap-8">
           {/* COLUMNA IZQUIERDA: métodos de contacto */}
-          <aside className="col-span-12 md:col-span-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">{t.contactMethodsTitle}</h2>
+          <aside className="col-span-12 md:col-span-6 animate-fade-in opacity-0" style={{ animationDelay: "0ms" }}>
+            <h2 className="text-xl md:text-2xl font-bold text-yellow-400 mb-6">{t.contactMethodsTitle}</h2>
             <ul className="space-y-4 md:space-y-6">
               {/* Gmail */}
-              <li className="flex items-center gap-4">
-                <span className="grid place-items-center w-12 h-12 rounded-lg bg-white/10 ring-1 ring-white/15">
+              <li className="flex items-center justify-center md:justify-start gap-4">
+                <span className="grid place-items-center w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/10 ring-1 ring-white/15">
                   <svg
                     viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    className="text-red-400"
+                    width="28"
+                    height="28"
+                    className="w-7 h-7 md:w-8 md:h-8"
                   >
-                    <path d="M12 13.5L2 6.75V18a2 2 0 002 2h16a2 2 0 002-2V6.75L12 13.5z" />
-                    <path
-                      d="M22 6V6a2 2 0 00-2-2H4a2 2 0 00-2 2v.75L12 13.5 22 6.75V6z"
-                      className="fill-red-500"
-                    />
+                    <path fill="#EA4335" d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
                   </svg>
                 </span>
                 <a
                   href="mailto:andresze2001@gmail.com"
-                  className="text-base md:text-lg font-semibold text-white hover:text-amber-300 transition"
+                  className="text-sm md:text-base lg:text-lg font-semibold text-white hover:text-yellow-400 transition"
                 >
                   andresze2001@gmail.com
                 </a>
               </li>
 
-              {/* WhatsApp */}
-              <li className="flex items-center gap-4">
-                <span className="grid place-items-center w-12 h-12 rounded-lg bg-white/10 ring-1 ring-white/15">
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    className="text-green-400"
-                  >
-                    <path d="M20 11.5A8.5 8.5 0 115.4 18.6L4 22l3.5-1.4A8.5 8.5 0 1120 11.5z" />
-                  </svg>
-                </span>
-                <a
-                  href="https://wa.me/57317799202"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-base md:text-lg font-semibold text-white hover:text-amber-300 transition"
-                >
-                  317799202
-                </a>
-              </li>
-
               {/* LinkedIn */}
-              <li className="flex items-center gap-4">
-                <span className="grid place-items-center w-12 h-12 rounded-lg bg-white/10 ring-1 ring-white/15">
+              <li className="flex items-center justify-center md:justify-start gap-4">
+                <span className="grid place-items-center w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/10 ring-1 ring-white/15">
                   <svg
                     viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    className="text-sky-400"
+                    width="28"
+                    height="28"
+                    className="w-7 h-7 md:w-8 md:h-8"
                   >
-                    <path d="M6 6a2 2 0 11-4 0 2 2 0 014 0zM4 9h4v11H4zM14 9h4a4 4 0 014 4v7h-4v-6a2 2 0 00-2-2h-2v8h-4V9h4z" />
+                    <path fill="#0A66C2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                   </svg>
                 </span>
                 <a
                   href="https://www.linkedin.com/in/andres_z8"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-base md:text-lg font-semibold text-white hover:text-amber-300 transition"
+                  className="text-sm md:text-base lg:text-lg font-semibold text-white hover:text-yellow-400 transition"
                 >
                   andres_z8
                 </a>
               </li>
 
               {/* GitHub */}
-              <li className="flex items-center gap-4">
-                <span className="grid place-items-center w-12 h-12 rounded-lg bg-white/10 ring-1 ring-white/15">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-white">
-                    <path d="M12 .5C5.73.5.99 5.24.99 11.52c0 4.86 3.15 8.98 7.51 10.43.55.1.75-.24.75-.54 0-.27-.01-1.14-.02-2.07-3.06.66-3.7-1.3-3.7-1.3-.5-1.28-1.22-1.62-1.22-1.62-.99-.68.08-.67.08-.67 1.09.08 1.66 1.12 1.66 1.12.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.46-2.44-.28-5.01-1.22-5.01-5.42 0-1.2.43-2.17 1.12-2.94-.11-.28-.49-1.41.11-2.94 0 0 .92-.29 3.01 1.12.87-.24 1.8-.36 2.72-.36.92 0 1.85.12 2.72.36 2.09-1.41 3.01-1.12 3.01-1.12.6 1.53.22 2.66.11 2.94.69.77 1.12 1.74 1.12 2.94 0 4.21-2.58 5.14-5.03 5.41.39.34.73 1.01.73 2.04 0 1.47-.01 2.65-.01 3.01 0 .3.2.65.76.54 4.35-1.45 7.5-5.57 7.5-10.43C23.01 5.24 18.27.5 12 .5z" />
+              <li className="flex items-center justify-center md:justify-start gap-4">
+                <span className="grid place-items-center w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/10 ring-1 ring-white/15">
+                  <svg width="28" height="28" viewBox="0 0 24 24" className="w-7 h-7 md:w-8 md:h-8">
+                    <path fill="white" d="M12 .5C5.73.5.99 5.24.99 11.52c0 4.86 3.15 8.98 7.51 10.43.55.1.75-.24.75-.54 0-.27-.01-1.14-.02-2.07-3.06.66-3.7-1.3-3.7-1.3-.5-1.28-1.22-1.62-1.22-1.62-.99-.68.08-.67.08-.67 1.09.08 1.66 1.12 1.66 1.12.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.46-2.44-.28-5.01-1.22-5.01-5.42 0-1.2.43-2.17 1.12-2.94-.11-.28-.49-1.41.11-2.94 0 0 .92-.29 3.01 1.12.87-.24 1.8-.36 2.72-.36.92 0 1.85.12 2.72.36 2.09-1.41 3.01-1.12 3.01-1.12.6 1.53.22 2.66.11 2.94.69.77 1.12 1.74 1.12 2.94 0 4.21-2.58 5.14-5.03 5.41.39.34.73 1.01.73 2.04 0 1.47-.01 2.65-.01 3.01 0 .3.2.65.76.54 4.35-1.45 7.5-5.57 7.5-10.43C23.01 5.24 18.27.5 12 .5z" />
                   </svg>
                 </span>
                 <a
-                  href="https://github.com/andres_z8"
+                  href="https://github.com/andresZam12"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-base md:text-lg font-semibold text-white hover:text-amber-300 transition"
+                  className="text-sm md:text-base lg:text-lg font-semibold text-white hover:text-yellow-400 transition"
                 >
                   GitHub
                 </a>
@@ -227,8 +194,8 @@ export default function ContactosPage() {
           </aside>
 
           {/* COLUMNA DERECHA: Formulario de contacto */}
-          <section className="col-span-12 md:col-span-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">{t.sendEmailTitle}</h2>
+          <section className="col-span-12 md:col-span-6 animate-fade-in opacity-0" style={{ animationDelay: "200ms" }}>
+            <h2 className="text-xl md:text-2xl font-bold text-yellow-400 mb-6">{t.sendEmailTitle}</h2>
             <form
               onSubmit={handleEmailSubmit}
               className={`${glassClass} rounded-3xl ring-1 ring-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-2 border-black p-5 md:p-6 space-y-4`}
@@ -262,20 +229,22 @@ export default function ContactosPage() {
         </section>
 
         {/* IMAGEN CENTRADA */}
-        <section className="col-span-12 mt-12 md:mt-16 flex justify-center">
+        <section className="col-span-12 mt-12 md:mt-16 flex justify-center animate-fade-in opacity-0" style={{ animationDelay: "400ms" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
-            src="/anto.jpg"
-            alt="Andrés Zambo"
-            className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-2 ring-white/20 border-2 border-black"
+            src="/anz.jpeg"
+            alt="Andrés Zambrano"
+            className="w-64 md:w-80 lg:w-96 h-auto object-contain rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-2 ring-white/20 border-2 border-black"
           />
         </section>
 
         {/* Lema centrado debajo de la imagen */}
-        <div className="mt-12 md:mt-16 text-center">
-          <p className="text-xl md:text-2xl italic text-white/80 px-5">
-            &quot;{t.motto}&quot;
-          </p>
+        <div className="mt-12 md:mt-16 flex justify-center animate-fade-in opacity-0" style={{ animationDelay: "600ms" }}>
+          <div className="group px-8 py-6 rounded-2xl hover:shadow-[0_15px_50px_rgba(250,204,21,0.6)] hover:bg-yellow-400/10 transition-all duration-500 cursor-default">
+            <p className="text-xl md:text-2xl italic text-white/80 group-hover:text-yellow-400 transition-colors duration-500 text-center">
+              &quot;{t.motto}&quot;
+            </p>
+          </div>
         </div>
       </main>
 

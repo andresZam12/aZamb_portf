@@ -94,7 +94,7 @@ const translations: Record<
 const projects = [
   { key: "elliotIA" as const, image: "/eliot2.png", repo: "https://github.com/andresZam12/elliot-ia" },
   { key: "int3d" as const, image: "/Zom.jpeg", repo: "https://github.com/andresZam12/Juego_py_final.git" },
-  { key: "portfolio" as const, image: "/portfolio.jpg", repo: "https://github.com/andresZam12/aZamb_portf" },
+  { key: "portfolio" as const, image: "/portt.jpeg", repo: "https://github.com/andresZam12/aZamb_portf" },
 ];
 
 const extraKeys = ["academic", "events", "discord"] as const;

@@ -191,7 +191,7 @@ export default function AboutPage() {
             <div className="sticky top-24">
               <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-2 border-black">
                 <img
-                  src="/zam.jpeg"
+                  src="/zambra.jpeg"
                   alt="Andrés Zambrano"
                   className="w-full h-full object-cover"
                 />
