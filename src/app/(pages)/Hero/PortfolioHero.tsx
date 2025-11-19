@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useLang } from "../../providers/LanguageProvider";
 import Link from "next/link";
+import AnimatedBackground from "../../components/AnimatedBackground";
 
 // Diccionario de traducciones
 const translations = {
@@ -82,15 +83,8 @@ export default function PortfolioHero() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Fondo de 3 franjas */}
-      <span
-        aria-hidden
-        className={`absolute inset-0 -z-10 ${
-          isDark
-            ? "bg-[linear-gradient(to_right,#1a1a1a_0%,#1a1a1a_33.34%,#2d2d2d_33.34%,#2d2d2d_66.67%,#404040_66.67%,#404040_100%)]"
-            : "bg-[linear-gradient(to_right,#3b2a23_0%,#3b2a23_33.34%,#8b5e3c_33.34%,#8b5e3c_66.67%,#c48758_66.67%,#c48758_100%)]"
-        }`}
-      />
+      {/* Fondo animado con partículas */}
+      <AnimatedBackground isDark={isDark} />
 
       {/* Navegación principal - Responsive */}
       <nav className="fixed top-20 left-0 right-0 z-40 overflow-x-auto">

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useLang } from "../../providers/LanguageProvider";
+import AnimatedBackground from "../../components/AnimatedBackground";
 
 const TECHNOLOGIES = [
   "MySQL",
@@ -114,8 +115,8 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Fondo de 3 franjas */}
-      <span aria-hidden className={`absolute inset-0 -z-10 ${bgGradient}`} />
+      {/* Fondo animado con partículas flotantes */}
+      <AnimatedBackground isDark={isDark} />
 
       {/* Contenido principal */}
       <main className="container mx-auto px-6 pt-24 pb-20">

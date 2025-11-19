@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useLang } from "../../providers/LanguageProvider";
 import Link from "next/link";
+import AnimatedBackground from "../../components/AnimatedBackground";
 
 type Language = "es" | "en";
 
@@ -112,7 +113,7 @@ export default function ExperienciaPage() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <span aria-hidden className={`absolute inset-0 -z-10 ${bgGradient}`} />
+      <AnimatedBackground isDark={isDark} />
 
       <main className="max-w-7xl mx-auto px-5 pt-20 md:pt-24 pb-24">
         <header className="mb-6 md:mb-10">

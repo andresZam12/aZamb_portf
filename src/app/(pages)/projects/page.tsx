@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLang } from "../../providers/LanguageProvider";
+import AnimatedBackground from "../../components/AnimatedBackground";
 
 type Language = "es" | "en";
 
@@ -132,7 +133,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <span aria-hidden className={`absolute inset-0 -z-10 ${bgGradient}`} />
+      <AnimatedBackground isDark={isDark} />
 
       <main className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-24">
         <h1 className="text-4xl md:text-5xl font-bold text-yellow-400 mb-8 md:mb-12">
