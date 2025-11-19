@@ -8,7 +8,7 @@ export default function AnimatedBackground({ isDark }: AnimatedBackgroundProps) 
   
   const particles = Array.from({ length: 15 }, (_, i) => ({
     id: i,
-    size: Math.random() * 60 + 20, // 20-80px
+    size: Math.random() * 40 + 15, // 15-55px
     left: Math.random() * 100, // 0-100%
     top: Math.random() * 100, // 0-100%
     delay: Math.random() * 5, // 0-5s

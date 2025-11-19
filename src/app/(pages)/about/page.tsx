@@ -30,7 +30,9 @@ const translations = {
       "Soy un estudiante de Ingeniería de Software apasionado por el desarrollo FullStack y con gran interés en la ciberseguridad y el pentesting. Mi motivación principal es crear soluciones digitales que no solo funcionen, sino que también sean seguras, escalables y útiles para las personas.",
     description2:
       "Soy un gran líder de proyectos con buena experiencia, enfocado en el trabajo en equipo responsable y pulido, tengo habilidades en la solución rápida de problemas con buen fundamento práctico.",
-    technologies: "Tecnologías",
+    description3:
+      "Soy deportista de rendimiento en fútbol y futbol de salón, soy músico, guitarrista, bajista, percusionista y cantante, soy barbero y una persona creativa para manualidades y artesanías varias con materiales diversos.", 
+      technologies: "Tecnologías",
     personalSkills: "Habilidades personales",
     languages: "Idiomas",
     achievements: "Reconocimientos",
@@ -58,6 +60,8 @@ const translations = {
       "I am a Software Engineering student passionate about FullStack development with great interest in cybersecurity and pentesting. My main motivation is to create digital solutions that not only work but are also secure, scalable, and useful for people.",
     description2:
       "I am a great project leader with good experience, focused on responsible and polished teamwork, I have skills in quick problem solving with good practical foundation.",
+    description3:
+      "I am a high-performance athlete in soccer and futsal, I am a musician, guitarist, bassist, percussionist and singer, I am a barber and a creative person for various crafts and handicrafts with diverse materials.",
     technologies: "Technologies",
     personalSkills: "Personal Skills",
     languages: "Languages",
@@ -129,7 +133,8 @@ export default function AboutPage() {
           <div className="lg:col-span-8 space-y-8 animate-fade-in opacity-0 [animation-delay:200ms]">
             <div className="bg-black/20 backdrop-blur-md rounded-3xl p-8 text-white shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-2 border-black">
               <p className="text-lg md:text-xl leading-relaxed mb-6 text-justify">{t.description1}</p>
-              <p className="text-lg md:text-xl leading-relaxed text-justify">{t.description2}</p>
+              <p className="text-lg md:text-xl leading-relaxed mb-6 text-justify">{t.description2}</p>
+              <p className="text-lg md:text-xl leading-relaxed text-justify">{t.description3}</p>
 
               {/* Tecnologías */}
               <section className="mt-8">

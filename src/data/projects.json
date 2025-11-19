@@ -1,0 +1,88 @@
+{
+  "es": {
+    "title": "PROYECTOS",
+    "additionals": "Proyectos Adicionales",
+    "viewCode": "Ver código",
+    "projects": {
+      "project1": {
+        "name": "Sistema de Gestión",
+        "description": "Aplicación web completa para gestión empresarial con panel administrativo",
+        "image": "/project1.jpg",
+        "github": "https://github.com/andresZam12"
+      },
+      "project2": {
+        "name": "E-commerce Platform",
+        "description": "Plataforma de comercio electrónico con carrito de compras y pasarela de pago",
+        "image": "/project2.jpg",
+        "github": "https://github.com/andresZam12"
+      },
+      "project3": {
+        "name": "Dashboard Analytics",
+        "description": "Dashboard interactivo para análisis de datos con gráficos en tiempo real",
+        "image": "/project3.jpg",
+        "github": "https://github.com/andresZam12"
+      }
+    },
+    "extras": {
+      "extra1": {
+        "name": "API REST",
+        "description": "API REST completa con autenticación JWT y documentación Swagger"
+      },
+      "extra2": {
+        "name": "Chat en Tiempo Real",
+        "description": "Aplicación de mensajería instantánea con Socket.io"
+      },
+      "extra3": {
+        "name": "Sistema de Autenticación",
+        "description": "Sistema robusto de autenticación con roles y permisos"
+      }
+    },
+    "navigation": {
+      "prev": "← Experiencia",
+      "next": "Referencias →"
+    }
+  },
+  "en": {
+    "title": "PROJECTS",
+    "additionals": "Additional Projects",
+    "viewCode": "View code",
+    "projects": {
+      "project1": {
+        "name": "Management System",
+        "description": "Complete web application for business management with admin panel",
+        "image": "/project1.jpg",
+        "github": "https://github.com/andresZam12"
+      },
+      "project2": {
+        "name": "E-commerce Platform",
+        "description": "E-commerce platform with shopping cart and payment gateway",
+        "image": "/project2.jpg",
+        "github": "https://github.com/andresZam12"
+      },
+      "project3": {
+        "name": "Analytics Dashboard",
+        "description": "Interactive dashboard for data analysis with real-time charts",
+        "image": "/project3.jpg",
+        "github": "https://github.com/andresZam12"
+      }
+    },
+    "extras": {
+      "extra1": {
+        "name": "REST API",
+        "description": "Complete REST API with JWT authentication and Swagger documentation"
+      },
+      "extra2": {
+        "name": "Real-time Chat",
+        "description": "Instant messaging application with Socket.io"
+      },
+      "extra3": {
+        "name": "Authentication System",
+        "description": "Robust authentication system with roles and permissions"
+      }
+    },
+    "navigation": {
+      "prev": "← Experience",
+      "next": "References →"
+    }
+  }
+}

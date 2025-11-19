@@ -1,0 +1,28 @@
+{
+  "es": {
+    "greeting": "Hola, soy",
+    "name": "Andrés Zambrano",
+    "title": "Desarrollador Full Stack",
+    "description": "Apasionado por crear soluciones tecnológicas innovadoras",
+    "image": "/andres.jpeg",
+    "buttons": {
+      "about": "Acerca de mí",
+      "projects": "Proyectos",
+      "experience": "Experiencia",
+      "contacts": "Contactos"
+    }
+  },
+  "en": {
+    "greeting": "Hello, I'm",
+    "name": "Andrés Zambrano",
+    "title": "Full Stack Developer",
+    "description": "Passionate about creating innovative technological solutions",
+    "image": "/andres.jpeg",
+    "buttons": {
+      "about": "About me",
+      "projects": "Projects",
+      "experience": "Experience",
+      "contacts": "Contacts"
+    }
+  }
+}

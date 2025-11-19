@@ -1,0 +1,74 @@
+{
+  "es": {
+    "title": "Contactos",
+    "motto": "si lo puedes imaginar, lo podemos hacer",
+    "formLabel": "Déjame tu contacto y me comunicaré contigo",
+    "placeholderName": "Tu nombre",
+    "placeholderEmail": "Tu correo electrónico",
+    "placeholderMessage": "Tu mensaje (opcional)",
+    "submitBtn": "Enviar",
+    "contactMethodsTitle": "Métodos de Contacto",
+    "sendEmailTitle": "Envía tu correo",
+    "thankYou": "¡Gracias! Me comunicaré pronto.",
+    "sending": "Enviando...",
+    "errorMessage": "Error al enviar. Intenta de nuevo.",
+    "image": "/anz.jpeg",
+    "contacts": {
+      "gmail": {
+        "label": "Gmail",
+        "url": "mailto:andresze200103@gmail.com",
+        "display": "andresze200103@gmail.com"
+      },
+      "linkedin": {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/andres_z8",
+        "display": "andres_z8"
+      },
+      "github": {
+        "label": "GitHub",
+        "url": "https://github.com/andresZam12",
+        "display": "GitHub"
+      }
+    },
+    "navigation": {
+      "prev": "← Referencias",
+      "next": "Inicio →"
+    }
+  },
+  "en": {
+    "title": "Contacts",
+    "motto": "If you can imagine it, we can do it",
+    "formLabel": "Leave me your contact and I will get back to you",
+    "placeholderName": "Your name",
+    "placeholderEmail": "Your email address",
+    "placeholderMessage": "Your message (optional)",
+    "submitBtn": "Submit",
+    "contactMethodsTitle": "Contact Methods",
+    "sendEmailTitle": "Send your email",
+    "thankYou": "Thank you! I'll be in touch.",
+    "sending": "Sending...",
+    "errorMessage": "Error sending. Try again.",
+    "image": "/anz.jpeg",
+    "contacts": {
+      "gmail": {
+        "label": "Gmail",
+        "url": "mailto:andresze200103@gmail.com",
+        "display": "andresze200103@gmail.com"
+      },
+      "linkedin": {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/andres_z8",
+        "display": "andres_z8"
+      },
+      "github": {
+        "label": "GitHub",
+        "url": "https://github.com/andresZam12",
+        "display": "GitHub"
+      }
+    },
+    "navigation": {
+      "prev": "← References",
+      "next": "Home →"
+    }
+  }
+}

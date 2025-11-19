@@ -1,0 +1,68 @@
+{
+  "es": {
+    "title": "REFERENCIAS",
+    "emailLabel": "CORREO",
+    "cityLabel": "CIUDAD",
+    "backgroundImage": "/anto.jpg",
+    "references": [
+      {
+        "name": "Juan Pérez",
+        "position": "Profesor Universitario",
+        "institution": "Universidad Nacional",
+        "email": "juan.perez@example.com",
+        "city": "Bogotá, Colombia"
+      },
+      {
+        "name": "María García",
+        "position": "Líder Técnico",
+        "institution": "Tech Company",
+        "email": "maria.garcia@example.com",
+        "city": "Medellín, Colombia"
+      },
+      {
+        "name": "Carlos Rodríguez",
+        "position": "Gerente de Proyectos",
+        "institution": "Software Solutions",
+        "email": "carlos.rodriguez@example.com",
+        "city": "Cali, Colombia"
+      }
+    ],
+    "navigation": {
+      "prev": "← Proyectos",
+      "next": "Contactos →"
+    }
+  },
+  "en": {
+    "title": "REFERENCES",
+    "emailLabel": "EMAIL",
+    "cityLabel": "CITY",
+    "backgroundImage": "/anto.jpg",
+    "references": [
+      {
+        "name": "Juan Pérez",
+        "position": "University Professor",
+        "institution": "National University",
+        "email": "juan.perez@example.com",
+        "city": "Bogotá, Colombia"
+      },
+      {
+        "name": "María García",
+        "position": "Technical Lead",
+        "institution": "Tech Company",
+        "email": "maria.garcia@example.com",
+        "city": "Medellín, Colombia"
+      },
+      {
+        "name": "Carlos Rodríguez",
+        "position": "Project Manager",
+        "institution": "Software Solutions",
+        "email": "carlos.rodriguez@example.com",
+        "city": "Cali, Colombia"
+      }
+    ],
+    "navigation": {
+      "prev": "← Projects",
+      "next": "Contacts →"
+    }
+  }
+}

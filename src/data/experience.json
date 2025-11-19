@@ -1,0 +1,62 @@
+{
+  "es": {
+    "title": "EXPERIENCIA",
+    "skillsTitle": "Habilidades Técnicas",
+    "academicTitle": "Formación Académica",
+    "laboralTitle": "Experiencia Laboral",
+    "downloadCV": "Descargar CV",
+    "caption": "Un vistazo a mi trayectoria profesional y académica",
+    "skills": [
+      "Desarrollo Full Stack",
+      "Bases de Datos SQL y NoSQL",
+      "APIs RESTful",
+      "Control de versiones Git",
+      "Metodologías Ágiles",
+      "Diseño Responsivo"
+    ],
+    "academic": [
+      "Ingeniería de Software - Universidad Nacional",
+      "Certificación en Desarrollo Web",
+      "Cursos especializados en tecnologías modernas"
+    ],
+    "laboral": [
+      "Desarrollador Full Stack - Proyectos personales",
+      "Colaboración en proyectos open source",
+      "Desarrollo de aplicaciones empresariales"
+    ],
+    "navigation": {
+      "prev": "← Acerca de mí",
+      "next": "Proyectos →"
+    }
+  },
+  "en": {
+    "title": "EXPERIENCE",
+    "skillsTitle": "Technical Skills",
+    "academicTitle": "Academic Background",
+    "laboralTitle": "Work Experience",
+    "downloadCV": "Download CV",
+    "caption": "A look at my professional and academic journey",
+    "skills": [
+      "Full Stack Development",
+      "SQL and NoSQL Databases",
+      "RESTful APIs",
+      "Git Version Control",
+      "Agile Methodologies",
+      "Responsive Design"
+    ],
+    "academic": [
+      "Software Engineering - National University",
+      "Web Development Certification",
+      "Specialized courses in modern technologies"
+    ],
+    "laboral": [
+      "Full Stack Developer - Personal projects",
+      "Open source project collaboration",
+      "Enterprise application development"
+    ],
+    "navigation": {
+      "prev": "← About me",
+      "next": "Projects →"
+    }
+  }
+}

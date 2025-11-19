@@ -1,0 +1,72 @@
+{
+  "es": {
+    "title": "ACERCA DE MÍ",
+    "image": "/zam.jpeg",
+    "description1": "Soy un desarrollador apasionado por la tecnología y la innovación. Me especializo en crear soluciones web modernas y eficientes que mejoren la experiencia del usuario.",
+    "description2": "Mi enfoque se centra en escribir código limpio, mantenible y escalable, siempre buscando las mejores prácticas y las tecnologías más actuales.",
+    "skillsTitle": "Tecnologías y Herramientas",
+    "technologies": [
+      "MySQL",
+      "MongoDB",
+      "SQLite",
+      "SQL Server",
+      "PostgreSQL",
+      "Java",
+      "Python",
+      "Django",
+      "JavaScript",
+      "Node.js",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Docker",
+      "GitHub"
+    ],
+    "achievementsTitle": "Logros Destacados",
+    "achievements": [
+      "Desarrollo de aplicaciones web full-stack",
+      "Implementación de arquitecturas escalables",
+      "Optimización de rendimiento",
+      "Trabajo en equipo y metodologías ágiles"
+    ],
+    "navigation": {
+      "prev": "← Inicio",
+      "next": "Experiencia →"
+    }
+  },
+  "en": {
+    "title": "ABOUT ME",
+    "image": "/zam.jpeg",
+    "description1": "I am a developer passionate about technology and innovation. I specialize in creating modern and efficient web solutions that improve user experience.",
+    "description2": "My approach focuses on writing clean, maintainable, and scalable code, always seeking best practices and the latest technologies.",
+    "skillsTitle": "Technologies and Tools",
+    "technologies": [
+      "MySQL",
+      "MongoDB",
+      "SQLite",
+      "SQL Server",
+      "PostgreSQL",
+      "Java",
+      "Python",
+      "Django",
+      "JavaScript",
+      "Node.js",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Docker",
+      "GitHub"
+    ],
+    "achievementsTitle": "Notable Achievements",
+    "achievements": [
+      "Full-stack web application development",
+      "Implementation of scalable architectures",
+      "Performance optimization",
+      "Teamwork and agile methodologies"
+    ],
+    "navigation": {
+      "prev": "← Home",
+      "next": "Experience →"
+    }
+  }
+}

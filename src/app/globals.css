@@ -81,5 +81,5 @@ body{
 
 .animate-gradient-shift {
   background-size: 200% 100%;
-  animation: gradient-shift 20s ease infinite;
+  animation: gradient-shift 60s ease infinite;
 }
