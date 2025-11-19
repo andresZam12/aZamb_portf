@@ -133,7 +133,7 @@ export default function ContactosPage() {
             <h2 className="text-xl md:text-2xl font-bold text-yellow-400 mb-6">{t.contactMethodsTitle}</h2>
             <ul className="space-y-4 md:space-y-6">
               {/* Gmail */}
-              <li className="flex items-center justify-center md:justify-start gap-4">
+              <li className="flex items-center gap-4">
                 <span className="grid place-items-center w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/10 ring-1 ring-white/15">
                   <svg
                     viewBox="0 0 24 24"
@@ -153,7 +153,7 @@ export default function ContactosPage() {
               </li>
 
               {/* LinkedIn */}
-              <li className="flex items-center justify-center md:justify-start gap-4">
+              <li className="flex items-center gap-4">
                 <span className="grid place-items-center w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/10 ring-1 ring-white/15">
                   <svg
                     viewBox="0 0 24 24"
@@ -175,7 +175,7 @@ export default function ContactosPage() {
               </li>
 
               {/* GitHub */}
-              <li className="flex items-center justify-center md:justify-start gap-4">
+              <li className="flex items-center gap-4">
                 <span className="grid place-items-center w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/10 ring-1 ring-white/15">
                   <svg width="28" height="28" viewBox="0 0 24 24" className="w-7 h-7 md:w-8 md:h-8">
                     <path fill="white" d="M12 .5C5.73.5.99 5.24.99 11.52c0 4.86 3.15 8.98 7.51 10.43.55.1.75-.24.75-.54 0-.27-.01-1.14-.02-2.07-3.06.66-3.7-1.3-3.7-1.3-.5-1.28-1.22-1.62-1.22-1.62-.99-.68.08-.67.08-.67 1.09.08 1.66 1.12 1.66 1.12.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.46-2.44-.28-5.01-1.22-5.01-5.42 0-1.2.43-2.17 1.12-2.94-.11-.28-.49-1.41.11-2.94 0 0 .92-.29 3.01 1.12.87-.24 1.8-.36 2.72-.36.92 0 1.85.12 2.72.36 2.09-1.41 3.01-1.12 3.01-1.12.6 1.53.22 2.66.11 2.94.69.77 1.12 1.74 1.12 2.94 0 4.21-2.58 5.14-5.03 5.41.39.34.73 1.01.73 2.04 0 1.47-.01 2.65-.01 3.01 0 .3.2.65.76.54 4.35-1.45 7.5-5.57 7.5-10.43C23.01 5.24 18.27.5 12 .5z" />
@@ -191,51 +191,51 @@ export default function ContactosPage() {
                 </a>
               </li>
             </ul>
+
+            {/* Formulario de contacto debajo de los botones */}
+            <div className="mt-8 animate-fade-in opacity-0" style={{ animationDelay: "200ms" }}>
+              <h2 className="text-xl md:text-2xl font-bold text-yellow-400 mb-6">{t.sendEmailTitle}</h2>
+              <form
+                onSubmit={handleEmailSubmit}
+                className={`${glassClass} rounded-3xl ring-1 ring-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-2 border-black p-5 md:p-6 space-y-4`}
+              >
+                <div>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={t.placeholderEmail}
+                    required
+                    className="w-full px-4 py-3 md:py-4 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-amber-400 focus:outline-none transition"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className={`w-full ${buttonClass}`}
+                >
+                  {t.submitBtn}
+                </button>
+                {submitted && (
+                  <p className="text-green-400 text-sm text-center">
+                    {t.thankYou}
+                  </p>
+                )}
+              </form>
+              <p className="mt-4 text-center text-sm md:text-base lg:text-lg text-white/80">
+                {t.formLabel}
+              </p>
+            </div>
           </aside>
 
-          {/* COLUMNA DERECHA: Formulario de contacto */}
-          <section className="col-span-12 md:col-span-6 animate-fade-in opacity-0" style={{ animationDelay: "200ms" }}>
-            <h2 className="text-xl md:text-2xl font-bold text-yellow-400 mb-6">{t.sendEmailTitle}</h2>
-            <form
-              onSubmit={handleEmailSubmit}
-              className={`${glassClass} rounded-3xl ring-1 ring-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-2 border-black p-5 md:p-6 space-y-4`}
-            >
-              <div>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={t.placeholderEmail}
-                  required
-                  className="w-full px-4 py-3 md:py-4 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-amber-400 focus:outline-none transition"
-                />
-              </div>
-              <button
-                type="submit"
-                className={`w-full ${buttonClass}`}
-              >
-                {t.submitBtn}
-              </button>
-              {submitted && (
-                <p className="text-green-400 text-sm text-center">
-                  {t.thankYou}
-                </p>
-              )}
-            </form>
-            <p className="mt-4 text-center text-xs md:text-sm text-white/70">
-              {t.formLabel}
-            </p>
+          {/* COLUMNA DERECHA: Solo la imagen */}
+          <section className="col-span-12 md:col-span-6 flex justify-center items-start animate-fade-in opacity-0" style={{ animationDelay: "400ms" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/anz.jpeg"
+              alt="Andrés Zambrano"
+              className="w-80 md:w-96 lg:w-[28rem] h-auto object-contain rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-2 ring-white/20 border-2 border-black"
+            />
           </section>
-        </section>
-
-        {/* IMAGEN CENTRADA */}
-        <section className="col-span-12 mt-12 md:mt-16 flex justify-center animate-fade-in opacity-0" style={{ animationDelay: "400ms" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img 
-            src="/anz.jpeg"
-            alt="Andrés Zambrano"
-            className="w-64 md:w-80 lg:w-96 h-auto object-contain rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-2 ring-white/20 border-2 border-black"
-          />
         </section>
 
         {/* Lema centrado debajo de la imagen */}
