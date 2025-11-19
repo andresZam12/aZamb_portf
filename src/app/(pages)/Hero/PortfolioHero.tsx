@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useLang } from "../Lang/LanguageProvider";
+import { useLang } from "../../providers/LanguageProvider";
 import Link from "next/link";
 
 // Diccionario de traducciones

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ThemeClient from "./ThemeClient";
-import { LanguageProvider } from "./Lang/LanguageProvider";
-import HeaderControls from "./HeaderControls";
+import ThemeClient from "./components/ThemeClient";
+import { LanguageProvider } from "./providers/LanguageProvider";
+import HeaderControls from "./components/HeaderControls";
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({

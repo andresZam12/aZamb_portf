@@ -1,5 +1,5 @@
 "use client";
-import { useLang } from "./Lang/LanguageProvider";
+import { useLang } from "../providers/LanguageProvider";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
