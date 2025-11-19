@@ -187,12 +187,14 @@ export default function AboutPage() {
           </div>
 
           {/* Imagen */}
-          <aside className="lg:col-span-4 animate-fade-in opacity-0 [animation-delay:400ms]">
+          <aside className="lg:col-span-4 animate-fade-in opacity-0 [animation-delay:600ms]">
             <div className="sticky top-24">
-              <div className="aspect-[3/4] rounded-3xl overflow-hidden bg-black/20 backdrop-blur-md ring-1 ring-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-2 border-black">
-                <div className="w-full h-full flex items-center justify-center text-white/50 text-xl">
-                  [Tu imagen aquí]
-                </div>
+              <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-2 border-black">
+                <img
+                  src="/zam.jpeg"
+                  alt="Andrés Zambrano"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </aside>

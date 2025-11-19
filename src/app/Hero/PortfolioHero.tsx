@@ -135,11 +135,11 @@ export default function PortfolioHero() {
 
           {/* Columna de imagen */}
           <div className="relative aspect-square w-full max-w-3xl mx-auto animate-fade-in opacity-0 [animation-delay:400ms]">
-            <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-3xl">
-              <div className="size-full rounded-3xl border-2 border-yellow-400/20 flex items-center justify-center text-xl md:text-2xl text-yellow-400/50">
-                [Tu imagen aquí]
-              </div>
-            </div>
+            <img
+              src="/andres.jpeg"
+              alt="Andrés Zambrano"
+              className="w-full h-full object-cover rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-2 ring-white/20 border-2 border-black"
+            />
           </div>
         </div>
       </main>
