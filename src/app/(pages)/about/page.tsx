@@ -4,22 +4,18 @@ import Link from "next/link";
 import { useLang } from "../../providers/LanguageProvider";
 import AnimatedBackground from "../../components/AnimatedBackground";
 
-const TECHNOLOGIES = [
-  "MySQL",
-  "MongoDB",
-  "SQLite",
-  "SQL Server",
-  "PostgreSQL",
-  "Java",
-  "Python",
-  "Django",
-  "JavaScript",
-  "Node.js",
-  "React",
-  "Next.js",
-  "Tailwind CSS",
-  "Docker",
-  "GitHub",
+const LANGUAGES = [
+  { flag: "🇨🇴", es: "Español", en: "Spanish",  levelEs: "Nativo",                   levelEn: "Native",                       badge: "C2", pct: 100 },
+  { flag: "🇺🇸", es: "Inglés",  en: "English",  levelEs: "Intermedio · B1 en curso",  levelEn: "Intermediate · B1 in progress", badge: "B1", pct: 55  },
+];
+
+const TECH_CATEGORIES = [
+  { es: "Frontend",               en: "Frontend",       items: ["React", "Next.js", "Tailwind CSS", "JavaScript", "TypeScript"] },
+  { es: "Mobile",                 en: "Mobile",         items: ["Flutter", "Dart"] },
+  { es: "Backend",                en: "Backend",        items: ["Java", "Spring Boot", "Python", "Django", "Node.js"] },
+  { es: "Bases de datos",         en: "Databases",      items: ["PostgreSQL", "MySQL", "MongoDB", "SQLite", "SQL Server"] },
+  { es: "Data & IA",              en: "Data & AI",      items: ["PySpark", "Prophet", "Claude API", "ML Kit"] },
+  { es: "DevOps & Herramientas",  en: "DevOps & Tools", items: ["Docker", "GitHub", "Supabase", "Firebase"] },
 ];
 
 // Diccionario de traducciones
@@ -27,11 +23,11 @@ const translations = {
   es: {
     title: "CONÓCEME",
     description1:
-      "Soy un estudiante de Ingeniería de Software apasionado por el desarrollo FullStack y con gran interés en la ciberseguridad y el pentesting. Mi motivación principal es crear soluciones digitales que no solo funcionen, sino que también sean seguras, escalables y útiles para las personas.",
+      "Soy estudiante de Ingeniería de Software en la Universidad Cooperativa de Colombia (7º de 8 semestres · 87% completado), con enfoque en desarrollo FullStack y arquitecturas limpias. Me interesa especialmente la integración de IA en productos reales y el consumo de datos abiertos y APIs gubernamentales.",
     description2:
-      "Soy un gran líder de proyectos con buena experiencia, enfocado en el trabajo en equipo responsable y pulido, tengo habilidades en la solución rápida de problemas con buen fundamento práctico.",
+      "Trabajo bien en equipo y he liderado proyectos académicos y personales de principio a fin — desde el diseño hasta el despliegue. Aprendo rápido, me adapto a nuevas tecnologías y me tomo en serio las buenas prácticas.",
     description3:
-      "Soy deportista de rendimiento en fútbol y futbol de salón, soy músico, guitarrista, bajista, percusionista y cantante, soy barbero y una persona creativa para manualidades y artesanías varias con materiales diversos.", 
+      "Fuera del código soy músico, deportista, barbero, tatuador, editor — perfil que me da disciplina, creatividad y trato con personas, habilidades que llevo también al trabajo en equipo.",
       technologies: "Tecnologías",
     personalSkills: "Habilidades personales",
     languages: "Idiomas",
@@ -39,29 +35,24 @@ const translations = {
     prev: "← Inicio",
     next: "Proyectos →",
     skills: {
-      communication: "Comunicación clara y asertiva",
-      problemSolving: "Resolución de problemas",
-      teamwork: "Trabajo en equipo y liderazgo",
-    },
-    langs: {
-      spanish: "Español (nativo)",
-      english: "Inglés (intermedio)",
+      leadership: "Liderazgo de equipos en proyectos académicos y competencias nacionales",
+      adaptation: "Adaptación rápida a nuevas tecnologías y entornos de trabajo",
+      communication: "Comunicación técnica con clientes y equipos no técnicos",
     },
     achievementsList: {
       projects: "Participación en proyectos de aprendizaje nacional con enfoque en desarrollo de software.",
       science: "Ganador de concurso Ciencia e Investigación COMUNA-UCC 2024.",
       sports: "Deportista reconocido de alto rendimiento en Nariño-Colombia.",
-      academic: "Galardonado académicamente en matemáticas (IEM San Juan Bosco 2018–2019).",
     },
   },
   en: {
     title: "ABOUT ME",
     description1:
-      "I am a Software Engineering student passionate about FullStack development with great interest in cybersecurity and pentesting. My main motivation is to create digital solutions that not only work but are also secure, scalable, and useful for people.",
+      "I'm a Software Engineering student at Universidad Cooperativa de Colombia (7th of 8 semesters · 87% complete), focused on FullStack development and clean architectures. I'm especially interested in integrating AI into real products and consuming open data and government APIs.",
     description2:
-      "I am a great project leader with good experience, focused on responsible and polished teamwork, I have skills in quick problem solving with good practical foundation.",
+      "I work well in teams and have led academic and personal projects from start to finish — from design to deployment. I learn fast, adapt to new technologies, and take best practices seriously.",
     description3:
-      "I am a high-performance athlete in soccer and futsal, I am a musician, guitarist, bassist, percussionist and singer, I am a barber and a creative person for various crafts and handicrafts with diverse materials.",
+      "Outside of code I'm a musician, athlete, barber, tattooist, and editor — a profile that gives me discipline, creativity, and people skills, all of which I bring to team environments.",
     technologies: "Technologies",
     personalSkills: "Personal Skills",
     languages: "Languages",
@@ -69,19 +60,14 @@ const translations = {
     prev: "← Home",
     next: "Projects →",
     skills: {
-      communication: "Clear and assertive communication",
-      problemSolving: "Problem solving",
-      teamwork: "Teamwork and leadership",
-    },
-    langs: {
-      spanish: "Spanish (native)",
-      english: "English (intermediate)",
+      leadership: "Team leadership in academic projects and national competitions",
+      adaptation: "Fast adaptation to new technologies and work environments",
+      communication: "Technical communication with clients and non-technical teams",
     },
     achievementsList: {
       projects: "Participation in national learning projects focused on software development.",
       science: "Winner of the COMUNA-UCC 2024 Science and Research competition.",
       sports: "Recognized high-performance athlete in Nariño-Colombia.",
-      academic: "Academically awarded in mathematics (IEM San Juan Bosco 2018–2019).",
     },
   },
 };
@@ -138,17 +124,26 @@ export default function AboutPage() {
 
               {/* Tecnologías */}
               <section className="mt-8">
-                <h2 className="text-xl md:text-2xl font-bold text-yellow-400 mb-4">
+                <h2 className="text-xl md:text-2xl font-bold text-yellow-400 mb-6">
                   {t.technologies}
                 </h2>
-                <div className="flex flex-wrap gap-3">
-                  {TECHNOLOGIES.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1.5 md:px-4 md:py-2 bg-white/10 rounded-full text-sm md:text-lg"
-                    >
-                      {tech}
-                    </span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {TECH_CATEGORIES.map((cat) => (
+                    <div key={cat.en}>
+                      <p className="text-sm font-semibold text-yellow-300/80 mb-2 uppercase tracking-wider">
+                        {lang === "es" ? cat.es : cat.en}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {cat.items.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1.5 bg-white/10 hover:bg-yellow-400/20 hover:text-yellow-300 rounded-full text-sm transition-all duration-200 cursor-default"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </section>
@@ -159,10 +154,13 @@ export default function AboutPage() {
                   <h3 className="text-xl md:text-2xl font-bold text-yellow-400 mb-4">
                     {t.personalSkills}
                   </h3>
-                  <ul className="space-y-2 text-base md:text-lg">
-                    <li>• {t.skills.communication}</li>
-                    <li>• {t.skills.problemSolving}</li>
-                    <li>• {t.skills.teamwork}</li>
+                  <ul className="space-y-3 text-base md:text-lg">
+                    {[t.skills.leadership, t.skills.adaptation, t.skills.communication].map((s, i) => (
+                      <li key={i} className="flex items-start gap-2.5">
+                        <span className="mt-[9px] w-2 h-2 rounded-full bg-yellow-400 shrink-0" />
+                        {s}
+                      </li>
+                    ))}
                   </ul>
                 </section>
 
@@ -170,10 +168,29 @@ export default function AboutPage() {
                   <h3 className="text-xl md:text-2xl font-bold text-yellow-400 mb-4">
                     {t.languages}
                   </h3>
-                  <ul className="space-y-2 text-base md:text-lg">
-                    <li>• {t.langs.spanish}</li>
-                    <li>• {t.langs.english}</li>
-                  </ul>
+                  <div className="space-y-4">
+                    {LANGUAGES.map((l) => (
+                      <div key={l.en} className="bg-white/5 rounded-xl p-4">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-base font-semibold">
+                            {l.flag} {lang === "es" ? l.es : l.en}
+                          </span>
+                          <span className="text-xs font-bold px-2 py-0.5 bg-yellow-400/20 text-yellow-300 rounded-full">
+                            {l.badge}
+                          </span>
+                        </div>
+                        <p className="text-sm text-white/60 mb-2">
+                          {lang === "es" ? l.levelEs : l.levelEn}
+                        </p>
+                        <div className="w-full bg-white/10 rounded-full h-1.5">
+                          <div
+                            className="bg-yellow-400 h-1.5 rounded-full"
+                            style={{ width: `${l.pct}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </section>
               </div>
 
@@ -183,10 +200,12 @@ export default function AboutPage() {
                   {t.achievements}
                 </h3>
                 <ul className="space-y-3 text-base md:text-lg">
-                  <li>• {t.achievementsList.projects}</li>
-                  <li>• {t.achievementsList.science}</li>
-                  <li>• {t.achievementsList.sports}</li>
-                  <li>• {t.achievementsList.academic}</li>
+                  {[t.achievementsList.projects, t.achievementsList.science, t.achievementsList.sports].map((a, i) => (
+                    <li key={i} className="flex items-start gap-2.5">
+                      <span className="mt-[9px] w-2 h-2 rounded-full bg-yellow-400 shrink-0" />
+                      {a}
+                    </li>
+                  ))}
                 </ul>
               </section>
             </div>

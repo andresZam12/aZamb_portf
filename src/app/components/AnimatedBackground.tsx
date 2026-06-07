@@ -1,20 +1,37 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
 interface AnimatedBackgroundProps {
   isDark: boolean;
 }
 
+interface Particle {
+  id: number;
+  size: number;
+  left: number;
+  top: number;
+  delay: number;
+  duration: number;
+  opacity: number;
+}
+
 export default function AnimatedBackground({ isDark }: AnimatedBackgroundProps) {
-  
-  const particles = Array.from({ length: 15 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 40 + 15, // 15-55px
-    left: Math.random() * 100, // 0-100%
-    top: Math.random() * 100, // 0-100%
-    delay: Math.random() * 5, // 0-5s
-    duration: Math.random() * 15 + 15, // 15-30s
-    opacity: Math.random() * 0.15 + 0.05, // 0.05-0.2
-  }));
+  const [particles, setParticles] = useState<Particle[]>([]);
+
+  useEffect(() => {
+    setParticles(
+      Array.from({ length: 15 }, (_, i) => ({
+        id: i,
+        size: Math.random() * 40 + 15,
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        delay: Math.random() * 5,
+        duration: Math.random() * 15 + 15,
+        opacity: Math.random() * 0.15 + 0.05,
+      }))
+    );
+  }, []);
 
   return (
     <>

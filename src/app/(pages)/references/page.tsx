@@ -32,7 +32,8 @@ const translations: Record<Lang, {
 const references = [
   {
     name: "Paola Burgos",
-    gender: "f" as const,
+    initials: "PB",
+    avatarClass: "bg-yellow-400 text-black",
     text: {
       es: "Andrés ha demostrado ser un estudiante altamente comprometido, con sólidas capacidades analíticas y una marcada disposición para el aprendizaje continuo. Su habilidad para adquirir nuevos conocimientos de manera ágil y aplicarlos eficazmente en contextos reales lo proyecta como un profesional integral con un futuro prometedor.",
       en: "Andrés has proven to be a highly committed student with strong analytical skills and a clear willingness for continuous learning. His ability to quickly acquire new knowledge and apply it effectively in real-world scenarios positions him as a well-rounded professional with a promising future.",
@@ -42,21 +43,22 @@ const references = [
   },
   {
     name: "Paola Bárcenas",
-    gender: "f" as const,
+    initials: "PB",
+    avatarClass: "bg-amber-700 text-white",
     text: {
-      es: "Demuestra responsabilidad, ética laboral y un elevado nivel de compromiso en cada actividad que realiza. Su capacidad para trabajar bajo presión, mantener estándares de calidad y adaptarse a nuevos retos la convierten en una colaboradora confiable y orientada a resultados.",
+      es: "Demuestra responsabilidad, ética laboral y un elevado nivel de compromiso en cada actividad que realiza. Su capacidad para trabajar bajo presión, mantener estándares de calidad y adaptarse a nuevos retos lo convierten en un colaborador confiable y orientado a resultados.",
       en: "He consistently demonstrates responsibility, strong work ethics, and a high level of commitment in every task he undertakes. His ability to work under pressure, maintain quality standards, and adapt to new challenges makes him a reliable, results-oriented team member.",
-
     },
     email: "paobarcenas12@gmail.com",
     city: "Pasto",
   },
   {
     name: "Mario Botina",
-    gender: "m" as const,
+    initials: "MB",
+    avatarClass: "bg-stone-500 text-white",
     text: {
-      es: "Es una persona íntegra, proactiva y con una destacada capacidad para el trabajo en equipo. Su actitud positiva, liderazgo natural y habilidades interpersonales fortalecen los entornos colaborativos y aportan significativamente al logro de objetivos comunes.",
-      en: "He is an integral, proactive person with a remarkable ability to work in a team. His positive attitude, natural leadership, and interpersonal skills strengthen collaborative environments and significantly contribute to achieving common goals.",
+      es: "Es una persona íntegra, proactiva y con una destacada capacidad para el trabajo en equipo. Demuestra competencia en el manejo de sistemas informáticos y redes tecnológicas, aplicando sus conocimientos técnicos con criterio y responsabilidad. Su actitud positiva, liderazgo natural y habilidades interpersonales fortalecen los entornos colaborativos y aportan significativamente al logro de objetivos comunes.",
+      en: "He is an integral, proactive person with a remarkable ability to work in a team. He demonstrates competence in managing computer systems and technology networks, applying his technical knowledge with sound judgment and responsibility. His positive attitude, natural leadership, and interpersonal skills strengthen collaborative environments and significantly contribute to achieving common goals.",
     },
     email: "mario_b86@gmail.com",
     city: "Cali",
@@ -108,12 +110,12 @@ export default function ReferencesPage() {
           {references.map((ref, index) => (
             <article
               key={ref.name}
-              className={`${glassClass} rounded-2xl md:rounded-3xl p-5 md:p-6 lg:p-8 text-white shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/20 border-2 border-black hover:ring-yellow-400/50 transition-all animate-fade-in`}
+              className={`${glassClass} rounded-2xl md:rounded-3xl p-5 md:p-6 lg:p-8 text-white shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/20 border-2 border-black hover:ring-yellow-400/50 hover:scale-[1.01] hover:-translate-y-1 transition-all duration-300 animate-fade-in`}
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <div className="flex items-start gap-4 md:gap-6">
-                <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 ring-1 ring-white/20 flex items-center justify-center text-2xl md:text-3xl">
-                  {ref.gender === "f" ? "👩" : "👨"}
+                <div className={`flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center text-sm md:text-base font-bold ring-1 ring-white/20 ${ref.avatarClass}`}>
+                  {ref.initials}
                 </div>
 
                 <div className="flex-1 min-w-0">

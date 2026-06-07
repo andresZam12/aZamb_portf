@@ -24,62 +24,62 @@ html.dark :root{
 
 /* Base */
 html,body{ height:100%; }
+html{ scroll-behavior: smooth; }
+::selection{ background: rgba(250,204,21,0.3); color: white; }
 body{
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
 }
 
-/* Transiciones suaves */
-*{ transition: background-color .15s ease, color .15s ease, border-color .15s ease; }
+/* Transiciones suaves — solo propiedades visuales, no transforms */
+*, *::before, *::after {
+  transition-property: background-color, color, border-color, opacity, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
 
 /* Animación fade-in */
 @keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 .animate-fade-in {
   animation: fade-in 0.8s ease-out forwards;
 }
 
-/* Animación de partículas flotantes */
-@keyframes float {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(20px, -30px) rotate(90deg);
-  }
-  50% {
-    transform: translate(-15px, -60px) rotate(180deg);
-  }
-  75% {
-    transform: translate(-25px, -30px) rotate(270deg);
-  }
+/* Dropdown slide-down */
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+.animate-slide-down {
+  animation: slide-down 0.2s ease-out forwards;
 }
 
+/* Animación de partículas flotantes */
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25%       { transform: translate(20px, -30px) rotate(90deg); }
+  50%       { transform: translate(-15px, -60px) rotate(180deg); }
+  75%       { transform: translate(-25px, -30px) rotate(270deg); }
+}
 .animate-float {
   animation: float linear infinite;
 }
 
 /* Gradiente sutil animado */
 @keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
 }
-
 .animate-gradient-shift {
   background-size: 200% 100%;
   animation: gradient-shift 60s ease infinite;
 }
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(250,204,21,0.3); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(250,204,21,0.6); }
