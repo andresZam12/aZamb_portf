@@ -16,7 +16,7 @@ const GithubIcon = ({ size = 18 }: { size?: number }) => (
 const MAIN_PROJECTS = [
   {
     key: "verifarmac" as const,
-    images: ["", ""] as [string, string], // reemplazar con rutas reales: ["/verifarmac-1.png", "/verifarmac-2.png"]
+    images: ["/ver1.jpeg", "/ver2.jpeg"] as [string, string],
     repo: "https://github.com/andresZam12/proyecto_Verifarmac.git",
     secondUrl: "https://github.com/andresZam12/proyecto_Verifarmac/releases/download/v1.0.0/app-release.apk",
     secondLabel: { es: "Descargar APK", en: "Download APK" },
@@ -24,7 +24,7 @@ const MAIN_PROJECTS = [
   },
   {
     key: "mintic" as const,
-    images: ["", ""] as [string, string], // reemplazar con rutas reales: ["/mintic-1.png", "/mintic-2.png"]
+    images: ["/das2.jpeg", "/das22.jpeg"] as [string, string], 
     repo: "https://github.com/andresZam12/proyectoMINTIC.git",
     secondUrl: "https://economia-empleo.vercel.app/",
     secondLabel: { es: "Ver demo", en: "View Demo" },
@@ -32,7 +32,7 @@ const MAIN_PROJECTS = [
   },
   {
     key: "misfinanzas" as const,
-    images: ["", ""] as [string, string], // reemplazar con rutas reales: ["/misfinanzas-1.png", "/misfinanzas-2.png"]
+    images: ["fin1.jpeg", "fin2.jpeg"] as [string, string], 
     repo: "https://github.com/andresZam12/mis_finanzas.git",
     secondUrl: "https://misfinanzas-jade.vercel.app/login",
     secondLabel: { es: "Ver demo", en: "View Demo" },
