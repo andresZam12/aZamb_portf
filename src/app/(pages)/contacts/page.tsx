@@ -140,7 +140,7 @@ export default function ContactosPage() {
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         { nombre, email, asunto, mensaje, tiempo },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! }
       );
       setSubmitted(true);
       setNombre(""); setEmail(""); setAsunto(""); setMensaje("");
