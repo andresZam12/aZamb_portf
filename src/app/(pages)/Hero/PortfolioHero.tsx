@@ -13,18 +13,23 @@ const translations = {
       about: "SOBRE MÍ",
       projects: "PROYECTOS",
       experience: "EXPERIENCIA",
-      references: "REFERENCIAS",
       contacts: "CONTACTOS",
     },
     hero: {
       greeting: "Hola,",
       im: "soy",
       name: "Andrés Zambrano",
-      subtitle: "Desarrollador FullStack · Ingeniería de Software @ UCC",
+      availability: "Disponible para prácticas profesionales y proyectos freelance",
+      subtitle: "Desarrollador FullStack · Datos, Machine Learning e IA aplicada",
       description:
-        "Construyo aplicaciones web y móviles con Java, Flutter, React y Python. Integro modelos de IA y consumo de APIs gubernamentales, REST y GraphQL en flujos reales, con manejo de datasets y Big Data. Aplico metodologías ágiles, arquitecturas limpias y buenas prácticas para entregar software que resuelve problemas concretos.",
+        "Estudiante de último semestre de Ingeniería de Software. Construyo productos web y móviles que convierten datos en decisiones: desde pipelines de Big Data con PySpark y modelos predictivos, hasta apps en Flutter con visión artificial e integración de LLMs.",
       ctaProjects: "Ver proyectos",
       ctaCV: "Descargar CV",
+      highlights: [
+        { value: "Top 8", label: "nacional · MinTIC 2026" },
+        { value: "91/100", label: "puntaje en el concurso" },
+        { value: "6", label: "productos publicados" },
+      ],
     },
   },
   en: {
@@ -33,18 +38,23 @@ const translations = {
       about: "ABOUT",
       projects: "PROJECTS",
       experience: "EXPERIENCE",
-      references: "REFERENCES",
       contacts: "CONTACTS",
     },
     hero: {
       greeting: "Hi,",
       im: "I'm",
       name: "Andrés Zambrano",
-      subtitle: "FullStack Developer · Software Engineering @ UCC",
+      availability: "Open to internships and freelance projects",
+      subtitle: "FullStack Developer · Data, Machine Learning & Applied AI",
       description:
-        "I build web and mobile apps with Java, Flutter, React, and Python. I integrate AI models and consume government, REST, and GraphQL APIs in real flows, with dataset and Big Data handling. I apply agile methodologies, clean architectures, and best practices to deliver software that solves real problems.",
+        "Final-semester Software Engineering student. I build web and mobile products that turn data into decisions: from Big Data pipelines with PySpark and predictive models to Flutter apps with computer vision and LLM integration.",
       ctaProjects: "View Projects",
       ctaCV: "Download CV",
+      highlights: [
+        { value: "Top 8", label: "nationwide · MinTIC 2026" },
+        { value: "91/100", label: "competition score" },
+        { value: "6", label: "products shipped" },
+      ],
     },
   },
 };
@@ -81,7 +91,7 @@ export default function PortfolioHero() {
             <Link
               key={key}
               href={`/${key === "home" ? "" : key}`}
-              className="px-3 py-2 md:px-6 md:py-3 bg-white/10 hover:bg-white/20 rounded-full border border-white/20 backdrop-blur-sm text-white font-semibold text-sm md:text-lg tracking-wide transition-all whitespace-nowrap"
+              className="px-3 py-2 md:px-6 md:py-3 bg-black/30 hover:bg-black/45 rounded-full border border-white/25 backdrop-blur-md btn-float text-white font-semibold text-sm md:text-lg tracking-wide transition-all whitespace-nowrap"
             >
               {value}
             </Link>
@@ -94,18 +104,31 @@ export default function PortfolioHero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Columna de texto */}
           <div className="text-white space-y-8 animate-fade-in opacity-0 [animation-delay:200ms]">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs md:text-sm font-medium text-white/90">
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              {t.hero.availability}
+            </span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight title-shadow">
               {t.hero.greeting} {t.hero.im}{" "}
-              <span className="bg-gradient-to-r from-yellow-400 to-amber-200 bg-clip-text text-transparent">{t.hero.name}</span>
+              <span className="bg-gradient-to-r from-yellow-400 to-amber-200 bg-clip-text text-transparent [text-shadow:none] drop-shadow-[0_4px_14px_rgba(0,0,0,0.65)]">{t.hero.name}</span>
             </h1>
 
-            <p className="text-xl md:text-2xl font-semibold text-yellow-300 tracking-wide">
+            <p className="text-xl md:text-2xl font-semibold text-yellow-300 tracking-wide title-shadow">
               {t.hero.subtitle}
             </p>
 
             <p className="text-base md:text-lg leading-relaxed text-white/90 max-w-xl">
               {t.hero.description}
             </p>
+
+            <div className="grid grid-cols-3 gap-3 max-w-xl">
+              {t.hero.highlights.map((h) => (
+                <div key={h.label} className="rounded-xl bg-black/20 border border-white/15 px-3 py-3 backdrop-blur-sm">
+                  <p className="text-xl md:text-2xl font-bold text-yellow-400 leading-none">{h.value}</p>
+                  <p className="text-[11px] md:text-xs text-white/70 mt-1.5 leading-tight">{h.label}</p>
+                </div>
+              ))}
+            </div>
 
             <div className="flex flex-wrap gap-4 pt-2">
               <Link
@@ -115,9 +138,9 @@ export default function PortfolioHero() {
                 {t.hero.ctaProjects}
               </Link>
               <a
-                href="/CVAnd.pdf"
+                href={lang === "es" ? "/CV_Andres_Zambrano_ES.pdf" : "/CV_Andres_Zambrano_EN.pdf"}
                 download
-                className="px-6 py-3 border-2 border-white/70 hover:border-white hover:bg-white/10 text-white font-bold rounded-xl transition-all text-base"
+                className="px-6 py-3 border-2 border-white/70 hover:border-white bg-black/25 hover:bg-black/40 btn-float text-white font-bold rounded-xl transition-all text-base"
               >
                 {t.hero.ctaCV}
               </a>

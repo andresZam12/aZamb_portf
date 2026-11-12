@@ -13,30 +13,79 @@ const GithubIcon = ({ size = 18 }: { size?: number }) => (
   </svg>
 );
 
-const MAIN_PROJECTS = [
+type LinkKind = "demo" | "apk" | "backend" | "frontend" | "code";
+
+type ProjectKey = "zabio" | "mintic" | "verifarmac" | "deplhoy" | "oir" | "misfinanzas";
+
+type MainProject = {
+  key: ProjectKey;
+  images: [string, string];
+  liveUrl?: string;
+  links: { kind: LinkKind; url: string }[];
+  stack: string[];
+};
+
+const MAIN_PROJECTS: MainProject[] = [
   {
-    key: "verifarmac" as const,
-    images: ["/ver1.jpeg", "/ver2.jpeg"] as [string, string],
-    repo: "https://github.com/andresZam12/proyecto_Verifarmac.git",
-    secondUrl: "https://github.com/andresZam12/proyecto_Verifarmac/releases/download/v1.0.0/app-release.apk",
-    secondLabel: { es: "Descargar APK", en: "Download APK" },
-    stack: ["Flutter", "Dart", "Supabase", "Claude API", "ML Kit", "Google Maps", "Clean Architecture"],
+    key: "zabio",
+    images: ["/zabio1.webp", "/zabio2.webp"],
+    liveUrl: "https://zabio.vercel.app/",
+    links: [
+      { kind: "demo", url: "https://zabio.vercel.app/" },
+      { kind: "backend", url: "https://github.com/andresZam12/Zolution_back" },
+      { kind: "frontend", url: "https://github.com/andresZam12/Zolution_front" },
+    ],
+    stack: ["Python", "FastAPI", "PostgreSQL (RLS)", "SQLAlchemy", "Claude · GPT-4o · Gemini", "Tool Calling", "WhatsApp Cloud API", "Google Calendar API", "Next.js", "Docker"],
   },
   {
-    key: "mintic" as const,
-    images: ["/das2.jpeg", "/das22.jpeg"] as [string, string], 
-    repo: "https://github.com/andresZam12/proyectoMINTIC.git",
-    secondUrl: "https://economia-empleo.vercel.app/",
-    secondLabel: { es: "Ver demo", en: "View Demo" },
+    key: "mintic",
+    images: ["/mintic1.webp", "/mintic2.webp"],
+    liveUrl: "https://economia-empleo.vercel.app/",
+    links: [
+      { kind: "demo", url: "https://economia-empleo.vercel.app/" },
+      { kind: "code", url: "https://github.com/andresZam12/proyectoMINTIC" },
+    ],
     stack: ["Python", "PySpark", "PostgreSQL", "Prophet", "Power BI", "Docker", "Next.js"],
   },
   {
-    key: "misfinanzas" as const,
-    images: ["fin1.jpeg", "fin2.jpeg"] as [string, string], 
-    repo: "https://github.com/andresZam12/mis_finanzas.git",
-    secondUrl: "https://misfinanzas-jade.vercel.app/login",
-    secondLabel: { es: "Ver demo", en: "View Demo" },
-    stack: ["Java", "Spring Boot", "PostgreSQL", "Angular", "REST API", "Clean Architecture"],
+    key: "verifarmac",
+    images: ["/verifarmac1.webp", "/verifarmac2.webp"],
+    links: [
+      { kind: "apk", url: "https://github.com/andresZam12/proyecto_Verifarmac/releases/download/v1.0.0/app-release.apk" },
+      { kind: "code", url: "https://github.com/andresZam12/proyecto_Verifarmac" },
+    ],
+    stack: ["Flutter", "Dart", "Supabase", "Claude API", "ML Kit", "Google Maps", "Clean Architecture"],
+  },
+  {
+    key: "deplhoy",
+    images: ["/deplhoy1.webp", "/deplhoy2.webp"],
+    liveUrl: "https://deplhoy-news.vercel.app/",
+    links: [
+      { kind: "demo", url: "https://deplhoy-news.vercel.app/" },
+      { kind: "code", url: "https://github.com/andresZam12/Pull-IA-front" },
+    ],
+    stack: ["Next.js", "TypeScript", "Gemini", "Prisma", "Supabase", "NextAuth", "Resend", "Upstash Redis", "GitHub Actions"],
+  },
+  {
+    key: "oir",
+    images: ["/oir1.webp", "/oir2.webp"],
+    liveUrl: "https://oir-app.vercel.app/",
+    links: [
+      { kind: "demo", url: "https://oir-app.vercel.app/" },
+      { kind: "backend", url: "https://github.com/andresZam12/O.IRback" },
+      { kind: "frontend", url: "https://github.com/andresZam12/O.IRfront" },
+    ],
+    stack: ["Python", "FastAPI", "librosa", "Celery", "Redis", "Gemini", "Supabase", "Next.js", "yt-dlp"],
+  },
+  {
+    key: "misfinanzas",
+    images: ["/misfinanzas1.webp", "/misfinanzas2.webp"],
+    liveUrl: "https://misfinanzas-jade.vercel.app/login",
+    links: [
+      { kind: "demo", url: "https://misfinanzas-jade.vercel.app/login" },
+      { kind: "code", url: "https://github.com/andresZam12/mis_finanzas" },
+    ],
+    stack: ["Java", "Spring Boot", "PostgreSQL", "Angular", "REST API", "Layered Architecture"],
   },
 ];
 
@@ -54,7 +103,9 @@ const translations: Record<
     viewCode: string;
     prev: string;
     next: string;
-    projects: Record<string, { name: string; description: string }>;
+    live: string;
+    linkLabels: Record<LinkKind, string>;
+    projects: Record<ProjectKey, { name: string; role?: string; description: string }>;
     others: Record<string, { name: string; description: string }>;
   }
 > = {
@@ -64,21 +115,41 @@ const translations: Record<
     viewCode: "Ver código",
     prev: "← Sobre mí",
     next: "Experiencia →",
+    live: "En producción",
+    linkLabels: { demo: "Ver demo", apk: "Descargar APK", backend: "Backend", frontend: "Frontend", code: "Ver código" },
     projects: {
+      zabio: {
+        name: "Zabio — Agentes de IA para negocios",
+        description:
+          "Plataforma SaaS multi-tenant que permite a personas y negocios sin conocimientos técnicos crear agentes de IA personalizados que atienden clientes por WhatsApp y agendan citas automáticamente en Google Calendar. Backend asíncrono en FastAPI con aislamiento por organización mediante Row-Level Security en PostgreSQL, una capa multi-proveedor de LLMs (Claude, GPT-4o y Gemini) con prompt caching, y agentes con tool calling que consultan disponibilidad y reservan citas.",
+      },
+      deplhoy: {
+        name: "Deplhoy — Noticiero tech con IA",
+        description:
+          "Noticiero automatizado para programadores y profesionales de tecnología. Un pipeline programado recolecta noticias de más de 12 fuentes globales (HackerNews, TechCrunch, arXiv, blogs de OpenAI y Anthropic), las clasifica por relevancia con Gemini (programación, ingeniería, IA y empleabilidad), las resume con trazabilidad de fuentes y envía un boletín semanal con doble opt-in, construyendo una base de suscriptores del sector tech.",
+      },
+      oir: {
+        name: "O.IR — Acordes y letras con IA",
+        description:
+          "Plataforma web para músicos que detecta con IA los acordes y la letra de cualquier canción a partir de una URL de YouTube, un archivo de audio o una grabación de micrófono. Procesa el audio en segundo plano con Celery y Redis, analiza la armonía con librosa y ofrece reproducción sincronizada, puntaje de dificultad, transposición y exportación a PDF.",
+      },
       verifarmac: {
         name: "VeriFarmac — Verificador de Medicamentos",
+        role: "Líder técnico y desarrollador de IA · equipo de 2",
         description:
-          "App móvil que permite a ciudadanos colombianos verificar la autenticidad de productos farmacéuticos mediante escaneo de código de barras, OCR, análisis visual con IA y consulta directa a la API pública de INVIMA. Genera un score de confianza combinado.",
+          "App móvil desarrollada en Flutter y Dart que verifica la autenticidad de medicamentos combinando escaneo de código de barras, OCR, análisis visual con IA y la API pública del INVIMA en un score de confianza. Gestioné el producto en GitHub Projects y desarrollé la capa de IA: ML Kit en el dispositivo y Claude API para analizar el empaque.",
       },
       mintic: {
         name: "Dashboard Predictivo Mercado Laboral — MinTIC 2026",
+        role: "Líder y Product Owner · equipo de 4 · Puesto 8 nacional (91/100)",
         description:
-          "Plataforma de analítica predictiva del mercado laboral colombiano construida para el concurso nacional Datos al Ecosistema 2026. Integra datos de DANE, SENA y MinTrabajo con modelos predictivos y visualización interactiva en Power BI.",
+          "Plataforma de analítica predictiva del mercado laboral colombiano para el concurso nacional Datos al Ecosistema 2026, donde obtuvimos el puesto 8 del país. Pipeline ETL en PySpark con datos del DANE, SENA y MinTrabajo, proyecciones de empleo con Prophet y visualización en Power BI y Next.js. Propuse la idea y dirigí al equipo por sprints.",
       },
       misfinanzas: {
         name: "MisFinanzas — Gestión Financiera Personal",
+        role: "Desarrollo individual · full-stack",
         description:
-          "Aplicación web para registro y seguimiento de ingresos, gastos, ahorros y deudas. Backend con Spring Boot y arquitectura por capas, frontend en Angular con reportes financieros por categoría.",
+          "Aplicación web para registrar ingresos, gastos, ahorros y deudas con reportes por categoría, diseñada a partir de mi formación contable. API REST en Spring Boot con arquitectura por capas y PostgreSQL; frontend en Angular.",
       },
     },
     others: {
@@ -102,21 +173,41 @@ const translations: Record<
     viewCode: "View code",
     prev: "← About me",
     next: "Experience →",
+    live: "Live",
+    linkLabels: { demo: "View demo", apk: "Download APK", backend: "Backend", frontend: "Frontend", code: "View code" },
     projects: {
+      zabio: {
+        name: "Zabio — AI Agents for Businesses",
+        description:
+          "Multi-tenant SaaS platform that lets individuals and businesses with no technical background create custom AI agents that serve customers on WhatsApp and book appointments automatically in Google Calendar. Async FastAPI backend with per-organization isolation through PostgreSQL Row-Level Security, a multi-provider LLM layer (Claude, GPT-4o and Gemini) with prompt caching, and tool-calling agents that check availability and book appointments.",
+      },
+      deplhoy: {
+        name: "Deplhoy — AI-Powered Tech News",
+        description:
+          "Automated news service for developers and tech professionals. A scheduled pipeline collects news from 12+ global sources (HackerNews, TechCrunch, arXiv, OpenAI and Anthropic blogs), ranks it by relevance with Gemini (programming, engineering, AI and employability), summarizes it with source traceability and sends a weekly double opt-in newsletter, building a subscriber base of tech professionals.",
+      },
+      oir: {
+        name: "O.IR — AI Chords & Lyrics",
+        description:
+          "Web platform for musicians that uses AI to detect the chords and lyrics of any song from a YouTube URL, an audio file or a microphone recording. Audio is processed in the background with Celery and Redis, harmony is analyzed with librosa, and it offers synced playback, a difficulty score, transposition and PDF export.",
+      },
       verifarmac: {
         name: "VeriFarmac — Medication Verifier",
+        role: "Tech lead & AI developer · team of 2",
         description:
-          "Mobile app that allows Colombian citizens to verify the authenticity of pharmaceutical products through barcode scanning, OCR, AI visual analysis, and direct queries to the INVIMA public API. Generates a combined trust score.",
+          "Mobile app built with Flutter and Dart that verifies medication authenticity by combining barcode scanning, OCR, AI visual analysis and the INVIMA public API into a trust score. I managed the product in GitHub Projects and built the AI layer: on-device ML Kit and Claude API for packaging analysis.",
       },
       mintic: {
         name: "Predictive Labor Market Dashboard — MinTIC 2026",
+        role: "Lead & Product Owner · team of 4 · 8th nationwide (91/100)",
         description:
-          "Predictive analytics platform for the Colombian labor market built for the national competition Datos al Ecosistema 2026. Integrates DANE, SENA, and MinTrabajo data with predictive models and interactive Power BI visualizations.",
+          "Predictive analytics platform for the Colombian labor market, built for the national Datos al Ecosistema 2026 competition, where we ranked 8th in the country. PySpark ETL pipeline with DANE, SENA and Ministry of Labor data, employment forecasts with Prophet and visualization in Power BI and Next.js. I came up with the idea and led the team through sprints.",
       },
       misfinanzas: {
         name: "MisFinanzas — Personal Finance Manager",
+        role: "Solo developer · full-stack",
         description:
-          "Web application for tracking income, expenses, savings, and debts. Spring Boot backend with layered architecture, Angular frontend with category-based financial reports.",
+          "Web app to track income, expenses, savings and debts with category-based reports, designed from my accounting background. Spring Boot REST API with a layered architecture and PostgreSQL; Angular frontend.",
       },
     },
     others: {
@@ -140,14 +231,12 @@ export default function ProjectsPage() {
   const { lang } = useLang();
   const t = translations[lang];
   const [isDark, setIsDark] = useState(false);
-  const [slideIndex, setSlideIndex] = useState<Record<string, number>>({
-    verifarmac: 0, mintic: 0, misfinanzas: 0,
-  });
+  const [slideIndex, setSlideIndex] = useState<Record<string, number>>({});
 
   const prevSlide = (key: string) =>
-    setSlideIndex((prev) => ({ ...prev, [key]: prev[key] === 0 ? 1 : 0 }));
+    setSlideIndex((prev) => ({ ...prev, [key]: (prev[key] ?? 0) === 0 ? 1 : 0 }));
   const nextSlide = (key: string) =>
-    setSlideIndex((prev) => ({ ...prev, [key]: prev[key] === 1 ? 0 : 1 }));
+    setSlideIndex((prev) => ({ ...prev, [key]: (prev[key] ?? 0) === 1 ? 0 : 1 }));
 
   useEffect(() => {
     const updateTheme = () => setIsDark(document.documentElement.classList.contains("dark"));
@@ -167,7 +256,7 @@ export default function ProjectsPage() {
     };
   }, []);
 
-  const navClass = `px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg ${
+  const navClass = `px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg btn-float ring-1 ring-white/20 ${
     isDark ? "bg-black hover:bg-gray-800" : "bg-amber-950/90 hover:bg-amber-900"
   }`;
 
@@ -176,7 +265,7 @@ export default function ProjectsPage() {
       <AnimatedBackground isDark={isDark} />
 
       <main className="container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-24">
-        <h1 className="text-4xl md:text-5xl font-bold text-yellow-400 mb-8 md:mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-yellow-400 title-shadow mb-8 md:mb-12">
           {t.title}
         </h1>
 
@@ -188,33 +277,35 @@ export default function ProjectsPage() {
               className="flex flex-col bg-black/20 backdrop-blur-md rounded-2xl md:rounded-3xl p-4 md:p-6 text-white shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/20 border-2 border-black hover:ring-yellow-400/50 hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 group animate-fade-in opacity-0"
               style={{ animationDelay: `${index * 200}ms` }}
             >
-              {/* Slider de imágenes */}
+              {/* Portada: slider de imágenes */}
               <div className="aspect-video relative rounded-xl md:rounded-2xl overflow-hidden mb-4 border border-white/10 group-hover:border-yellow-400/20 transition-all bg-white/5">
-                {p.images[slideIndex[p.key]] ? (
-                  <Image
-                    src={p.images[slideIndex[p.key]]}
-                    alt={`${t.projects[p.key].name} ${slideIndex[p.key] + 1}`}
-                    fill
-                    className="object-cover transition-opacity duration-300"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-white/25 text-sm select-none">imagen próximamente</span>
-                  </div>
-                )}
+                <Image
+                  src={p.images[slideIndex[p.key] ?? 0]}
+                  alt={`${t.projects[p.key].name} ${(slideIndex[p.key] ?? 0) + 1}`}
+                  fill
+                  loading={index < 3 ? "eager" : "lazy"}
+                  sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition-opacity duration-300"
+                />
+
+                {/* En producción */}
+                <span className="absolute top-2.5 left-2.5 inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-black/60 backdrop-blur-sm text-[11px] font-semibold text-green-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                  {t.live}
+                </span>
 
                 {/* Flechas */}
                 <button
                   onClick={(e) => { e.stopPropagation(); prevSlide(p.key); }}
                   className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/50 hover:bg-black/70 rounded-full text-white text-lg leading-none transition-all"
-                  aria-label="anterior"
+                  aria-label={lang === "es" ? "Imagen anterior" : "Previous image"}
                 >
                   ‹
                 </button>
                 <button
                   onClick={(e) => { e.stopPropagation(); nextSlide(p.key); }}
                   className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/50 hover:bg-black/70 rounded-full text-white text-lg leading-none transition-all"
-                  aria-label="siguiente"
+                  aria-label={lang === "es" ? "Imagen siguiente" : "Next image"}
                 >
                   ›
                 </button>
@@ -225,17 +316,24 @@ export default function ProjectsPage() {
                     <button
                       key={i}
                       onClick={(e) => { e.stopPropagation(); setSlideIndex((prev) => ({ ...prev, [p.key]: i })); }}
-                      className={`w-1.5 h-1.5 rounded-full transition-all ${slideIndex[p.key] === i ? "bg-yellow-400 scale-125" : "bg-white/40"}`}
-                      aria-label={`imagen ${i + 1}`}
+                      className={`w-1.5 h-1.5 rounded-full transition-all ${(slideIndex[p.key] ?? 0) === i ? "bg-yellow-400 scale-125" : "bg-white/40"}`}
+                      aria-label={`${lang === "es" ? "Imagen" : "Image"} ${i + 1}`}
                     />
                   ))}
                 </div>
               </div>
 
               {/* Título */}
-              <h3 className="text-base md:text-lg font-bold text-yellow-400 mb-2 leading-snug">
+              <h3 className="text-base md:text-lg font-bold text-yellow-400 mb-1 leading-snug">
                 {t.projects[p.key].name}
               </h3>
+              {t.projects[p.key].role ? (
+                <p className="text-xs md:text-sm font-semibold text-white/60 mb-3">
+                  {t.projects[p.key].role}
+                </p>
+              ) : (
+                <div className="mb-2" />
+              )}
 
               {/* Descripción */}
               <p className="text-sm md:text-base leading-relaxed text-white/85 text-justify mb-4 flex-1">
@@ -252,24 +350,31 @@ export default function ProjectsPage() {
               </div>
 
               {/* Botones */}
-              <div className="flex flex-wrap gap-3 mt-auto">
-                <a
-                  href={p.repo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-white/70 hover:text-yellow-400 transition-colors text-sm font-medium"
-                >
-                  <GithubIcon />
-                  {t.viewCode}
-                </a>
-                <a
-                  href={p.secondUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-400/15 hover:bg-yellow-400/25 text-yellow-300 rounded-lg text-sm font-medium transition-all"
-                >
-                  {p.secondLabel[lang]}
-                </a>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-auto">
+                {p.links.map((l) =>
+                  l.kind === "demo" || l.kind === "apk" ? (
+                    <a
+                      key={l.url}
+                      href={l.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-400/15 hover:bg-yellow-400/25 text-yellow-300 rounded-lg text-sm font-medium transition-all"
+                    >
+                      {t.linkLabels[l.kind]}
+                    </a>
+                  ) : (
+                    <a
+                      key={l.url}
+                      href={l.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 text-white/70 hover:text-yellow-400 transition-colors text-sm font-medium"
+                    >
+                      <GithubIcon />
+                      {t.linkLabels[l.kind]}
+                    </a>
+                  )
+                )}
               </div>
             </article>
           ))}

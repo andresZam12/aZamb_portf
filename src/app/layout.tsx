@@ -16,8 +16,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portafolio – Andrés Zambrano",
-  description: "Portafolio profesional de Andrés Zambrano (FullStack).",
+  title: "Andrés Zambrano · Desarrollador FullStack | Datos, ML e IA aplicada",
+  description:
+    "Portafolio de Andrés Zambrano, desarrollador FullStack enfocado en datos, machine learning e IA aplicada. Puesto 8 nacional en Datos al Ecosistema 2026 (MinTIC). Proyectos con Python, PySpark, Java/Spring Boot, Flutter y Next.js.",
+  openGraph: {
+    title: "Andrés Zambrano · Desarrollador FullStack",
+    description: "Datos, machine learning e IA aplicada. Puesto 8 nacional en Datos al Ecosistema 2026 (MinTIC).",
+    type: "website",
+    locale: "es_CO",
+  },
 };
 
 export default function RootLayout({

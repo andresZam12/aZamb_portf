@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useLang } from "../../providers/LanguageProvider";
 import Link from "next/link";
 import AnimatedBackground from "../../components/AnimatedBackground";
-import emailjs from "@emailjs/browser";
 
 type Language = "es" | "en";
 
@@ -63,7 +62,7 @@ const translations: Record<Language, {
 }> = {
   es: {
     title: "HABLEMOS...",
-    subtitle: "¿Tienes un proyecto, una oportunidad o simplemente quieres conectar? Escríbeme por cualquiera de estos medios.",
+    subtitle: "Estoy disponible para prácticas profesionales y proyectos freelance de desarrollo, datos e IA. ¿Tienes una oportunidad o una idea? Escríbeme por cualquiera de estos medios.",
     contactMethodsTitle: "Métodos de contacto",
     placeholderName: "Tu nombre",
     placeholderEmail: "Tu correo electrónico",
@@ -73,12 +72,12 @@ const translations: Record<Language, {
     thankYou: "¡Gracias! Me comunicaré pronto.",
     sending: "Enviando...",
     errorMessage: "Error al enviar. Intenta de nuevo.",
-    prev: "← Referencias",
+    prev: "← Experiencia",
     next: "Inicio →",
   },
   en: {
     title: "Let's Talk",
-    subtitle: "Do you have a project, an opportunity, or just want to connect? Reach out through any of these channels.",
+    subtitle: "I'm available for internships and freelance projects in development, data and AI. Have an opportunity or an idea? Reach out through any of these channels.",
     contactMethodsTitle: "Contact methods",
     placeholderName: "Your name",
     placeholderEmail: "Your email address",
@@ -88,7 +87,7 @@ const translations: Record<Language, {
     thankYou: "Thank you! I'll be in touch.",
     sending: "Sending...",
     errorMessage: "Error sending. Try again.",
-    prev: "← References",
+    prev: "← Experience",
     next: "Home →",
   },
 };
@@ -123,8 +122,8 @@ export default function ContactosPage() {
   }, []);
 
   const navClass = isDark
-    ? "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-black hover:bg-gray-800"
-    : "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg bg-amber-950/90 hover:bg-amber-900";
+    ? "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg btn-float ring-1 ring-white/20 bg-black hover:bg-gray-800"
+    : "px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg btn-float ring-1 ring-white/20 bg-amber-950/90 hover:bg-amber-900";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -136,12 +135,12 @@ export default function ContactosPage() {
     const tiempo = new Date().toLocaleString("es-ES", { dateStyle: "medium", timeStyle: "short" });
 
     try {
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        { nombre, email, asunto, mensaje, tiempo },
-        { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! }
-      );
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, email, asunto, mensaje, tiempo }),
+      });
+      if (!res.ok) throw new Error("Error del servidor");
       setSubmitted(true);
       setNombre(""); setEmail(""); setAsunto(""); setMensaje("");
       setTimeout(() => setSubmitted(false), 4000);
@@ -162,7 +161,7 @@ export default function ContactosPage() {
 
         {/* Encabezado */}
         <div className="mb-10 md:mb-12 animate-fade-in opacity-0" style={{ animationDelay: "0ms" }}>
-          <h1 className="text-4xl md:text-5xl font-bold text-yellow-400 mb-3">
+          <h1 className="text-4xl md:text-5xl font-bold text-yellow-400 title-shadow mb-3">
             {t.title}
           </h1>
           <p className="text-base md:text-lg text-white/70 max-w-2xl leading-relaxed">
@@ -272,7 +271,7 @@ export default function ContactosPage() {
       </main>
 
       <nav className="fixed bottom-4 md:bottom-8 right-4 md:right-8 z-40 flex gap-2 md:gap-4">
-        <Link href="/references" className={navClass}>
+        <Link href="/experience" className={navClass}>
           <span className="md:hidden">←</span>
           <span className="hidden md:inline">{t.prev}</span>
         </Link>

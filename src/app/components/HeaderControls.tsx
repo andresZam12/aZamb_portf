@@ -14,12 +14,11 @@ const navLinks = [
   { href: "/about",       es: "Acerca de mí", en: "About me"  },
   { href: "/projects",    es: "Proyectos",   en: "Projects"   },
   { href: "/experience",  es: "Experiencia", en: "Experience" },
-  { href: "/references",  es: "Referencias", en: "References" },
   { href: "/contacts",    es: "Contactos",   en: "Contacts"   },
 ];
 
 const btnBase =
-  "inline-flex items-center gap-1 md:gap-2 rounded-full border border-white/20 px-3 py-2 md:px-4 md:py-2.5 text-sm font-semibold text-white bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all";
+  "inline-flex items-center gap-1 md:gap-2 rounded-full border border-white/25 px-3 py-2 md:px-4 md:py-2.5 text-sm font-semibold text-white bg-black/30 hover:bg-black/45 backdrop-blur-md btn-float";
 
 export default function HeaderControls() {
   const { lang, setLang } = useLang();
@@ -113,7 +112,7 @@ export default function HeaderControls() {
       </button>
 
       {/* CV */}
-      <a href="/CVAnd.pdf" target="_blank" rel="noopener noreferrer" className={btnBase}>
+      <a href={lang === "es" ? "/CV_Andres_Zambrano_ES.pdf" : "/CV_Andres_Zambrano_EN.pdf"} target="_blank" rel="noopener noreferrer" className={btnBase}>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
           <polyline points="7 10 12 15 17 10" />
@@ -140,7 +139,7 @@ export default function HeaderControls() {
       <div className="relative" data-menu="main">
         <button
           onClick={() => setMenuOpen(v => !v)}
-          className="inline-flex flex-col items-center justify-center gap-[5px] w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all"
+          className="inline-flex flex-col items-center justify-center gap-[5px] w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/25 bg-black/30 hover:bg-black/45 backdrop-blur-md btn-float"
           aria-expanded={menuOpen}
           aria-label="Abrir menú principal"
         >

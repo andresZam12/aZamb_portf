@@ -5,17 +5,17 @@ import { useLang } from "../../providers/LanguageProvider";
 import AnimatedBackground from "../../components/AnimatedBackground";
 
 const LANGUAGES = [
-  { flag: "🇨🇴", es: "Español", en: "Spanish",  levelEs: "Nativo",                   levelEn: "Native",                       badge: "C2", pct: 100 },
-  { flag: "🇺🇸", es: "Inglés",  en: "English",  levelEs: "Intermedio · B1 en curso",  levelEn: "Intermediate · B1 in progress", badge: "B1", pct: 55  },
+  { flag: "🇨🇴", es: "Español", en: "Spanish", levelEs: "Lengua materna",                  levelEn: "Mother tongue",                       badgeEs: "Nativo", badgeEn: "Native" },
+  { flag: "🇺🇸", es: "Inglés",  en: "English", levelEs: "B2 en curso · English Adventure", levelEn: "B2 in progress · English Adventure", badgeEs: "B2",     badgeEn: "B2" },
 ];
 
 const TECH_CATEGORIES = [
-  { es: "Frontend",               en: "Frontend",       items: ["React", "Next.js", "Tailwind CSS", "JavaScript", "TypeScript"] },
-  { es: "Mobile",                 en: "Mobile",         items: ["Flutter", "Dart"] },
-  { es: "Backend",                en: "Backend",        items: ["Java", "Spring Boot", "Python", "Django", "Node.js"] },
-  { es: "Bases de datos",         en: "Databases",      items: ["PostgreSQL", "MySQL", "MongoDB", "SQLite", "SQL Server"] },
-  { es: "Data & IA",              en: "Data & AI",      items: ["PySpark", "Prophet", "Claude API", "ML Kit"] },
-  { es: "DevOps & Herramientas",  en: "DevOps & Tools", items: ["Docker", "GitHub", "Supabase", "Firebase"] },
+  { es: "Datos e IA",                       en: "Data & AI",                     items: ["Python", "PySpark", "Prophet", "Claude API", "AI Agents", "ML Kit"] },
+  { es: "Análisis y sistemas empresariales", en: "Analytics & business systems", items: ["Power BI", "Excel", "Siigo", "Microsoft Dynamics"] },
+  { es: "Backend",                          en: "Backend",                       items: ["Java", "Spring Boot", "Node.js", "Django", "REST APIs"] },
+  { es: "Frontend y móvil",                 en: "Frontend & mobile",             items: ["React", "Next.js", "Angular", "TypeScript", "Tailwind CSS", "Flutter", "Dart"] },
+  { es: "Bases de datos",                   en: "Databases",                     items: ["PostgreSQL", "MySQL", "MongoDB", "Supabase", "Firebase"] },
+  { es: "DevOps y prácticas",               en: "DevOps & practices",            items: ["Git", "GitHub Projects", "Docker", "Vercel", "Scrum", "Clean Architecture"] },
 ];
 
 // Diccionario de traducciones
@@ -23,52 +23,54 @@ const translations = {
   es: {
     title: "CONÓCEME",
     description1:
-      "Soy estudiante de Ingeniería de Software en la Universidad Cooperativa de Colombia (7º de 8 semestres · 87% completado), con enfoque en desarrollo FullStack y arquitecturas limpias. Me interesa especialmente la integración de IA en productos reales y el consumo de datos abiertos y APIs gubernamentales.",
+      "Soy estudiante de último semestre de Ingeniería de Software en la Universidad Cooperativa de Colombia. Me apasionan el Big Data, los modelos predictivos, el machine learning y la minería de datos, y mi enfoque es llevarlos a productos reales: aplicaciones que integran IA, datos abiertos y APIs gubernamentales para resolver problemas concretos.",
     description2:
-      "Trabajo bien en equipo y he liderado proyectos académicos y personales de principio a fin — desde el diseño hasta el despliegue. Aprendo rápido, me adapto a nuevas tecnologías y me tomo en serio las buenas prácticas.",
+      "He liderado equipos ágiles de la idea al despliegue. Como Product Owner de un equipo de 4 en el concurso Datos al Ecosistema 2026 del Ministerio TIC obtuvimos el puesto 8 a nivel nacional (91/100), y como líder técnico de VeriFarmac gestioné el producto en GitHub Projects y desarrollé su capa de inteligencia artificial.",
     description3:
-      "Fuera del código soy músico, deportista, barbero, tatuador, editor — perfil que me da disciplina, creatividad y trato con personas, habilidades que llevo también al trabajo en equipo.",
-      technologies: "Tecnologías",
-    personalSkills: "Habilidades personales",
+      "Antes del software trabajé cinco años en ventas, administración y supervisión, donde analicé datos con Power BI y Excel y administré sistemas empresariales como Siigo y Microsoft Dynamics. Esa experiencia, junto con mi formación contable, me da una visión de negocio que llevo a cada producto que construyo.",
+    technologies: "Tecnologías",
+    personalSkills: "Habilidades profesionales",
     languages: "Idiomas",
     achievements: "Reconocimientos",
     prev: "← Inicio",
     next: "Proyectos →",
-    skills: {
-      leadership: "Liderazgo de equipos en proyectos académicos y competencias nacionales",
-      adaptation: "Adaptación rápida a nuevas tecnologías y entornos de trabajo",
-      communication: "Comunicación técnica con clientes y equipos no técnicos",
-    },
-    achievementsList: {
-      projects: "Participación en proyectos de aprendizaje nacional con enfoque en desarrollo de software.",
-      science: "Ganador de concurso Ciencia e Investigación COMUNA-UCC 2024.",
-      sports: "Deportista reconocido de alto rendimiento en Nariño-Colombia.",
-    },
+    skills: [
+      "Liderazgo de equipos ágiles como Product Owner y líder técnico (Scrum, GitHub Projects)",
+      "Visión de negocio: formación contable y experiencia en ventas y administración",
+      "Comunicación técnica con clientes y equipos no técnicos",
+      "Aprendizaje autónomo y rápida adopción de nuevas tecnologías",
+    ],
+    achievementsList: [
+      "Puesto 8 a nivel nacional (91/100) en el concurso Datos al Ecosistema 2026 del Ministerio TIC.",
+      "Ganador del concurso de Ciencia e Investigación COMUNA-UCC 2024.",
+      "Deportista de alto rendimiento reconocido en Nariño, Colombia.",
+    ],
   },
   en: {
     title: "ABOUT ME",
     description1:
-      "I'm a Software Engineering student at Universidad Cooperativa de Colombia (7th of 8 semesters · 87% complete), focused on FullStack development and clean architectures. I'm especially interested in integrating AI into real products and consuming open data and government APIs.",
+      "I'm a final-semester Software Engineering student at Universidad Cooperativa de Colombia. I'm passionate about Big Data, predictive models, machine learning and data mining, and my focus is turning them into real products: applications that combine AI, open data and government APIs to solve concrete problems.",
     description2:
-      "I work well in teams and have led academic and personal projects from start to finish — from design to deployment. I learn fast, adapt to new technologies, and take best practices seriously.",
+      "I have led agile teams from idea to deployment. As Product Owner of a team of 4 in the Ministry of ICT's Datos al Ecosistema 2026 competition we ranked 8th nationwide (91/100), and as tech lead of VeriFarmac I managed the product in GitHub Projects and built its artificial intelligence layer.",
     description3:
-      "Outside of code I'm a musician, athlete, barber, tattooist, and editor — a profile that gives me discipline, creativity, and people skills, all of which I bring to team environments.",
+      "Before software, I spent five years in sales, administration and supervision, where I analyzed data with Power BI and Excel and administered business systems such as Siigo and Microsoft Dynamics. That experience, together with my accounting training, gives me a business perspective I bring to every product I build.",
     technologies: "Technologies",
-    personalSkills: "Personal Skills",
+    personalSkills: "Professional Skills",
     languages: "Languages",
     achievements: "Achievements",
     prev: "← Home",
     next: "Projects →",
-    skills: {
-      leadership: "Team leadership in academic projects and national competitions",
-      adaptation: "Fast adaptation to new technologies and work environments",
-      communication: "Technical communication with clients and non-technical teams",
-    },
-    achievementsList: {
-      projects: "Participation in national learning projects focused on software development.",
-      science: "Winner of the COMUNA-UCC 2024 Science and Research competition.",
-      sports: "Recognized high-performance athlete in Nariño-Colombia.",
-    },
+    skills: [
+      "Leading agile teams as Product Owner and tech lead (Scrum, GitHub Projects)",
+      "Business perspective: accounting training and sales & administration experience",
+      "Technical communication with clients and non-technical teams",
+      "Self-driven learning and fast adoption of new technologies",
+    ],
+    achievementsList: [
+      "8th place nationwide (91/100) in the Ministry of ICT's Datos al Ecosistema 2026 competition.",
+      "Winner of the COMUNA-UCC 2024 Science and Research competition.",
+      "Recognized high-performance athlete in Nariño, Colombia.",
+    ],
   },
 };
 
@@ -95,13 +97,9 @@ export default function AboutPage() {
     };
   }, []);
 
-  const navClass = `px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg ${
+  const navClass = `px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg btn-float ring-1 ring-white/20 ${
     isDark ? "bg-black hover:bg-gray-800" : "bg-amber-950/90 hover:bg-amber-900"
   }`;
-
-  const bgGradient = isDark
-    ? "bg-[linear-gradient(to_right,#1a1a1a_0%,#1a1a1a_33.34%,#2d2d2d_33.34%,#2d2d2d_66.67%,#404040_66.67%,#404040_100%)]"
-    : "bg-[linear-gradient(to_right,#3b2a23_0%,#3b2a23_33.34%,#8b5e3c_33.34%,#8b5e3c_66.67%,#c48758_66.67%,#c48758_100%)]";
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -110,7 +108,7 @@ export default function AboutPage() {
 
       {/* Contenido principal */}
       <main className="container mx-auto px-6 pt-24 pb-20">
-        <h1 className="text-4xl md:text-5xl font-bold text-yellow-400 mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-yellow-400 title-shadow mb-12">
           {t.title}
         </h1>
 
@@ -155,7 +153,7 @@ export default function AboutPage() {
                     {t.personalSkills}
                   </h3>
                   <ul className="space-y-3 text-base md:text-lg">
-                    {[t.skills.leadership, t.skills.adaptation, t.skills.communication].map((s, i) => (
+                    {t.skills.map((s, i) => (
                       <li key={i} className="flex items-start gap-2.5">
                         <span className="mt-[9px] w-2 h-2 rounded-full bg-yellow-400 shrink-0" />
                         {s}
@@ -176,18 +174,12 @@ export default function AboutPage() {
                             {l.flag} {lang === "es" ? l.es : l.en}
                           </span>
                           <span className="text-xs font-bold px-2 py-0.5 bg-yellow-400/20 text-yellow-300 rounded-full">
-                            {l.badge}
+                            {lang === "es" ? l.badgeEs : l.badgeEn}
                           </span>
                         </div>
-                        <p className="text-sm text-white/60 mb-2">
+                        <p className="text-sm text-white/60">
                           {lang === "es" ? l.levelEs : l.levelEn}
                         </p>
-                        <div className="w-full bg-white/10 rounded-full h-1.5">
-                          <div
-                            className="bg-yellow-400 h-1.5 rounded-full"
-                            style={{ width: `${l.pct}%` }}
-                          />
-                        </div>
                       </div>
                     ))}
                   </div>
@@ -200,7 +192,7 @@ export default function AboutPage() {
                   {t.achievements}
                 </h3>
                 <ul className="space-y-3 text-base md:text-lg">
-                  {[t.achievementsList.projects, t.achievementsList.science, t.achievementsList.sports].map((a, i) => (
+                  {t.achievementsList.map((a, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <span className="mt-[9px] w-2 h-2 rounded-full bg-yellow-400 shrink-0" />
                       {a}

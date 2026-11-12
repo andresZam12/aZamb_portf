@@ -8,25 +8,25 @@ type Language = "es" | "en";
 
 const WORK_EXPERIENCE = [
   {
-    role:    { es: "Atención al Cliente",           en: "Customer Service"          },
-    company: "Chicken Lilo",
+    role:    { es: "Atención al Cliente",            en: "Customer Service Representative" },
+    company: "Chicken Lilo · Pasto",
     year:    "2024",
-    desc:    { es: "Gestión de clientes y resolución de reclamos en entorno de alta rotación.",
-               en: "Customer management and claims resolution in a high-turnover environment." },
+    desc:    { es: "Análisis de ventas y rendimiento de productos con Power BI y Excel; reportes para la administración y capacitación de personal nuevo.",
+               en: "Analyzed sales and product performance with Power BI and Excel; built management reports and trained new staff." },
   },
   {
-    role:    { es: "Vendedor y Cajero Administrador", en: "Salesperson & Cashier Admin" },
-    company: "Mundial de Mangueras",
+    role:    { es: "Administrador de Punto de Venta", en: "Store Manager" },
+    company: "Mundial de Mangueras y Correas de Nariño · Pasto",
     year:    "2020–2023",
-    desc:    { es: "Administración de ventas y coordinación de personal.",
-               en: "Sales administration and staff coordination." },
+    desc:    { es: "Gestión de ventas, caja, inventario y personal con control en Excel; amplié la cartera de clientes y supervisé locales en Cali.",
+               en: "Managed sales, cash, inventory and staff with Excel-based controls; grew the client base and supervised stores in Cali." },
   },
   {
-    role:    { es: "Supervisor de Ventas",           en: "Sales Supervisor"           },
-    company: "Surimportaciones SAS",
+    role:    { es: "Supervisor de Ventas",            en: "Sales Supervisor" },
+    company: "Surimportaciones SAS · Cali",
     year:    "2019–2020",
-    desc:    { es: "Liderazgo de equipo y control de indicadores de desempeño.",
-               en: "Team leadership and performance indicators management." },
+    desc:    { es: "Administré, configuré y di mantenimiento a Siigo y Microsoft Dynamics; trasladado por desempeño para liderar los equipos de ventas y contabilidad.",
+               en: "Administered, configured and maintained Siigo and Microsoft Dynamics; transferred on merit to lead the sales and accounting teams." },
   },
 ];
 
@@ -45,16 +45,15 @@ const translations: Record<Language, {
     academicTitle: "Formación académica",
     laboralTitle: "Experiencia laboral",
     laboralIntro:
-      "Mi experiencia previa al software — en atención al cliente, administración de ventas y supervisión de equipos — me formó en comunicación directa, resolución de problemas bajo presión y trato con personas. Habilidades que aplico hoy en el trabajo con equipos de desarrollo y en la relación con usuarios finales.",
+      "Antes de dedicarme al desarrollo ya usaba la tecnología como herramienta de trabajo: analicé datos con Power BI y Excel y administré sistemas empresariales como Siigo y Microsoft Dynamics. De esos años traigo liderazgo de equipos, visión de negocio y trato directo con clientes.",
     downloadCV: "Descargar CV completo",
     prev: "← Proyectos",
-    next: "Referencias →",
+    next: "Contactos →",
     academic: [
-      "Ingeniería de Software — Universidad Cooperativa de Colombia (7º de 8 semestres · 87% completado)",
-      "Talento Tech — MinTIC (Desarrollo de software, nivel intermedio)",
-      "Bachiller Académico — Institución Educativa San Juan Bosco, Pasto, Nariño",
-      "Contabilidad Básica y Estándares Internacionales — Universidad Mariana",
-      "Técnico en Contaduría Pública — Comfamiliar de Nariño",
+      "Ingeniería de Software — Universidad Cooperativa de Colombia · Último semestre",
+      "Talento Tech: Desarrollo de Software — Ministerio TIC de Colombia · Nivel intermedio",
+      "Contabilidad Básica y Estándares Internacionales — Universidad Mariana · Curso",
+      "Inglés B2 — English Adventure · En curso",
     ],
   },
   en: {
@@ -62,16 +61,15 @@ const translations: Record<Language, {
     academicTitle: "Academic Background",
     laboralTitle: "Work Experience",
     laboralIntro:
-      "My pre-software work experience — in customer service, sales administration, and team supervision — built my skills in direct communication, problem-solving under pressure, and people management. Skills I apply today when working with development teams and end users.",
+      "Before moving into development I was already using technology as a work tool: I analyzed data with Power BI and Excel and administered business systems such as Siigo and Microsoft Dynamics. From those years I bring team leadership, business perspective and direct client experience.",
     downloadCV: "Download Full CV",
     prev: "← Projects",
-    next: "References →",
+    next: "Contacts →",
     academic: [
-      "Software Engineering — Universidad Cooperativa de Colombia (7th of 8 semesters · 87% complete)",
-      "Talento Tech — MinTIC (Software development, intermediate level)",
-      "High School Diploma — Institución Educativa San Juan Bosco, Pasto, Nariño",
-      "Basic Accounting & International Standards — Universidad Mariana",
-      "Technical Degree in Public Accounting — Comfamiliar de Nariño",
+      "B.Sc. Software Engineering — Universidad Cooperativa de Colombia · Final semester",
+      "Talento Tech: Software Development — Colombian Ministry of ICT · Intermediate level",
+      "Basic Accounting & International Standards — Universidad Mariana · Course",
+      "English B2 — English Adventure · In progress",
     ],
   },
 };
@@ -96,7 +94,7 @@ export default function ExperienciaPage() {
     };
   }, []);
 
-  const navClass = `px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg transition-all shadow-lg ${
+  const navClass = `px-4 py-2 md:px-6 md:py-3 rounded-full text-white font-medium text-sm md:text-lg btn-float ring-1 ring-white/20 ${
     isDark ? "bg-black hover:bg-gray-800" : "bg-amber-950/90 hover:bg-amber-900"
   }`;
 
@@ -107,7 +105,7 @@ export default function ExperienciaPage() {
       <AnimatedBackground isDark={isDark} />
 
       <main className="max-w-6xl mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-32">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-400 mb-10">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-400 title-shadow mb-10">
           {t.title}
         </h1>
 
@@ -170,9 +168,9 @@ export default function ExperienciaPage() {
         {/* CTA — Descargar CV */}
         <div className="mt-14 flex justify-center animate-fade-in opacity-0" style={{ animationDelay: "400ms" }}>
           <a
-            href="/CVAnd.pdf"
+            href={lang === "es" ? "/CV_Andres_Zambrano_ES.pdf" : "/CV_Andres_Zambrano_EN.pdf"}
             download
-            className="inline-flex items-center gap-3 px-8 py-4 bg-yellow-400 hover:bg-yellow-300 text-black font-bold rounded-2xl text-base md:text-lg transition-all shadow-lg"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-yellow-400 hover:bg-yellow-300 text-black font-bold rounded-2xl text-base md:text-lg btn-float"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 3v12M12 15l-4-4M12 15l4-4" />
@@ -188,7 +186,7 @@ export default function ExperienciaPage() {
           <span className="md:hidden">←</span>
           <span className="hidden md:inline">{t.prev}</span>
         </Link>
-        <Link href="/references" className={navClass}>
+        <Link href="/contacts" className={navClass}>
           <span className="md:hidden">→</span>
           <span className="hidden md:inline">{t.next}</span>
         </Link>
