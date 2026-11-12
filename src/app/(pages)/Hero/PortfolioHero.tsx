@@ -26,8 +26,8 @@ const translations = {
       ctaProjects: "Ver proyectos",
       ctaCV: "Descargar CV",
       highlights: [
-        { value: "Top 8", label: "nacional · MinTIC 2026" },
-        { value: "91/100", label: "puntaje en el concurso" },
+        { value: "SaaS", label: "en producción con clientes de pago" },
+        { value: "Top 8", label: "nacional · MinTIC 2026 (91/100)" },
         { value: "6", label: "productos publicados" },
       ],
     },
@@ -51,8 +51,8 @@ const translations = {
       ctaProjects: "View Projects",
       ctaCV: "Download CV",
       highlights: [
-        { value: "Top 8", label: "nationwide · MinTIC 2026" },
-        { value: "91/100", label: "competition score" },
+        { value: "SaaS", label: "live with paying clients" },
+        { value: "Top 8", label: "nationwide · MinTIC 2026 (91/100)" },
         { value: "6", label: "products shipped" },
       ],
     },

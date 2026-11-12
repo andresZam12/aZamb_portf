@@ -25,7 +25,7 @@ const translations = {
     description1:
       "Soy estudiante de último semestre de Ingeniería de Software en la Universidad Cooperativa de Colombia. Me apasionan el Big Data, los modelos predictivos, el machine learning y la minería de datos, y mi enfoque es llevarlos a productos reales: aplicaciones que integran IA, datos abiertos y APIs gubernamentales para resolver problemas concretos.",
     description2:
-      "He liderado equipos ágiles de la idea al despliegue. Como Product Owner de un equipo de 4 en el concurso Datos al Ecosistema 2026 del Ministerio TIC obtuvimos el puesto 8 a nivel nacional (91/100), y como líder técnico de VeriFarmac gestioné el producto en GitHub Projects y desarrollé su capa de inteligencia artificial.",
+      "Como freelance construí y opero Zabio, un SaaS de agentes de IA para negocios que ya factura con clientes reales, del que soy líder y único desarrollador. También he liderado equipos ágiles: como Product Owner de un equipo de 4 en el concurso Datos al Ecosistema 2026 del Ministerio TIC obtuvimos el puesto 8 a nivel nacional (91/100), y como líder técnico de VeriFarmac gestioné el producto en GitHub Projects y desarrollé su capa de inteligencia artificial.",
     description3:
       "Antes del software trabajé cinco años en ventas, administración y supervisión, donde analicé datos con Power BI y Excel y administré sistemas empresariales como Siigo y Microsoft Dynamics. Esa experiencia, junto con mi formación contable, me da una visión de negocio que llevo a cada producto que construyo.",
     technologies: "Tecnologías",
@@ -51,7 +51,7 @@ const translations = {
     description1:
       "I'm a final-semester Software Engineering student at Universidad Cooperativa de Colombia. I'm passionate about Big Data, predictive models, machine learning and data mining, and my focus is turning them into real products: applications that combine AI, open data and government APIs to solve concrete problems.",
     description2:
-      "I have led agile teams from idea to deployment. As Product Owner of a team of 4 in the Ministry of ICT's Datos al Ecosistema 2026 competition we ranked 8th nationwide (91/100), and as tech lead of VeriFarmac I managed the product in GitHub Projects and built its artificial intelligence layer.",
+      "As a freelancer I built and run Zabio, an AI-agent SaaS for businesses already generating revenue with real clients, where I am the lead and sole developer. I have also led agile teams: as Product Owner of a team of 4 in the Ministry of ICT's Datos al Ecosistema 2026 competition we ranked 8th nationwide (91/100), and as tech lead of VeriFarmac I managed the product in GitHub Projects and built its artificial intelligence layer.",
     description3:
       "Before software, I spent five years in sales, administration and supervision, where I analyzed data with Power BI and Excel and administered business systems such as Siigo and Microsoft Dynamics. That experience, together with my accounting training, gives me a business perspective I bring to every product I build.",
     technologies: "Technologies",

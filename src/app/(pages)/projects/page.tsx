@@ -120,16 +120,19 @@ const translations: Record<
     projects: {
       zabio: {
         name: "Zabio — Agentes de IA para negocios",
+        role: "Freelance · Líder y único desarrollador · En producción con clientes de pago",
         description:
           "Plataforma SaaS multi-tenant que permite a personas y negocios sin conocimientos técnicos crear agentes de IA personalizados que atienden clientes por WhatsApp y agendan citas automáticamente en Google Calendar. Backend asíncrono en FastAPI con aislamiento por organización mediante Row-Level Security en PostgreSQL, una capa multi-proveedor de LLMs (Claude, GPT-4o y Gemini) con prompt caching, y agentes con tool calling que consultan disponibilidad y reservan citas.",
       },
       deplhoy: {
         name: "Deplhoy — Noticiero tech con IA",
+        role: "Líder y único desarrollador · Producto propio",
         description:
-          "Noticiero automatizado para programadores y profesionales de tecnología. Un pipeline programado recolecta noticias de más de 12 fuentes globales (HackerNews, TechCrunch, arXiv, blogs de OpenAI y Anthropic), las clasifica por relevancia con Gemini (programación, ingeniería, IA y empleabilidad), las resume con trazabilidad de fuentes y envía un boletín semanal con doble opt-in, construyendo una base de suscriptores del sector tech.",
+          "Noticiero automatizado para programadores y profesionales de tecnología. Un pipeline programado recolecta noticias de más de 12 fuentes globales (HackerNews, TechCrunch, arXiv, blogs de OpenAI y Anthropic), las clasifica por relevancia con Gemini (programación, ingeniería, IA y empleabilidad), las resume con trazabilidad de fuentes y envía un boletín semanal con doble opt-in. Lo concebí como canal de crecimiento: construye una base de profesionales tech a quienes presentar nuevos proyectos y servicios.",
       },
       oir: {
         name: "O.IR — Acordes y letras con IA",
+        role: "Líder y único desarrollador",
         description:
           "Plataforma web para músicos que detecta con IA los acordes y la letra de cualquier canción a partir de una URL de YouTube, un archivo de audio o una grabación de micrófono. Procesa el audio en segundo plano con Celery y Redis, analiza la armonía con librosa y ofrece reproducción sincronizada, puntaje de dificultad, transposición y exportación a PDF.",
       },
@@ -178,16 +181,19 @@ const translations: Record<
     projects: {
       zabio: {
         name: "Zabio — AI Agents for Businesses",
+        role: "Freelance · Lead and sole developer · Live with paying clients",
         description:
           "Multi-tenant SaaS platform that lets individuals and businesses with no technical background create custom AI agents that serve customers on WhatsApp and book appointments automatically in Google Calendar. Async FastAPI backend with per-organization isolation through PostgreSQL Row-Level Security, a multi-provider LLM layer (Claude, GPT-4o and Gemini) with prompt caching, and tool-calling agents that check availability and book appointments.",
       },
       deplhoy: {
         name: "Deplhoy — AI-Powered Tech News",
+        role: "Lead and sole developer · Own product",
         description:
-          "Automated news service for developers and tech professionals. A scheduled pipeline collects news from 12+ global sources (HackerNews, TechCrunch, arXiv, OpenAI and Anthropic blogs), ranks it by relevance with Gemini (programming, engineering, AI and employability), summarizes it with source traceability and sends a weekly double opt-in newsletter, building a subscriber base of tech professionals.",
+          "Automated news service for developers and tech professionals. A scheduled pipeline collects news from 12+ global sources (HackerNews, TechCrunch, arXiv, OpenAI and Anthropic blogs), ranks it by relevance with Gemini (programming, engineering, AI and employability), summarizes it with source traceability and sends a weekly double opt-in newsletter. I designed it as a growth channel: it builds a base of tech professionals to whom I can present new projects and services.",
       },
       oir: {
         name: "O.IR — AI Chords & Lyrics",
+        role: "Lead and sole developer",
         description:
           "Web platform for musicians that uses AI to detect the chords and lyrics of any song from a YouTube URL, an audio file or a microphone recording. Audio is processed in the background with Celery and Redis, harmony is analyzed with librosa, and it offers synced playback, a difficulty score, transposition and PDF export.",
       },
